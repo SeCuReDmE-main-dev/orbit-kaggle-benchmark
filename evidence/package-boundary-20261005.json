@@ -1,0 +1,15 @@
+{
+  "format": "orbit-package-boundary-v1",
+  "observedAt": "2026-10-05",
+  "originalHead": "13b315696bfaf72ac371e5b3498e2ab0d3a9a00e",
+  "originalBranch": "master",
+  "originalFilesVerified": 1729,
+  "originalFileSetUnchanged": true,
+  "originalStatusUnchanged": true,
+  "originalBytesUnchanged": true,
+  "committedPublicBlobsVerified": 55,
+  "checkedCommit": "1620e0a1141c6ebeb330136f5cc8288778b55a2d",
+  "editorialDraftSha256": "e9029ff3197cd7eeed394a17c001aa08d3e0e7b020432f5431868f707b02c4a5",
+  "editorialDraftUnchanged": true,
+  "scope": "Read-only original boundary and byte identity verification; no benchmark execution."
+}

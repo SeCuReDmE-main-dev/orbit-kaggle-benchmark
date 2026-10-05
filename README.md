@@ -82,6 +82,7 @@ For authorized owners of the private campaign inputs, `harness/scoring/analyze_k
 - [Hash and export transformation manifest](evidence/export-manifest.json)
 - [Searchable artifact catalog](metadata/artifacts.json)
 - [Challenge requirements checklist](docs/judge-checklist.md)
+- [Technical delivery and remaining limitations](docs/delivery-20261005.md)
 
 Run the static package validation from this repository root with `python tools/verify_package.py`. After an intentional public edit, regenerate its catalog with `python tools/verify_package.py --refresh-catalog`. Search by a tag with `python tools/verify_package.py --search evidence-provenance`. These checks parse JSON/Python/notebooks, verify empty stored outputs, byte hashes, relative links and Git exclusions. They do not run the benchmark or call models.
 
@@ -89,7 +90,9 @@ Source project at export: branch `master`, HEAD `13b315696bfaf72ac371e5b3498e2ab
 
 ## Kaggle links and publication state
 
-The [historical task](https://www.kaggle.com/benchmarks/tasks/celebrum/orbit-scoped-evidence-pilot-v2/1) is public. The required entry link is the [Benchmark collection](https://www.kaggle.com/benchmarks/celebrum/orbit-scoped-evidence-and-user-choice), not a task or private notebook. The new Boolean task and collection publication are being finalized; the delivery note records the verified final visibility. Private parent notebooks and input datasets are retained privately. Kaggle tags are Evaluation, Factuality, Question Answering, Reasoning and Synthetic.
+The [historical task](https://www.kaggle.com/benchmarks/tasks/celebrum/orbit-scoped-evidence-pilot-v2/1), new Boolean task v2 and [Benchmark collection](https://www.kaggle.com/benchmarks/celebrum/orbit-scoped-evidence-and-user-choice) are public, verified by saved visibility and readback in Kaggle on October 5. The collection includes both task versions. The author explicitly approved Apache 2.0 publication of the new task and collection; this does not assign a blanket license to every historical source export. Parent notebooks and input datasets remain private. Kaggle tags are Evaluation, Factuality, Question Answering, Reasoning and Synthetic.
+
+The [GitHub repository](https://github.com/SeCuReDmE-main-dev/orbit-kaggle-benchmark) was verified without an owner session. Independent Kaggle access remains unverified: the web reader could not open either page, and a cookie-free HTTP request returned 404 for the collection and a generic 200 application shell for the task. This is not evidence that a guest can inspect the rendered collection. See the [publication receipt](evidence/publication-20261005.json); a non-owner browser check remains necessary before submission.
 
 The [English article](docs/article.en.md) remains the earlier working draft delivered for graphics and podcast preparation. Final editorial writing and DEV publication are outside this technical delivery. Update its execution-status sentences from these receipts before submitting; the draft alone is not a final experimental report.
 

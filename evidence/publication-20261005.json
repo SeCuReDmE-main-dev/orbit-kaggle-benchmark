@@ -1,0 +1,29 @@
+{
+  "format": "orbit-publication-receipt-v1",
+  "observedAt": "2026-10-05",
+  "github": {
+    "url": "https://github.com/SeCuReDmE-main-dev/orbit-kaggle-benchmark",
+    "visibility": "PUBLIC",
+    "anonymousPageRetrieved": true,
+    "initialLocalAndRemoteCommit": "1620e0a1141c6ebeb330136f5cc8288778b55a2d",
+    "topics": ["llm-evaluation", "synthetic-data", "evidence-provenance", "reproducibility", "kaggle-benchmarks", "question-answering", "factuality", "metamorphic-testing"]
+  },
+  "kaggle": {
+    "collectionUrl": "https://www.kaggle.com/benchmarks/celebrum/orbit-scoped-evidence-and-user-choice",
+    "nativeTaskUrl": "https://www.kaggle.com/benchmarks/tasks/celebrum/orbit-native-pass-fail/2",
+    "savedVisibilityReadBack": "Public",
+    "publicTasksInCollection": 2,
+    "nativeVersionLinked": 2,
+    "newTaskAndCollectionLicense": "Apache-2.0",
+    "authorApprovedAtActionTime": true,
+    "parentNotebookMadePublic": false,
+    "privateInputsMadePublic": false,
+    "taskTags": ["Evaluation", "Factuality", "Question Answering", "Reasoning", "Synthetic"],
+    "anonymousRenderedAccess": "not-verified",
+    "webReader": "unable-to-open-pages",
+    "cookieFreeHttp": {"collectionStatus": 404, "taskStatus": 200, "taskContent": "generic-application-shell"},
+    "nativePresentationLimitation": "v1 displayed PASS for Pro despite booleanResult false; v2 displays Flash only"
+  },
+  "workers": {"interactiveSessionsCreated": 3, "stoppedAndReadBackOff": 3, "unrelatedAccountEventsNotModified": true},
+  "scope": "Observed publication, visibility and access checks; does not certify rendered guest access or DEV challenge submission."
+}

@@ -189,7 +189,7 @@
         "scoped-claims",
         "uncertainty"
       ],
-      "sha256": "f5c266c463e9852e7c9f6e5032289b7539c3464cc16ef35e441b262803aa564f"
+      "sha256": "ccb9b7bd8bbc3b14d30ab3bfcb3e0f123e6a2d2e685d20e739c366d2f3a693c5"
     },
     {
       "path": "docs/evidence-index.md",
@@ -225,7 +225,7 @@
         "scoped-claims",
         "uncertainty"
       ],
-      "sha256": "0e05bace8a3c534c3fdbcf3056342b54fce97fb7b91dc162ee22ce44b4963cee"
+      "sha256": "3f1aa03d0adbd7a3bc684e38c9df00e840a48002d46f45816e82b300fd00a2fa"
     },
     {
       "path": "docs/methodology.md",
@@ -487,6 +487,40 @@
         "uncertainty"
       ],
       "sha256": "46c4b2d3f669055d6a1f2845d17c763460f1d8821a3ddbc481aea191ecd5984b"
+    },
+    {
+      "path": "evidence/package-boundary-20261005.json",
+      "type": "json-metadata",
+      "status": "historical-receipt-not-new-execution",
+      "scope": {
+        "dataset": "sanitized-historical-receipt",
+        "executionEvidence": true
+      },
+      "tags": [
+        "evidence-provenance",
+        "model-evaluation",
+        "reproducibility",
+        "scoped-claims",
+        "uncertainty"
+      ],
+      "sha256": "879c5dbb8c0cc6db471f77ff141ca0355589dc12f6f7f7f8d2620e1eccaec59e"
+    },
+    {
+      "path": "evidence/publication-20261005.json",
+      "type": "json-metadata",
+      "status": "historical-receipt-not-new-execution",
+      "scope": {
+        "dataset": "sanitized-historical-receipt",
+        "executionEvidence": true
+      },
+      "tags": [
+        "evidence-provenance",
+        "model-evaluation",
+        "reproducibility",
+        "scoped-claims",
+        "uncertainty"
+      ],
+      "sha256": "012cd5407a1472aefc6adbf15742080af1b49a613b90e9ce57f44efcd209a6f1"
     },
     {
       "path": "evidence/replay-20261005/execution-receipt.json",
@@ -1127,7 +1161,7 @@
         "scoped-claims",
         "uncertainty"
       ],
-      "sha256": "e32f4c4e59b8f8953d31ab6f5946eb04a4633753a7fd2a412c8c677c25ffca7e"
+      "sha256": "d83c1def010e27e1d1bb555e69dcae69d26b2016888231122556b6a521c2d767"
     },
     {
       "path": "tools/verify_package.py",
