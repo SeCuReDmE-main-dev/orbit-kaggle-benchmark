@@ -1,3 +1,5 @@
+![Three Engines. One Informed Choice. — DEV Kaggle Challenge 2026](assets/thumbnail.png)
+
 # Orbit: scoped evidence, uncertainty and real agent behavior
 
 A public evidence and reproducibility package for the Kaggle Benchmarking Challenge. It asks a concrete question: **can an AI workflow preserve the scope of a claim, its exact supporting sources, and the difference between a justified conclusion and a necessary pause?**

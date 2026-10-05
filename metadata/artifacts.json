@@ -156,6 +156,20 @@
       "sha256": "c49e98f1533440ec46099985f752f8e4a8fa56bcece7c6157c4bd58783975d51"
     },
     {
+      "path": "assets/thumbnail.png",
+      "type": "image-asset",
+      "status": "author-approved-public-thumbnail",
+      "scope": {
+        "dataset": "author-provided-editorial-cover",
+        "executionEvidence": false
+      },
+      "tags": [
+        "reproducibility",
+        "scoped-claims"
+      ],
+      "sha256": "93e8164bb519a7ee19f46004986ec62e3d847395bb590ba0fa1c61151db921a1"
+    },
+    {
       "path": "docs/article.en.md",
       "type": "documentation",
       "status": "article-draft-for-author-review",
@@ -1161,7 +1175,7 @@
         "scoped-claims",
         "uncertainty"
       ],
-      "sha256": "d83c1def010e27e1d1bb555e69dcae69d26b2016888231122556b6a521c2d767"
+      "sha256": "1b4bb03620481082e53149a73680fc8075e8ff426d16fa7a6ffe8548cf8b608c"
     },
     {
       "path": "tools/verify_package.py",
@@ -1175,7 +1189,7 @@
         "reproducibility",
         "scoped-claims"
       ],
-      "sha256": "dc5ac87a6c99f0fa86fca2352ab9da739bd942fd528696b99fce36f233e243db"
+      "sha256": "a0a5494754b4311f93b1d5e48b0ba017b603de88123f6ab095f49bfce4c9882d"
     }
   ]
 }

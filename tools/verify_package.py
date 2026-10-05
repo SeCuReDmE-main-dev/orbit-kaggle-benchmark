@@ -44,7 +44,10 @@ def describe(relative):
     tags = ["reproducibility", "scoped-claims"]
     scope = {"dataset": "package-metadata", "executionEvidence": False}
     status = "public-source-or-documentation"
-    if relative.startswith("pilot/native-pass-fail"):
+    if relative == "assets/thumbnail.png":
+        scope = {"dataset": "author-provided-editorial-cover", "executionEvidence": False}
+        status = "author-approved-public-thumbnail"
+    elif relative.startswith("pilot/native-pass-fail"):
         tags += ["synthetic-data", "llm-evaluation", "model-evaluation", "uncertainty"]
         scope = {"dataset": "prospective-six-question-native-pass-fail-task", "questions": 6,
                  "executionEvidence": "receipt" in Path(relative).name,
@@ -146,7 +149,7 @@ def describe(relative):
         scope = {"dataset": "editorial-and-methodology-cross-scope-index", "executionEvidence": False}
         status = "article-draft-for-author-review" if relative.endswith("article.en.md") else "public-documentation"
     kind = {".py": "python-source", ".ipynb": "notebook-source", ".json": "json-metadata",
-            ".md": "documentation", ".ts": "typescript-source"}.get(Path(relative).suffix, "configuration")
+            ".md": "documentation", ".ts": "typescript-source", ".png": "image-asset"}.get(Path(relative).suffix, "configuration")
     return {"type": kind, "status": status, "scope": scope, "tags": sorted(set(tags))}
 
 
@@ -168,7 +171,8 @@ def validate(files):
               "pilotHashesVerified": 0, "catalogHashesVerified": 0, "embeddedSourceHashesVerified": 0,
               "ipythonLinesReplacedForStaticParsing": 0, "relativeMarkdownLinksChecked": 0,
               "newPreparationHashesVerified": 0, "embeddedReplayBytesVerified": 0,
-              "nativeContractFunctionsVerified": 0, "executedAnalysisScopeChecks": 0}
+              "nativeContractFunctionsVerified": 0, "executedAnalysisScopeChecks": 0,
+              "imageAssetsChecked": 0}
 
     def check(condition, message):
         if not condition:
@@ -212,8 +216,14 @@ def validate(files):
     for path in files:
         relative = path.relative_to(ROOT).as_posix()
         try:
-            text = path.read_text(encoding="utf-8")
             check(not path.is_symlink(), f"Public symlink requires explicit review: {relative}")
+            if relative == "assets/thumbnail.png":
+                # Explicit author-approved binary; catalog verifies its exact bytes.
+                # Text credential scanning does not inspect pixels or binary metadata.
+                check(path.read_bytes().startswith(b"\x89PNG\r\n\x1a\n"), "Thumbnail PNG signature invalid")
+                counts["imageAssetsChecked"] += 1
+                continue
+            text = path.read_text(encoding="utf-8")
             check(not re.search(r"https?://[^\s\"<>)]*(?:orbit-kaggle-v2-private-inputs|orbit-c-private-checkpoints)", text),
                   f"Private dataset link: {relative}")
             check(not re.search(r"\]\([^)]*(?:^|[/\\])(?:private|secrets)/", text), f"Private artifact link: {relative}")
