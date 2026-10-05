@@ -1,0 +1,40 @@
+{
+  "format": "orbit-public-native-pilot-source-export-v1",
+  "preparedOn": "2026-10-05",
+  "sourceRepository": "https://github.com/SeCuReDmE-main-dev/Orbit",
+  "sourceHead": "13b315696bfaf72ac371e5b3498e2ab0d3a9a00e",
+  "taskUrl": "https://www.kaggle.com/benchmarks/tasks/celebrum/orbit-scoped-evidence-pilot-v2/1",
+  "exports": [
+    {
+      "file": "orbit-kaggle-pilot.ipynb",
+      "sha256": "4dde63ef8c2fb570c70c6bba5058148c856d163b792ae8a2da14c0a8d9af8772",
+      "transformation": "none; exact author-prepared source bytes",
+      "storedOutputsIncluded": false
+    },
+    {
+      "file": "task.py",
+      "sha256": "b4bfb15ebf65026970a1cc5ff30b0216260311e7360e1060bbb78a6be233652d",
+      "transformation": "none; exact author-prepared source bytes",
+      "storedOutputsIncluded": false
+    },
+    {
+      "file": "manifest.json",
+      "sha256": "0d9f6094b178ba84c86ea16e795ee436ecf74d63232936b19ce4e74ae1afd3f5",
+      "transformation": "none; exact author-prepared source bytes",
+      "storedOutputsIncluded": false
+    }
+  ],
+  "embeddedEngineSha256": "886f7cf3fbfcb445f4c1af7ebf1d3f8cb581964fe20d3bce706e8b4f4b880bd9",
+  "promptSha256": "785070d61245c64226ad070dff0196b3473edde8644fc333c501342d807e9c5f",
+  "publicInputSha256": "dcd22d3ffa3afea18cd3d676847f5e441f17d53811d031f551cebbfc7b0ca5ff",
+  "syntheticReferenceSha256": "41d592718e3979381890d14d63e080848df5e6c3344312df016dfccd7d626dcd",
+  "documents": 12,
+  "questions": 6,
+  "preparedModels": [
+    "google/gemini-3.8-flash",
+    "google/gemini-3.1-pro-preview"
+  ],
+  "originalProjectModified": false,
+  "modelCallsDuringExport": 0,
+  "liveTaskBinaryParity": "not established from local source alone"
+}

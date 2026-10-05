@@ -1,0 +1,298 @@
+{
+  "format": "orbit-d-provider-execution-audit-20261003",
+  "verifiedAt": "2026-10-03T14:34:40.912339+00:00",
+  "state": "EXECUTION_COMPLETE_WITH_PROTOCOL_NONADHERENCE",
+  "campaignId": "orbit-kaggle-20261003-final-d1",
+  "configurationSha256": "329c5b65893bce11ae1d13480fb8c98dfeb9b08c850994275cdc11f4f836241e",
+  "environment": {
+    "state": "CATALOG_AND_SDK_VERIFIED",
+    "host": "Kaggle",
+    "observedAt": "2026-10-03T14:15:52.929631+00:00",
+    "sdkVersion": "0.6.1",
+    "protobufVersion": "5.29.6",
+    "modelsAvailable": [
+      "google/gemini-3.8-flash",
+      "google/gemini-3.1-pro-preview"
+    ],
+    "modelCalls": 0,
+    "nativeBenchmarkTaskRequired": true,
+    "initialEmptyCatalogCause": "notebook not yet set as Benchmark Task; no model removal inferred"
+  },
+  "selection": [
+    "provider"
+  ],
+  "targets": {
+    "plannedLot": 12,
+    "produced": 12,
+    "fullMission": 24,
+    "fullMissionComplete": false
+  },
+  "accounting": {
+    "checkpointStates": {
+      "completed": 12
+    },
+    "attempts": 12,
+    "retryAttempts": 0,
+    "exportedErrors": 0,
+    "quotaBlocked": false
+  },
+  "corpus": {
+    "fullCorpusSha256": "c8d7f865ba2c9667f43759a053174e3250150704746141e52fc0dca236190f5a",
+    "packetSha256": "e4f1e8168c9baa8c045f3231957ab23cbaa6f8b3dec3541df47b58fc20ebe180",
+    "packet": 7,
+    "frozenOriginalSources": 12,
+    "sameOriginalsBothConditions": true,
+    "actualOriginalReads": 108,
+    "allExportedOriginalReadsMatchSanitizedCanonical": true,
+    "originalTextReadsRedactedByPublicObservation": 46,
+    "independentSemanticReview": "pending-human"
+  },
+  "budgets": {
+    "maxAdmittedOperations": 20,
+    "maxDurationSeconds": 480,
+    "actualTotalToolAttempts": 148,
+    "actualTotalAdmittedOperations": 147,
+    "budgetRefusals": 1,
+    "maximumTrajectoryAttempts": 21,
+    "maximumAdmittedTrajectoryOperations": 20,
+    "maximumObservedDurationSeconds": 60.42090606689453,
+    "acceptedOperationAndDurationLimitsRespected": true
+  },
+  "review": {
+    "protocolReadCriteriaMet": 9,
+    "protocolReadCriteriaNotMet": 3,
+    "reason": "Three Pro Context-condition outputs did not read Context. SDK assertion records do not prevent a completed ledger state.",
+    "semanticCorrectness": "pending-human",
+    "comparativeScore": "not-arbitrated",
+    "modelWinnerSelected": false,
+    "noRetryForModelNonadherence": true
+  },
+  "usageObserved": {
+    "input_tokens": 3221799,
+    "output_tokens": 63426,
+    "input_tokens_cost_nanodollars": 1024552125,
+    "output_tokens_cost_nanodollars": 353619750,
+    "total_backend_latency_ms": 404906
+  },
+  "privacy": {
+    "originalTextPublished": false,
+    "modelAnswersPublished": false,
+    "credentialsPublished": false,
+    "reasoningTracesPublished": false
+  },
+  "archiveIntegrity": {
+    "bytes": 1228955,
+    "sha256": "0b75dbd74d4bf0ef2e5be4e4e31aa340fb2a1c8872b2c6078d12b0ed16bf4447",
+    "zipIntegrity": "passed"
+  },
+  "context": {
+    "transport": "sanity-context-mcp-live",
+    "revisionId": "297caf88-114e-407b-b0e0-582082f772c2",
+    "preflightReadingsVerified": 11,
+    "liveReadsDuringModelTrajectories": 12,
+    "contextConditionTrajectories": 6,
+    "contextActuallyConsumedTrajectories": 3,
+    "unusedContextTrajectories": [
+      {
+        "model": "google/gemini-3.1-pro-preview",
+        "repetition": 0
+      },
+      {
+        "model": "google/gemini-3.1-pro-preview",
+        "repetition": 1
+      },
+      {
+        "model": "google/gemini-3.1-pro-preview",
+        "repetition": 2
+      }
+    ],
+    "openGeneratedIssues": 2,
+    "semanticCorrectness": "not-certified"
+  },
+  "trajectoryRecords": [
+    {
+      "model": "google/gemini-3.1-pro-preview",
+      "condition": "context",
+      "repetition": 0,
+      "state": "completed",
+      "answerPresent": true,
+      "toolAttempts": 6,
+      "admittedOperations": 6,
+      "budgetRefusals": 0,
+      "durationSeconds": 30.04052186012268,
+      "originalReads": 5,
+      "liveContextReads": 0,
+      "protocolReadCriterionMet": false,
+      "semanticReview": "pending-human"
+    },
+    {
+      "model": "google/gemini-3.1-pro-preview",
+      "condition": "context",
+      "repetition": 1,
+      "state": "completed",
+      "answerPresent": true,
+      "toolAttempts": 5,
+      "admittedOperations": 5,
+      "budgetRefusals": 0,
+      "durationSeconds": 25.73492741584778,
+      "originalReads": 4,
+      "liveContextReads": 0,
+      "protocolReadCriterionMet": false,
+      "semanticReview": "pending-human"
+    },
+    {
+      "model": "google/gemini-3.1-pro-preview",
+      "condition": "context",
+      "repetition": 2,
+      "state": "completed",
+      "answerPresent": true,
+      "toolAttempts": 6,
+      "admittedOperations": 6,
+      "budgetRefusals": 0,
+      "durationSeconds": 19.2812762260437,
+      "originalReads": 6,
+      "liveContextReads": 0,
+      "protocolReadCriterionMet": false,
+      "semanticReview": "pending-human"
+    },
+    {
+      "model": "google/gemini-3.1-pro-preview",
+      "condition": "textual",
+      "repetition": 0,
+      "state": "completed",
+      "answerPresent": true,
+      "toolAttempts": 5,
+      "admittedOperations": 5,
+      "budgetRefusals": 0,
+      "durationSeconds": 19.45626974105835,
+      "originalReads": 5,
+      "liveContextReads": 0,
+      "protocolReadCriterionMet": true,
+      "semanticReview": "pending-human"
+    },
+    {
+      "model": "google/gemini-3.1-pro-preview",
+      "condition": "textual",
+      "repetition": 1,
+      "state": "completed",
+      "answerPresent": true,
+      "toolAttempts": 4,
+      "admittedOperations": 4,
+      "budgetRefusals": 0,
+      "durationSeconds": 18.654278993606567,
+      "originalReads": 4,
+      "liveContextReads": 0,
+      "protocolReadCriterionMet": true,
+      "semanticReview": "pending-human"
+    },
+    {
+      "model": "google/gemini-3.1-pro-preview",
+      "condition": "textual",
+      "repetition": 2,
+      "state": "completed",
+      "answerPresent": true,
+      "toolAttempts": 12,
+      "admittedOperations": 12,
+      "budgetRefusals": 0,
+      "durationSeconds": 23.96380043029785,
+      "originalReads": 12,
+      "liveContextReads": 0,
+      "protocolReadCriterionMet": true,
+      "semanticReview": "pending-human"
+    },
+    {
+      "model": "google/gemini-3.8-flash",
+      "condition": "context",
+      "repetition": 0,
+      "state": "completed",
+      "answerPresent": true,
+      "toolAttempts": 19,
+      "admittedOperations": 19,
+      "budgetRefusals": 0,
+      "durationSeconds": 57.868908166885376,
+      "originalReads": 12,
+      "liveContextReads": 4,
+      "protocolReadCriterionMet": true,
+      "semanticReview": "pending-human"
+    },
+    {
+      "model": "google/gemini-3.8-flash",
+      "condition": "context",
+      "repetition": 1,
+      "state": "completed",
+      "answerPresent": true,
+      "toolAttempts": 21,
+      "admittedOperations": 20,
+      "budgetRefusals": 1,
+      "durationSeconds": 49.70623850822449,
+      "originalReads": 12,
+      "liveContextReads": 4,
+      "protocolReadCriterionMet": true,
+      "semanticReview": "pending-human"
+    },
+    {
+      "model": "google/gemini-3.8-flash",
+      "condition": "context",
+      "repetition": 2,
+      "state": "completed",
+      "answerPresent": true,
+      "toolAttempts": 19,
+      "admittedOperations": 19,
+      "budgetRefusals": 0,
+      "durationSeconds": 58.25978755950928,
+      "originalReads": 12,
+      "liveContextReads": 4,
+      "protocolReadCriterionMet": true,
+      "semanticReview": "pending-human"
+    },
+    {
+      "model": "google/gemini-3.8-flash",
+      "condition": "textual",
+      "repetition": 0,
+      "state": "completed",
+      "answerPresent": true,
+      "toolAttempts": 17,
+      "admittedOperations": 17,
+      "budgetRefusals": 0,
+      "durationSeconds": 54.636903285980225,
+      "originalReads": 12,
+      "liveContextReads": 0,
+      "protocolReadCriterionMet": true,
+      "semanticReview": "pending-human"
+    },
+    {
+      "model": "google/gemini-3.8-flash",
+      "condition": "textual",
+      "repetition": 1,
+      "state": "completed",
+      "answerPresent": true,
+      "toolAttempts": 17,
+      "admittedOperations": 17,
+      "budgetRefusals": 0,
+      "durationSeconds": 41.532470703125,
+      "originalReads": 12,
+      "liveContextReads": 0,
+      "protocolReadCriterionMet": true,
+      "semanticReview": "pending-human"
+    },
+    {
+      "model": "google/gemini-3.8-flash",
+      "condition": "textual",
+      "repetition": 2,
+      "state": "completed",
+      "answerPresent": true,
+      "toolAttempts": 17,
+      "admittedOperations": 17,
+      "budgetRefusals": 0,
+      "durationSeconds": 60.42090606689453,
+      "originalReads": 12,
+      "liveContextReads": 0,
+      "protocolReadCriterionMet": true,
+      "semanticReview": "pending-human"
+    }
+  ],
+  "releaseProjection": {
+    "sourceSha256": "bcc31d580baeb6978f5b132c4a80eed8f73aeb269fbe25c930b7fb01b398344b",
+    "omitted": "Private paths, original/model text, operational endpoint details and unneeded internals. Original receipt preserved in source project."
+  }
+}

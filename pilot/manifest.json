@@ -1,0 +1,12 @@
+{
+  "status": "prepared-not-run",
+  "documents": 12,
+  "questions": 6,
+  "promptSha256": "785070d61245c64226ad070dff0196b3473edde8644fc333c501342d807e9c5f",
+  "engineSha256": "886f7cf3fbfcb445f4c1af7ebf1d3f8cb581964fe20d3bce706e8b4f4b880bd9",
+  "originalV1Preserved": true,
+  "selectedModels": [
+    "google/gemini-3.8-flash",
+    "google/gemini-3.1-pro-preview"
+  ]
+}

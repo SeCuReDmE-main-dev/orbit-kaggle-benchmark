@@ -1,0 +1,90 @@
+{
+  "format": "orbit-c-resumption-public-receipt-v1",
+  "host": "Kaggle",
+  "state": "PARTIAL_GENERATION_VOLUME",
+  "campaignId": "orbit-kaggle-20261001-v2-sdkparams2",
+  "configurationSha256": "0d433497a1e6fa7810c68a51709e821d204f3241707e39850e45b2ce6283ad85",
+  "harnessSha256": "8f1eba8b70575fc57b7503b7b51d73bc309470f54484c0cc989950c735a41b05",
+  "engineSourceSha256": "17a05a4dd5f58e5993ef298a274855882203c2de5075135a8a0217cae4b8482a",
+  "compiledEngineSha256": "8c0a16a08fec3ea7b23213e4951cfb8cffdfdde1c37e1d8ddb69a3e849f1688d",
+  "corpusSha256": "c8d7f865ba2c9667f43759a053174e3250150704746141e52fc0dca236190f5a",
+  "sdkVersion": "0.6.1",
+  "models": [
+    "google/gemini-3.8-flash",
+    "google/gemini-3.1-pro-preview"
+  ],
+  "conditions": [
+    "none",
+    "baseline",
+    "n",
+    "p"
+  ],
+  "reasoningSetting": "medium",
+  "maxOutputTokens": 4096,
+  "planned": {
+    "extractions": 60,
+    "productions": 240,
+    "packets": 60
+  },
+  "observed": {
+    "extractions": 60,
+    "productions": 236,
+    "completedPackets": 59
+  },
+  "quotaBlocked": false,
+  "ledger": {
+    "completed": 591,
+    "technicalError": 1,
+    "phaseCounts": {
+      "extractionCompleted": 60,
+      "productionCompleted": 236,
+      "productionInterpretationCompleted": 236,
+      "packetCompleted": 59,
+      "productionTechnicalError": 1
+    },
+    "deduplication": "Only matching configuration records; latest observation per configurationSha256 and key by attempt and observedAtUnix. The 905 stored checkpoint records include history and are not 905 generations."
+  },
+  "deterministicSuiteB": {
+    "coveredQuestions": 60,
+    "scorableSyntheticQuestions": 36,
+    "evaluations": 180,
+    "scoredEvaluations": 108,
+    "correctScoredEvaluations": 108,
+    "unscoredRealEvaluations": 72,
+    "invariantsPassed": 540,
+    "invariantsTotal": 540,
+    "realQuestionsPendingHumanArbitration": 24,
+    "sourceMember": "orbit-campaign-results/suite-b-status.json"
+  },
+  "limits": [
+    "The campaign retains its original namespace and source identities. The earlier 57/60 and 221/240 checkpoint remains historical; this is a later archive-backed receipt.",
+    "The campaign is partial at 236/240 productions, despite complete extraction coverage.",
+    "A prospective C4 complement requires a separate configuration, source identity, checkpoint namespace and explicit linkage; it must not replace the historical error.",
+    "Invalid model answers remain observations. Only reviewed transient transport incidents may be retried under the bounded policy.",
+    "Twenty-four real questions remain pending human arbitration and excluded from a definitive real-case ranking.",
+    "This receipt does not establish a winning engine, pedagogical effectiveness, or completion of the separate D and E campaigns."
+  ],
+  "archiveIntegrity": {
+    "sha256": "55276f8c2d772d1c87caec867e0678a7d16d9eec2b97e09beea1ba471c0f3116",
+    "bytes": 3079353,
+    "members": 911,
+    "unsafeMemberPaths": 0,
+    "duplicateMemberPaths": 0,
+    "localDownloadVerified": true,
+    "private": true
+  },
+  "retainedFailure": {
+    "packet": 5,
+    "repetition": 0,
+    "model": "google/gemini-3.8-flash",
+    "condition": "baseline",
+    "httpStatus": 429,
+    "providerReason": "heavy-load",
+    "historicalState": "technical-error",
+    "subsequentThreeConditions": "never-run; preceding failure stopped the packet"
+  },
+  "releaseProjection": {
+    "sourceSha256": "8c7bd0f8ded6d0ad0c3afc6979c97730866606aef0699d523f4d9a82e1c5800a",
+    "omitted": "Private paths, original/model text, operational endpoint details and unneeded internals. Original receipt preserved in source project."
+  }
+}

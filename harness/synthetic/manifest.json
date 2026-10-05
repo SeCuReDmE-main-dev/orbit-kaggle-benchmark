@@ -1,0 +1,15 @@
+{
+  "format": "orbit-benchmark-corpus-v1",
+  "status": "development-not-frozen",
+  "createdAt": "2026-09-29T23:46:01.644Z",
+  "packets": 6,
+  "documents": 72,
+  "questions": 36,
+  "remainingRealPackets": 4,
+  "humanReview": "Required for real-source gold; synthetic expectations are specification-derived.",
+  "hashes": {
+    "documents": "4c713b78d5f7829386879c3dc036d70cc8bc04e2b47218ce169e33beed24a8cf",
+    "questions": "b69269b02ffa14ed46cdafc32913b3bac1e7ecc37264b336e4e8c999d7ed1713",
+    "oracle": "ec3eaa4ac61cd380d5f7fd662ba4a0cbc33910707b586605cf26df22b2ae9bd2"
+  }
+}

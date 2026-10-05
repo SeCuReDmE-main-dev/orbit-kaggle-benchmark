@@ -1,0 +1,59 @@
+{
+  "format": "orbit-kaggle-replay-provenance-v1",
+  "status": "prepared-not-executed",
+  "scope": "authored-development-synthetic-only",
+  "modelCalls": 0,
+  "sourceBytesPreserved": true,
+  "inputs": [
+    {
+      "path": "harness/replay_synthetic.py",
+      "sha256": "32b3ab8413fcb51d1133cb2e34f1ee0d864a0f8164849df49f69c1363c55272e"
+    },
+    {
+      "path": "harness/synthetic/manifest.json",
+      "sha256": "0e1047810af095864e94b3aa17b4f8c0812a4a4b32a7b13f506e65aeb4b3b763"
+    },
+    {
+      "path": "harness/synthetic/reference-cases.json",
+      "sha256": "aabe0f8b121f32a5eda7795dfe730f70993829a30b18c1857974b5cdf4e6fcd0"
+    },
+    {
+      "path": "harness/source/package.json",
+      "sha256": "0f183be3df9c6226fb662731461fc921d001ebc2372bf07e57528fbfaa453de2"
+    },
+    {
+      "path": "harness/source/tools/engine-jsonl.ts",
+      "sha256": "a07c83552b9c1b6450814819ecf0f9392f698f386e3c10bc06917edb4f7a9b39"
+    },
+    {
+      "path": "harness/source/packages/evidence-review/src/index.ts",
+      "sha256": "1ef6ca28cf3da9001708d45a64b39c65192523584fd383d3a701010926cfa937"
+    },
+    {
+      "path": "harness/source/packages/evidence-review/src/classification.ts",
+      "sha256": "230a5f494e64f86428aa3f26b6cfe6ab0d42c78d47f758419bfe76f7f22019ae"
+    },
+    {
+      "path": "harness/source/packages/evidence-review/src/relations.ts",
+      "sha256": "d5da24352b213c55cede9559e2faa48b3b8451c57a3257b882c77ff82ee495a4"
+    }
+  ],
+  "scriptSha256": "cec9fd69804ccc20289d6e35e096c36ebdba36bb6f63572250831a0569d259a1",
+  "notebookSha256": "836cec5b8846e2a1d355d7f45a1336a32c458e549b35840060eea4291ea53fe7",
+  "expected": {
+    "decisions": 108,
+    "metamorphicChecks": 324,
+    "relationChecks": 54
+  },
+  "runtime": {
+    "nodeMinimum": 20,
+    "nodeFallback": "22.20.0",
+    "esbuild": "0.25.12"
+  },
+  "results": "/kaggle/working/orbit-synthetic-replay/results",
+  "limitations": [
+    "Prepared notebook is not execution evidence.",
+    "Specification-derived expectations are not independent human accuracy judgments.",
+    "Not the frozen final 60-question model campaign."
+  ]
+}

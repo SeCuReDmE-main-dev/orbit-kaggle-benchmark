@@ -1,0 +1,95 @@
+{
+  "format": "orbit-c4-prospective-public-receipt-v1",
+  "host": "Kaggle",
+  "state": "FOUR_COMPLEMENTARY_PRODUCTIONS_ARCHIVE_VERIFIED",
+  "campaignId": "orbit-kaggle-20261003-c4-prospective-v1",
+  "configurationSha256": "feb51fee0843163946fa85f39e1d450db5960a0375c9c989f60a55c86e433177",
+  "harnessSha256": "62ee32508431c6be051cd77bd969242e8cf0d077d9743400c37f44f07cd616fb",
+  "sdkVersion": "0.6.1",
+  "bootstrap": {
+    "kaggleBenchmarks": "0.6.1",
+    "protobuf": "5.29.6",
+    "requiredUiMode": "Benchmark Task",
+    "initialFailuresBeforeModelDispatch": [
+      "generated Protobuf5.29.6 versus loaded runtime5.29.5",
+      "empty model registry in standard notebook mode"
+    ],
+    "compatibilityChecksBypassed": false
+  },
+  "target": {
+    "packet": 5,
+    "repetition": 0,
+    "model": "google/gemini-3.8-flash"
+  },
+  "conditionOrder": [
+    "baseline",
+    "n",
+    "p",
+    "none"
+  ],
+  "observed": {
+    "newExtractions": 0,
+    "productions": 4,
+    "completedPackets": 1,
+    "interpretationStatuses": {
+      "p": "completed",
+      "n": "completed",
+      "none": "completed",
+      "baseline": "completed"
+    }
+  },
+  "commonExtraction": {
+    "checkpointKey": "3c3161accc4df1068312b3d1395c5017bdee9fe3a4c7223ceeb290c855113196",
+    "rawUtf8Sha256": "6fc132ef4784e4345e09d87f5b94fc7989f3d871d4b9a986211d8807ab6731bb",
+    "exactExistingExtractionReused": true
+  },
+  "ledger": {
+    "storedRecords": 18,
+    "distinctCompletedRecords": 9,
+    "phaseCounts": {
+      "production": 4,
+      "productionInterpretation": 4,
+      "packet": 1
+    },
+    "deduplication": "Matching configuration and key, latest attempt/time; history records are not additional generations."
+  },
+  "durationSeconds": 41.22140622138977,
+  "quotaBlocked": false,
+  "coverageAcrossIdentities": {
+    "commonExtractions": 60,
+    "historicalProductions": 236,
+    "complementaryProductions": 4,
+    "totalObservedProductions": 240,
+    "plannedProductions": 240,
+    "distinctExecutionIdentities": 2,
+    "pooledAsOneExecution": false
+  },
+  "limitations": [
+    "Four completed interpretation records mean retained structured outputs, not a claim of 100% semantic correctness.",
+    "Original C retains 236/240 under its own identity; C4 contributes four separately identified productions.",
+    "Real question annotations retain pending-human status; no automatic engine winner or human learner evaluation.",
+    "This receipt completes C production coverage across identities; it does not complete D/E campaigns or the full mission."
+  ],
+  "archiveIntegrity": {
+    "sha256": "3d5ae48fb3900fe04eab8b2a625fee49301adf4d787a9f3079c2ec485ee8326b",
+    "bytes": 30679,
+    "members": 21,
+    "unsafeMemberPaths": 0,
+    "duplicateMemberPaths": 0,
+    "localDownloadVerified": true,
+    "private": true
+  },
+  "parent": {
+    "campaignId": "orbit-kaggle-20261001-v2-sdkparams2",
+    "configurationSha256": "0d433497a1e6fa7810c68a51709e821d204f3241707e39850e45b2ce6283ad85",
+    "archiveSha256": "55276f8c2d772d1c87caec867e0678a7d16d9eec2b97e09beea1ba471c0f3116",
+    "extractions": 60,
+    "productions": 236,
+    "completedPackets": 59,
+    "historicalErrorRewritten": false
+  },
+  "releaseProjection": {
+    "sourceSha256": "396ae919f3f642f3abf9704efa9e72a590859b0a905ac2f1c2f83c914d683c2e",
+    "omitted": "Private paths, original/model text, operational endpoint details and unneeded internals. Original receipt preserved in source project."
+  }
+}

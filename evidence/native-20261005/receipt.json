@@ -1,0 +1,155 @@
+{
+  "format": "orbit-native-boolean-observation-receipt-v1",
+  "observationDateUtc": "2026-10-05",
+  "campaignId": "orbit-native-pass-fail-20261005-v1",
+  "evidenceStatus": "observed-notebook-and-safe-native-json-projection",
+  "evidenceBasis": {
+    "capturedFrom": "Authenticated Kaggle notebook and task-page readback reported by the coordinating agent",
+    "projection": "Selected native result/state fields only; this receipt is not the original run JSON",
+    "originalNativeRunBytesIncluded": false,
+    "originalNativeRunSha256": null,
+    "buildTaskSnapshotApiCounts": "pending-verification",
+    "newerModelRunsAsserted": false
+  },
+  "sourceIdentity": {
+    "taskFunction": "orbit_native_pass_fail",
+    "sourceDecoratorVersion": 1,
+    "sdkReportedVersion": "0.6.1",
+    "runtimeShimMode": true,
+    "runtimeResultType": "kaggle_benchmarks.results.Boolean",
+    "sourceFiles": {
+      "pilot/native-pass-fail/task.py": "a726a159e4b382ea18bce30294dbd8f599aa93fde6938317e7dfbd65892e4eb4",
+      "pilot/native-pass-fail/contract.py": "fb07a5ca3c5048028d6d700ccc15b2e6203fc165e0b302acfc5c69c91350f6eb",
+      "pilot/native-pass-fail/orbit-native-pass-fail.ipynb": "947c1f3b5b574dac88b0e47e06527927cb67edea597cc7150fd7ff7241bd30ad"
+    },
+    "promptSha256": "785070d61245c64226ad070dff0196b3473edde8644fc333c501342d807e9c5f",
+    "engineSha256": "886f7cf3fbfcb445f4c1af7ebf1d3f8cb581964fe20d3bce706e8b4f4b880bd9",
+    "historicalPilotResultsPooled": false,
+    "preparationManifestUpdated": false
+  },
+  "measurementUnit": {
+    "task": "One strict six-question synthetic pilot returning one Boolean",
+    "syntheticDocuments": 12,
+    "questionsPerModelAttempt": 6,
+    "plannedRepetitionsPerModel": 1,
+    "assertionCountsAreIndependentAccuracySamples": false,
+    "allThreeEngineEvaluationsRequiredForTrue": true
+  },
+  "observations": [
+    {
+      "model": "google/gemini-3.8-flash",
+      "providerAttempts": 1,
+      "startTimeUtc": "2026-10-05T05:35:18.666501Z",
+      "endTimeUtc": "2026-10-05T05:35:27.877957Z",
+      "notebookResult": true,
+      "outcome": "pass",
+      "recordedChecks": 99,
+      "failedChecks": 0,
+      "nativeProjection": {
+        "state": "COMPLETED",
+        "results": [
+          {
+            "type": "AGGREGATED",
+            "booleanResult": true
+          }
+        ]
+      },
+      "nativePageObservation": {
+        "publicationVersion": 2,
+        "displayedVerdict": "PASS",
+        "visibleModelRows": [
+          "google/gemini-3.8-flash"
+        ]
+      },
+      "interpretation": "All recorded checks passed in this one pilot attempt; no general accuracy or superiority estimate.",
+      "firstResultRowKeysSorted": [
+        "decision",
+        "evidence",
+        "excluded",
+        "justification",
+        "questionId",
+        "uncertainties"
+      ],
+      "firstResultRowMissingRequiredKeys": [],
+      "firstResultRowExtraKeys": []
+    },
+    {
+      "model": "google/gemini-3.1-pro-preview",
+      "providerAttempts": 1,
+      "startTimeUtc": "2026-10-05T05:35:27.897793Z",
+      "endTimeUtc": "2026-10-05T05:36:12.339163Z",
+      "notebookResult": false,
+      "outcome": "invalid-model-output",
+      "recordedChecks": 3,
+      "failedChecks": 1,
+      "failedCheck": "row fields 0",
+      "nativeProjection": {
+        "state": "COMPLETED",
+        "results": [
+          {
+            "type": "AGGREGATED",
+            "booleanResult": false
+          }
+        ]
+      },
+      "nativePageObservation": {
+        "publicationVersion": 1,
+        "displayedVerdict": "PASS",
+        "visibleModelRows": [
+          "google/gemini-3.1-pro-preview"
+        ],
+        "agreesWithSerializedBoolean": false
+      },
+      "exactFirstRowKeyDifference": "Missing required uncertainties; no extra keys.",
+      "semanticAccuracyScored": false,
+      "interpretation": "First result row omitted the required uncertainties field. Downstream semantic/engine checks were not reached.",
+      "firstResultRowKeysSorted": [
+        "decision",
+        "evidence",
+        "excluded",
+        "justification",
+        "questionId"
+      ],
+      "firstResultRowMissingRequiredKeys": [
+        "uncertainties"
+      ],
+      "firstResultRowExtraKeys": []
+    }
+  ],
+  "attemptBudget": {
+    "providerAttemptsObservedTotal": 2,
+    "automaticRetriesUsed": 0,
+    "manualCorrectiveTechnicalRetriesUsed": 0,
+    "manualCorrectiveTechnicalRetryBudgetTotal": 1,
+    "invalidFalseOutputRetryPermitted": false
+  },
+  "nativeUi": {
+    "taskUrl": "https://www.kaggle.com/benchmarks/tasks/celebrum/orbit-native-pass-fail",
+    "observedPublicationVersions": [
+      1,
+      2
+    ],
+    "observation": "Version 1 displayed only Pro as PASS despite serialized false. After restoring archived Flash run JSON and Update Task, version 2 displayed only Flash as PASS.",
+    "version2UpdateWasNewModelExecution": false,
+    "bothModelsVisibleTogetherInOneVersion": false,
+    "publicationVersionIsSourceDecoratorVersion": false,
+    "uiVerdictContradictionResolved": false,
+    "cause": "unresolved native import/display discrepancy; do not infer backend cause",
+    "rawReceiptsAlteredToMatchUi": false
+  },
+  "exclusions": [
+    "raw chats",
+    "source document text",
+    "model answers",
+    "provider reasoning",
+    "credentials",
+    "private paths"
+  ],
+  "limitations": [
+    "One provider attempt per model; no statistical ranking or measured engine superiority.",
+    "Boolean task pass is stricter than semantic answer accuracy; Pro stopped before semantic scoring.",
+    "Recorded check counts are interdependent contract/engine assertions, not a denominator of independent questions.",
+    "Raw native run hashes and BuildTaskSnapshot API counts are not supplied in this projection receipt.",
+    "The current UI versions expose one observed model row each, and the Pro PASS display contradicts its recorded false."
+  ]
+}

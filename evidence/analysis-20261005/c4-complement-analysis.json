@@ -1,0 +1,161 @@
+{
+  "format": "orbit-c4-analysis-v1",
+  "host": "Kaggle",
+  "modelCallsDuringAnalysis": 0,
+  "configurationSha256": "feb51fee0843163946fa85f39e1d450db5960a0375c9c989f60a55c86e433177",
+  "parentConfigurationSha256": "0d433497a1e6fa7810c68a51709e821d204f3241707e39850e45b2ce6283ad85",
+  "target": {
+    "packet": 5,
+    "repetition": 0,
+    "model": "google/gemini-3.8-flash"
+  },
+  "execution": {
+    "newExtractions": 0,
+    "productions": 4,
+    "completedPackets": 1
+  },
+  "metrics": [
+    {
+      "model": "google/gemini-3.8-flash",
+      "condition": "none",
+      "counts": {
+        "observedProductions": 1,
+        "syntheticDecisionsObserved": 6,
+        "syntheticCorrect": 6,
+        "invalidSyntheticDecisions": 0,
+        "necessaryHold": 2,
+        "necessaryHoldUsed": 2,
+        "excessiveHold": 0,
+        "unjustifiedConclusion": 0
+      },
+      "confusion": [
+        {
+          "referenceCategory": "HOLD",
+          "predictedCategory": "HOLD",
+          "count": 2
+        },
+        {
+          "referenceCategory": "REJECT",
+          "predictedCategory": "REJECT",
+          "count": 4
+        }
+      ],
+      "syntheticAccuracyObserved": 1.0,
+      "plannedProductionsWithinComplement": 1,
+      "plannedSyntheticDecisionsWithinComplement": 6,
+      "completeWithinComplement": true
+    },
+    {
+      "model": "google/gemini-3.8-flash",
+      "condition": "baseline",
+      "counts": {
+        "observedProductions": 1,
+        "syntheticDecisionsObserved": 6,
+        "syntheticCorrect": 6,
+        "invalidSyntheticDecisions": 0,
+        "necessaryHold": 2,
+        "necessaryHoldUsed": 2,
+        "excessiveHold": 0,
+        "unjustifiedConclusion": 0
+      },
+      "confusion": [
+        {
+          "referenceCategory": "HOLD",
+          "predictedCategory": "HOLD",
+          "count": 2
+        },
+        {
+          "referenceCategory": "REJECT",
+          "predictedCategory": "REJECT",
+          "count": 4
+        }
+      ],
+      "syntheticAccuracyObserved": 1.0,
+      "plannedProductionsWithinComplement": 1,
+      "plannedSyntheticDecisionsWithinComplement": 6,
+      "completeWithinComplement": true
+    },
+    {
+      "model": "google/gemini-3.8-flash",
+      "condition": "n",
+      "counts": {
+        "observedProductions": 1,
+        "syntheticDecisionsObserved": 6,
+        "syntheticCorrect": 6,
+        "invalidSyntheticDecisions": 0,
+        "necessaryHold": 2,
+        "necessaryHoldUsed": 2,
+        "excessiveHold": 0,
+        "unjustifiedConclusion": 0
+      },
+      "confusion": [
+        {
+          "referenceCategory": "HOLD",
+          "predictedCategory": "HOLD",
+          "count": 2
+        },
+        {
+          "referenceCategory": "REJECT",
+          "predictedCategory": "REJECT",
+          "count": 4
+        }
+      ],
+      "syntheticAccuracyObserved": 1.0,
+      "plannedProductionsWithinComplement": 1,
+      "plannedSyntheticDecisionsWithinComplement": 6,
+      "completeWithinComplement": true
+    },
+    {
+      "model": "google/gemini-3.8-flash",
+      "condition": "p",
+      "counts": {
+        "observedProductions": 1,
+        "syntheticDecisionsObserved": 6,
+        "syntheticCorrect": 6,
+        "invalidSyntheticDecisions": 0,
+        "necessaryHold": 2,
+        "necessaryHoldUsed": 2,
+        "excessiveHold": 0,
+        "unjustifiedConclusion": 0
+      },
+      "confusion": [
+        {
+          "referenceCategory": "HOLD",
+          "predictedCategory": "HOLD",
+          "count": 2
+        },
+        {
+          "referenceCategory": "REJECT",
+          "predictedCategory": "REJECT",
+          "count": 4
+        }
+      ],
+      "syntheticAccuracyObserved": 1.0,
+      "plannedProductionsWithinComplement": 1,
+      "plannedSyntheticDecisionsWithinComplement": 6,
+      "completeWithinComplement": true
+    }
+  ],
+  "observedCosts": {
+    "generationAttemptRecords": 4,
+    "generations": 4,
+    "generationsWithCost": 4,
+    "generationsWithMissingCost": 0,
+    "attemptsWithoutUsage": 0,
+    "missingCostUnits": 0,
+    "knownSubtotalNanodollars": 47802000,
+    "totalNanodollars": 47802000,
+    "knownNanodollars": 47802000,
+    "missingCostIsNotZero": true,
+    "costScope": "observed attempts of the selected C identity; not a projection of unrun tasks",
+    "attemptStates": {
+      "completed": 4
+    },
+    "deduplication": "latest identity/key/attempt, then identical usage identity/key/timestamp/content"
+  },
+  "limitations": [
+    "One synthetic packet; no standalone population-level comparison.",
+    "Separate complement identity; not pooled into historical C."
+  ],
+  "sourceArchiveSha256": "3d5ae48fb3900fe04eab8b2a625fee49301adf4d787a9f3079c2ec485ee8326b"
+}

@@ -1,0 +1,1147 @@
+{
+  "format": "orbit-public-artifact-catalog-v1",
+  "labels": [
+    "llm-evaluation",
+    "evidence-provenance",
+    "synthetic-data",
+    "uncertainty",
+    "model-evaluation",
+    "reproducibility",
+    "scoped-claims",
+    "protocol-compliance"
+  ],
+  "exclusions": [
+    ".git",
+    "__pycache__",
+    "harness/source/engine-jsonl.mjs",
+    "node_modules",
+    "outputs",
+    "private",
+    "secrets",
+    "metadata/artifacts.json",
+    "metadata/package-validation.json",
+    ".env*",
+    "*.zip",
+    "*.bin",
+    "*.py[cod]"
+  ],
+  "selfHashPolicy": "Catalog and regenerable validation receipt are excluded to prevent hash cycles.",
+  "artifacts": [
+    {
+      "path": ".gitattributes",
+      "type": "configuration",
+      "status": "public-source-or-documentation",
+      "scope": {
+        "dataset": "package-metadata",
+        "executionEvidence": false
+      },
+      "tags": [
+        "reproducibility",
+        "scoped-claims"
+      ],
+      "sha256": "705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da"
+    },
+    {
+      "path": ".gitignore",
+      "type": "configuration",
+      "status": "public-source-or-documentation",
+      "scope": {
+        "dataset": "package-metadata",
+        "executionEvidence": false
+      },
+      "tags": [
+        "reproducibility",
+        "scoped-claims"
+      ],
+      "sha256": "2c64c945db7193e480540f75b31063dcdbd812b78dda03d49ce4be2a3861e551"
+    },
+    {
+      "path": "analysis-preparation/analyze_kaggle_campaign_results.py",
+      "type": "python-source",
+      "status": "prepared-analysis-not-executed",
+      "scope": {
+        "dataset": "C-and-C4-private-input-aggregate-preparation",
+        "executionEvidence": false,
+        "syntheticScorableQuestions": 36,
+        "realQuestionsUnscored": 24,
+        "identitiesPooled": false
+      },
+      "tags": [
+        "evidence-provenance",
+        "model-evaluation",
+        "reproducibility",
+        "scoped-claims",
+        "uncertainty"
+      ],
+      "sha256": "1ae7a80aaf7fcfbec2e1121af6a73f30777b26976400308bedb7d5e30ecc21d3"
+    },
+    {
+      "path": "analysis-preparation/orbit-c-c4-analysis-only.ipynb",
+      "type": "notebook-source",
+      "status": "prepared-analysis-not-executed",
+      "scope": {
+        "dataset": "C-and-C4-private-input-aggregate-preparation",
+        "executionEvidence": false,
+        "syntheticScorableQuestions": 36,
+        "realQuestionsUnscored": 24,
+        "identitiesPooled": false
+      },
+      "tags": [
+        "evidence-provenance",
+        "model-evaluation",
+        "reproducibility",
+        "scoped-claims",
+        "uncertainty"
+      ],
+      "sha256": "a8e20acad66883e9193f62a8073ef6d071c539058facfdf6e66d135df71a6604"
+    },
+    {
+      "path": "analysis-preparation/orbit_campaign_checkpoint.py",
+      "type": "python-source",
+      "status": "prepared-analysis-not-executed",
+      "scope": {
+        "dataset": "C-and-C4-private-input-aggregate-preparation",
+        "executionEvidence": false,
+        "syntheticScorableQuestions": 36,
+        "realQuestionsUnscored": 24,
+        "identitiesPooled": false
+      },
+      "tags": [
+        "evidence-provenance",
+        "model-evaluation",
+        "reproducibility",
+        "scoped-claims",
+        "uncertainty"
+      ],
+      "sha256": "f3ceeefffd8e1a68222441cfbe5787763764b4eaf5e0ba5824f71cf7ab86fad4"
+    },
+    {
+      "path": "analysis-preparation/README.md",
+      "type": "documentation",
+      "status": "prepared-analysis-not-executed",
+      "scope": {
+        "dataset": "C-and-C4-private-input-aggregate-preparation",
+        "executionEvidence": false,
+        "syntheticScorableQuestions": 36,
+        "realQuestionsUnscored": 24,
+        "identitiesPooled": false
+      },
+      "tags": [
+        "evidence-provenance",
+        "model-evaluation",
+        "reproducibility",
+        "scoped-claims",
+        "uncertainty"
+      ],
+      "sha256": "ea8be11c06915801367c2987c5849cc04e0c327bb951a27574a0c1492c06f9f4"
+    },
+    {
+      "path": "analysis-preparation/run_analysis_only.py",
+      "type": "python-source",
+      "status": "prepared-analysis-not-executed",
+      "scope": {
+        "dataset": "C-and-C4-private-input-aggregate-preparation",
+        "executionEvidence": false,
+        "syntheticScorableQuestions": 36,
+        "realQuestionsUnscored": 24,
+        "identitiesPooled": false
+      },
+      "tags": [
+        "evidence-provenance",
+        "model-evaluation",
+        "reproducibility",
+        "scoped-claims",
+        "uncertainty"
+      ],
+      "sha256": "c49e98f1533440ec46099985f752f8e4a8fa56bcece7c6157c4bd58783975d51"
+    },
+    {
+      "path": "docs/article.en.md",
+      "type": "documentation",
+      "status": "article-draft-for-author-review",
+      "scope": {
+        "dataset": "editorial-and-methodology-cross-scope-index",
+        "executionEvidence": false
+      },
+      "tags": [
+        "evidence-provenance",
+        "llm-evaluation",
+        "protocol-compliance",
+        "reproducibility",
+        "scoped-claims",
+        "uncertainty"
+      ],
+      "sha256": "e9029ff3197cd7eeed394a17c001aa08d3e0e7b020432f5431868f707b02c4a5"
+    },
+    {
+      "path": "docs/delivery-20261005.md",
+      "type": "documentation",
+      "status": "public-documentation",
+      "scope": {
+        "dataset": "editorial-and-methodology-cross-scope-index",
+        "executionEvidence": false
+      },
+      "tags": [
+        "evidence-provenance",
+        "llm-evaluation",
+        "protocol-compliance",
+        "reproducibility",
+        "scoped-claims",
+        "uncertainty"
+      ],
+      "sha256": "f5c266c463e9852e7c9f6e5032289b7539c3464cc16ef35e441b262803aa564f"
+    },
+    {
+      "path": "docs/evidence-index.md",
+      "type": "documentation",
+      "status": "public-documentation",
+      "scope": {
+        "dataset": "editorial-and-methodology-cross-scope-index",
+        "executionEvidence": false
+      },
+      "tags": [
+        "evidence-provenance",
+        "llm-evaluation",
+        "protocol-compliance",
+        "reproducibility",
+        "scoped-claims",
+        "uncertainty"
+      ],
+      "sha256": "ab6469f776d1c8296faeccce1824d5b74b45b22a1415512e928fe36506350e25"
+    },
+    {
+      "path": "docs/judge-checklist.md",
+      "type": "documentation",
+      "status": "public-documentation",
+      "scope": {
+        "dataset": "editorial-and-methodology-cross-scope-index",
+        "executionEvidence": false
+      },
+      "tags": [
+        "evidence-provenance",
+        "llm-evaluation",
+        "protocol-compliance",
+        "reproducibility",
+        "scoped-claims",
+        "uncertainty"
+      ],
+      "sha256": "0e05bace8a3c534c3fdbcf3056342b54fce97fb7b91dc162ee22ce44b4963cee"
+    },
+    {
+      "path": "docs/methodology.md",
+      "type": "documentation",
+      "status": "public-documentation",
+      "scope": {
+        "dataset": "editorial-and-methodology-cross-scope-index",
+        "executionEvidence": false
+      },
+      "tags": [
+        "evidence-provenance",
+        "llm-evaluation",
+        "protocol-compliance",
+        "reproducibility",
+        "scoped-claims",
+        "uncertainty"
+      ],
+      "sha256": "a6fdb5717887ed757023a0fd3a3688a228b427b8d23ad827fde52102655250ad"
+    },
+    {
+      "path": "docs/native-pilot-results.md",
+      "type": "documentation",
+      "status": "public-documentation",
+      "scope": {
+        "dataset": "editorial-and-methodology-cross-scope-index",
+        "executionEvidence": false
+      },
+      "tags": [
+        "evidence-provenance",
+        "llm-evaluation",
+        "protocol-compliance",
+        "reproducibility",
+        "scoped-claims",
+        "uncertainty"
+      ],
+      "sha256": "c93e0ab4d3e9ca17a0d4c29156e90e304d9137a3db9946b71b62003ac04ec89b"
+    },
+    {
+      "path": "evidence/analysis-20261005/analysis-summary.json",
+      "type": "json-metadata",
+      "status": "Kaggle-executed-zero-model-call-reanalysis",
+      "scope": {
+        "dataset": "Kaggle-reanalysis-of-C-and-C4-distinct-identities",
+        "executionEvidence": true,
+        "newModelCalls": 0,
+        "identitiesPooled": false,
+        "syntheticScorableQuestions": 36,
+        "realQuestionsUnscored": 24,
+        "latestRecoveredAccuracy": true
+      },
+      "tags": [
+        "evidence-provenance",
+        "llm-evaluation",
+        "model-evaluation",
+        "reproducibility",
+        "scoped-claims",
+        "uncertainty"
+      ],
+      "sha256": "d1ad2eb250e813aaef6eb6c09c939e4bc4d3fdf745e3cea32953ccc8b18c16d9"
+    },
+    {
+      "path": "evidence/analysis-20261005/c-resumption-analysis.json",
+      "type": "json-metadata",
+      "status": "Kaggle-executed-zero-model-call-reanalysis",
+      "scope": {
+        "dataset": "C-236-production-Kaggle-reanalysis",
+        "executionEvidence": true,
+        "newModelCalls": 0,
+        "identitiesPooled": false,
+        "syntheticScorableQuestions": 36,
+        "realQuestionsUnscored": 24,
+        "latestRecoveredAccuracy": true,
+        "productions": 236,
+        "extractions": 60,
+        "completedPackets": 59,
+        "completeCampaign": false
+      },
+      "tags": [
+        "evidence-provenance",
+        "llm-evaluation",
+        "model-evaluation",
+        "reproducibility",
+        "scoped-claims",
+        "uncertainty"
+      ],
+      "sha256": "43dedf606fb6ef477ea41f1545bf68885701180abe7bae5d63f700b3e3f0f9c7"
+    },
+    {
+      "path": "evidence/analysis-20261005/c4-complement-analysis.json",
+      "type": "json-metadata",
+      "status": "Kaggle-executed-zero-model-call-reanalysis",
+      "scope": {
+        "dataset": "separate-C4-four-production-Kaggle-reanalysis",
+        "executionEvidence": true,
+        "newModelCalls": 0,
+        "identitiesPooled": false,
+        "syntheticScorableQuestions": 36,
+        "realQuestionsUnscored": 24,
+        "latestRecoveredAccuracy": true,
+        "productions": 4,
+        "newExtractions": 0,
+        "packets": 1,
+        "syntheticDecisionsPerCondition": 6
+      },
+      "tags": [
+        "evidence-provenance",
+        "llm-evaluation",
+        "model-evaluation",
+        "reproducibility",
+        "scoped-claims",
+        "uncertainty"
+      ],
+      "sha256": "976b694b1ebcd749c40cb932e2091462a8ae762cf09d41fc6ac6f94751f0cfab"
+    },
+    {
+      "path": "evidence/c-analysis-historical-221-productions.json",
+      "type": "json-metadata",
+      "status": "historical-receipt-not-new-execution",
+      "scope": {
+        "dataset": "historical-C-221-production-aggregate",
+        "executionEvidence": true,
+        "productions": 221,
+        "latestRecoveredAccuracy": false
+      },
+      "tags": [
+        "evidence-provenance",
+        "model-evaluation",
+        "reproducibility",
+        "scoped-claims",
+        "uncertainty"
+      ],
+      "sha256": "f9dc51d3f32e71b7378281376ca64dfbfc21803ca75364944a7f4bff0d3ad6d3"
+    },
+    {
+      "path": "evidence/c-resumption-20261003.json",
+      "type": "json-metadata",
+      "status": "historical-receipt-not-new-execution",
+      "scope": {
+        "dataset": "C-236-production-coverage-plus-B-60-question-receipt",
+        "executionEvidence": true,
+        "productions": 236,
+        "extractions": 60,
+        "packets": 59,
+        "BQuestions": 60,
+        "BScoredSyntheticEvaluations": 108,
+        "BUnscoredRealEvaluations": 72,
+        "latestRecoveredAccuracy": false
+      },
+      "tags": [
+        "evidence-provenance",
+        "model-evaluation",
+        "reproducibility",
+        "scoped-claims",
+        "uncertainty"
+      ],
+      "sha256": "fcc1eb2986f4eb979b1abcf6f4c1f57b268e9c194c1726be0a2d32b88f20d75c"
+    },
+    {
+      "path": "evidence/c4-complement-20261003.json",
+      "type": "json-metadata",
+      "status": "historical-receipt-not-new-execution",
+      "scope": {
+        "dataset": "separate-C4-four-production-complement",
+        "executionEvidence": true,
+        "productions": 4,
+        "newExtractions": 0,
+        "packets": 1,
+        "identitiesPooled": false,
+        "coverageAcrossIdentities": 240,
+        "latestRecoveredAccuracy": false
+      },
+      "tags": [
+        "evidence-provenance",
+        "model-evaluation",
+        "reproducibility",
+        "scoped-claims",
+        "uncertainty"
+      ],
+      "sha256": "59bc081734ac6348c5d1f94ae663a3e48d4abc1782fccf95916fbd7fcb4c922b"
+    },
+    {
+      "path": "evidence/d-provider-20261003.json",
+      "type": "json-metadata",
+      "status": "historical-receipt-not-new-execution",
+      "scope": {
+        "dataset": "D-provider-12-output-lot-protocol-observations",
+        "executionEvidence": true,
+        "semanticAccuracyEstablished": false
+      },
+      "tags": [
+        "evidence-provenance",
+        "llm-evaluation",
+        "model-evaluation",
+        "protocol-compliance",
+        "reproducibility",
+        "scoped-claims",
+        "uncertainty"
+      ],
+      "sha256": "4c48e0d34bc6146e9790d85ffcddf6def3bb3bf5443253b02ae09540f34ab009"
+    },
+    {
+      "path": "evidence/e-qualification-20261003.json",
+      "type": "json-metadata",
+      "status": "historical-receipt-not-new-execution",
+      "scope": {
+        "dataset": "E-native-worker-qualification",
+        "executionEvidence": true,
+        "modelTrajectories": 0,
+        "modelPerformanceScore": false
+      },
+      "tags": [
+        "evidence-provenance",
+        "model-evaluation",
+        "protocol-compliance",
+        "reproducibility",
+        "scoped-claims",
+        "uncertainty"
+      ],
+      "sha256": "92a7127e92a08b2be4794f5bc5d20e4aa83a8add177fd64d8809cdcf0e02590c"
+    },
+    {
+      "path": "evidence/export-manifest.json",
+      "type": "json-metadata",
+      "status": "export-provenance",
+      "scope": {
+        "dataset": "public-byte-export-provenance",
+        "executionEvidence": false
+      },
+      "tags": [
+        "evidence-provenance",
+        "model-evaluation",
+        "reproducibility",
+        "scoped-claims",
+        "uncertainty"
+      ],
+      "sha256": "1f029dd337b177771699cabffdddef2d9504875e05abf58b0436ab2d2b8b217b"
+    },
+    {
+      "path": "evidence/native-20261005/receipt.json",
+      "type": "json-metadata",
+      "status": "native-pass-fail-execution-receipt",
+      "scope": {
+        "dataset": "separately-identified-six-question-native-pass-fail-task",
+        "questions": 6,
+        "executionEvidence": true,
+        "distinctFrom": [
+          "historical-six-question-diagnostic-dict-pilot",
+          "36-case-replay",
+          "C-C4-reanalysis"
+        ]
+      },
+      "tags": [
+        "evidence-provenance",
+        "llm-evaluation",
+        "model-evaluation",
+        "reproducibility",
+        "scoped-claims",
+        "synthetic-data",
+        "uncertainty"
+      ],
+      "sha256": "46c4b2d3f669055d6a1f2845d17c763460f1d8821a3ddbc481aea191ecd5984b"
+    },
+    {
+      "path": "evidence/replay-20261005/execution-receipt.json",
+      "type": "json-metadata",
+      "status": "Kaggle-executed-deterministic-replay-receipt",
+      "scope": {
+        "dataset": "separate-36-case-synthetic-Kaggle-replay",
+        "questions": 36,
+        "executionEvidence": true,
+        "newModelCalls": 0,
+        "engines": 3,
+        "distinctFrom": [
+          "historical-60-question-B",
+          "six-question-native-pilot",
+          "C-C4-model-reanalysis"
+        ]
+      },
+      "tags": [
+        "evidence-provenance",
+        "reproducibility",
+        "scoped-claims",
+        "synthetic-data",
+        "uncertainty"
+      ],
+      "sha256": "80ec30754d9e2a44a0c3d570fe41d6bbaef7c36bc7f3f2466d47234ccab84812"
+    },
+    {
+      "path": "evidence/replay-20261005/synthetic-replay.json",
+      "type": "json-metadata",
+      "status": "Kaggle-executed-deterministic-replay-receipt",
+      "scope": {
+        "dataset": "separate-36-case-synthetic-Kaggle-replay",
+        "questions": 36,
+        "executionEvidence": true,
+        "newModelCalls": 0,
+        "engines": 3,
+        "distinctFrom": [
+          "historical-60-question-B",
+          "six-question-native-pilot",
+          "C-C4-model-reanalysis"
+        ]
+      },
+      "tags": [
+        "evidence-provenance",
+        "reproducibility",
+        "scoped-claims",
+        "synthetic-data",
+        "uncertainty"
+      ],
+      "sha256": "425fa20c8703627aa663569022fa84885524afe9fa74cebbe8c715746de00180"
+    },
+    {
+      "path": "harness/kaggle-replay/build_notebook.py",
+      "type": "python-source",
+      "status": "prepared-Kaggle-replay-not-execution-evidence",
+      "scope": {
+        "dataset": "36-case-authored-synthetic-Kaggle-replay",
+        "questions": 36,
+        "packets": 6,
+        "executionEvidence": false,
+        "distinctFrom": [
+          "six-question-native-pilot",
+          "60-question-B-receipt",
+          "C-model-answer-analysis"
+        ]
+      },
+      "tags": [
+        "evidence-provenance",
+        "reproducibility",
+        "scoped-claims",
+        "synthetic-data",
+        "uncertainty"
+      ],
+      "sha256": "0341f63d490c6341669375046676cb646eb16ee07ee3a8b3a3b116c5624a8801"
+    },
+    {
+      "path": "harness/kaggle-replay/orbit-synthetic-replay.ipynb",
+      "type": "notebook-source",
+      "status": "prepared-Kaggle-replay-not-execution-evidence",
+      "scope": {
+        "dataset": "36-case-authored-synthetic-Kaggle-replay",
+        "questions": 36,
+        "packets": 6,
+        "executionEvidence": false,
+        "distinctFrom": [
+          "six-question-native-pilot",
+          "60-question-B-receipt",
+          "C-model-answer-analysis"
+        ]
+      },
+      "tags": [
+        "evidence-provenance",
+        "reproducibility",
+        "scoped-claims",
+        "synthetic-data",
+        "uncertainty"
+      ],
+      "sha256": "836cec5b8846e2a1d355d7f45a1336a32c458e549b35840060eea4291ea53fe7"
+    },
+    {
+      "path": "harness/kaggle-replay/provenance.json",
+      "type": "json-metadata",
+      "status": "prepared-Kaggle-replay-not-execution-evidence",
+      "scope": {
+        "dataset": "36-case-authored-synthetic-Kaggle-replay",
+        "questions": 36,
+        "packets": 6,
+        "executionEvidence": false,
+        "distinctFrom": [
+          "six-question-native-pilot",
+          "60-question-B-receipt",
+          "C-model-answer-analysis"
+        ]
+      },
+      "tags": [
+        "evidence-provenance",
+        "reproducibility",
+        "scoped-claims",
+        "synthetic-data",
+        "uncertainty"
+      ],
+      "sha256": "cccce97ef2d0e4cf49823e99a535bb018aa972506b6b220bb42ca3882e3fd0b0"
+    },
+    {
+      "path": "harness/kaggle-replay/README.md",
+      "type": "documentation",
+      "status": "prepared-Kaggle-replay-not-execution-evidence",
+      "scope": {
+        "dataset": "36-case-authored-synthetic-Kaggle-replay",
+        "questions": 36,
+        "packets": 6,
+        "executionEvidence": false,
+        "distinctFrom": [
+          "six-question-native-pilot",
+          "60-question-B-receipt",
+          "C-model-answer-analysis"
+        ]
+      },
+      "tags": [
+        "evidence-provenance",
+        "reproducibility",
+        "scoped-claims",
+        "synthetic-data",
+        "uncertainty"
+      ],
+      "sha256": "5c716c04366e28669d9912139c6ce3ba5442e8658113e9639f17558cd77a9938"
+    },
+    {
+      "path": "harness/kaggle-replay/run_replay.py",
+      "type": "python-source",
+      "status": "prepared-Kaggle-replay-not-execution-evidence",
+      "scope": {
+        "dataset": "36-case-authored-synthetic-Kaggle-replay",
+        "questions": 36,
+        "packets": 6,
+        "executionEvidence": false,
+        "distinctFrom": [
+          "six-question-native-pilot",
+          "60-question-B-receipt",
+          "C-model-answer-analysis"
+        ]
+      },
+      "tags": [
+        "evidence-provenance",
+        "reproducibility",
+        "scoped-claims",
+        "synthetic-data",
+        "uncertainty"
+      ],
+      "sha256": "cec9fd69804ccc20289d6e35e096c36ebdba36bb6f63572250831a0569d259a1"
+    },
+    {
+      "path": "harness/replay_synthetic.py",
+      "type": "python-source",
+      "status": "prepared-replay-adapter-not-executed-in-this-package",
+      "scope": {
+        "dataset": "36-case-authored-synthetic-development-replay",
+        "questions": 36,
+        "packets": 6,
+        "executionEvidence": false,
+        "distinctFrom": [
+          "six-question-native-pilot",
+          "60-question-B-receipt"
+        ]
+      },
+      "tags": [
+        "evidence-provenance",
+        "reproducibility",
+        "scoped-claims",
+        "synthetic-data",
+        "uncertainty"
+      ],
+      "sha256": "32b3ab8413fcb51d1133cb2e34f1ee0d864a0f8164849df49f69c1363c55272e"
+    },
+    {
+      "path": "harness/scoring/analyze_kaggle_campaign_results.py",
+      "type": "python-source",
+      "status": "prepared-analysis-not-executed",
+      "scope": {
+        "dataset": "C-and-C4-private-input-aggregate-preparation",
+        "executionEvidence": false,
+        "syntheticScorableQuestions": 36,
+        "realQuestionsUnscored": 24,
+        "identitiesPooled": false
+      },
+      "tags": [
+        "evidence-provenance",
+        "model-evaluation",
+        "reproducibility",
+        "scoped-claims",
+        "uncertainty"
+      ],
+      "sha256": "1ae7a80aaf7fcfbec2e1121af6a73f30777b26976400308bedb7d5e30ecc21d3"
+    },
+    {
+      "path": "harness/scoring/orbit_campaign_checkpoint.py",
+      "type": "python-source",
+      "status": "prepared-analysis-not-executed",
+      "scope": {
+        "dataset": "C-and-C4-private-input-aggregate-preparation",
+        "executionEvidence": false,
+        "syntheticScorableQuestions": 36,
+        "realQuestionsUnscored": 24,
+        "identitiesPooled": false
+      },
+      "tags": [
+        "evidence-provenance",
+        "model-evaluation",
+        "reproducibility",
+        "scoped-claims",
+        "uncertainty"
+      ],
+      "sha256": "ec92f00b0d090a42e0c1cb10a836f3501fb1ad7c63a6021ba9e74fde9358be98"
+    },
+    {
+      "path": "harness/source/package.json",
+      "type": "json-metadata",
+      "status": "frozen-byte-export",
+      "scope": {
+        "dataset": "frozen-historical-C-engine-source",
+        "executionEvidence": false
+      },
+      "tags": [
+        "evidence-provenance",
+        "reproducibility",
+        "scoped-claims",
+        "uncertainty"
+      ],
+      "sha256": "0f183be3df9c6226fb662731461fc921d001ebc2372bf07e57528fbfaa453de2"
+    },
+    {
+      "path": "harness/source/packages/evidence-review/src/classification.ts",
+      "type": "typescript-source",
+      "status": "frozen-byte-export",
+      "scope": {
+        "dataset": "frozen-historical-C-engine-source",
+        "executionEvidence": false
+      },
+      "tags": [
+        "evidence-provenance",
+        "reproducibility",
+        "scoped-claims",
+        "uncertainty"
+      ],
+      "sha256": "230a5f494e64f86428aa3f26b6cfe6ab0d42c78d47f758419bfe76f7f22019ae"
+    },
+    {
+      "path": "harness/source/packages/evidence-review/src/index.ts",
+      "type": "typescript-source",
+      "status": "frozen-byte-export",
+      "scope": {
+        "dataset": "frozen-historical-C-engine-source",
+        "executionEvidence": false
+      },
+      "tags": [
+        "evidence-provenance",
+        "reproducibility",
+        "scoped-claims",
+        "uncertainty"
+      ],
+      "sha256": "1ef6ca28cf3da9001708d45a64b39c65192523584fd383d3a701010926cfa937"
+    },
+    {
+      "path": "harness/source/packages/evidence-review/src/relations.ts",
+      "type": "typescript-source",
+      "status": "frozen-byte-export",
+      "scope": {
+        "dataset": "frozen-historical-C-engine-source",
+        "executionEvidence": false
+      },
+      "tags": [
+        "evidence-provenance",
+        "reproducibility",
+        "scoped-claims",
+        "uncertainty"
+      ],
+      "sha256": "d5da24352b213c55cede9559e2faa48b3b8451c57a3257b882c77ff82ee495a4"
+    },
+    {
+      "path": "harness/source/tools/engine-jsonl.ts",
+      "type": "typescript-source",
+      "status": "frozen-byte-export",
+      "scope": {
+        "dataset": "frozen-historical-C-engine-source",
+        "executionEvidence": false
+      },
+      "tags": [
+        "evidence-provenance",
+        "reproducibility",
+        "scoped-claims",
+        "uncertainty"
+      ],
+      "sha256": "a07c83552b9c1b6450814819ecf0f9392f698f386e3c10bc06917edb4f7a9b39"
+    },
+    {
+      "path": "harness/synthetic/manifest.json",
+      "type": "json-metadata",
+      "status": "development-fixtures",
+      "scope": {
+        "dataset": "36-case-authored-synthetic-development-replay",
+        "questions": 36,
+        "packets": 6,
+        "executionEvidence": false,
+        "distinctFrom": [
+          "six-question-native-pilot",
+          "60-question-B-receipt"
+        ]
+      },
+      "tags": [
+        "evidence-provenance",
+        "reproducibility",
+        "scoped-claims",
+        "synthetic-data",
+        "uncertainty"
+      ],
+      "sha256": "0e1047810af095864e94b3aa17b4f8c0812a4a4b32a7b13f506e65aeb4b3b763"
+    },
+    {
+      "path": "harness/synthetic/reference-cases.json",
+      "type": "json-metadata",
+      "status": "development-fixtures",
+      "scope": {
+        "dataset": "36-case-authored-synthetic-development-replay",
+        "questions": 36,
+        "packets": 6,
+        "executionEvidence": false,
+        "distinctFrom": [
+          "six-question-native-pilot",
+          "60-question-B-receipt"
+        ]
+      },
+      "tags": [
+        "evidence-provenance",
+        "reproducibility",
+        "scoped-claims",
+        "synthetic-data",
+        "uncertainty"
+      ],
+      "sha256": "aabe0f8b121f32a5eda7795dfe730f70993829a30b18c1857974b5cdf4e6fcd0"
+    },
+    {
+      "path": "pilot/historical-run-metadata.json",
+      "type": "json-metadata",
+      "status": "historical-observation-metadata",
+      "scope": {
+        "dataset": "six-question-synthetic-development-pilot",
+        "questions": 6,
+        "documents": 12,
+        "executionEvidence": true,
+        "distinctFrom": [
+          "36-case-development-replay",
+          "60-question-C-campaign"
+        ]
+      },
+      "tags": [
+        "llm-evaluation",
+        "model-evaluation",
+        "reproducibility",
+        "scoped-claims",
+        "synthetic-data",
+        "uncertainty"
+      ],
+      "sha256": "d743faeefa4b93fbb608416d55a48e5e67edfa77c5583dc13b59ac6674ef970b"
+    },
+    {
+      "path": "pilot/manifest.json",
+      "type": "json-metadata",
+      "status": "prepared-source-live-binary-parity-unverified",
+      "scope": {
+        "dataset": "six-question-synthetic-development-pilot",
+        "questions": 6,
+        "documents": 12,
+        "executionEvidence": false,
+        "distinctFrom": [
+          "36-case-development-replay",
+          "60-question-C-campaign"
+        ]
+      },
+      "tags": [
+        "llm-evaluation",
+        "model-evaluation",
+        "reproducibility",
+        "scoped-claims",
+        "synthetic-data",
+        "uncertainty"
+      ],
+      "sha256": "0d9f6094b178ba84c86ea16e795ee436ecf74d63232936b19ce4e74ae1afd3f5"
+    },
+    {
+      "path": "pilot/native-pass-fail/contract.py",
+      "type": "python-source",
+      "status": "prospective-native-task-preparation-not-an-execution",
+      "scope": {
+        "dataset": "prospective-six-question-native-pass-fail-task",
+        "questions": 6,
+        "executionEvidence": false,
+        "distinctFrom": [
+          "historical-six-question-diagnostic-dict-pilot",
+          "36-case-development-replay",
+          "60-question-C-campaign"
+        ]
+      },
+      "tags": [
+        "llm-evaluation",
+        "model-evaluation",
+        "reproducibility",
+        "scoped-claims",
+        "synthetic-data",
+        "uncertainty"
+      ],
+      "sha256": "fb07a5ca3c5048028d6d700ccc15b2e6203fc165e0b302acfc5c69c91350f6eb"
+    },
+    {
+      "path": "pilot/native-pass-fail/manifest.json",
+      "type": "json-metadata",
+      "status": "prospective-native-task-preparation-not-an-execution",
+      "scope": {
+        "dataset": "prospective-six-question-native-pass-fail-task",
+        "questions": 6,
+        "executionEvidence": false,
+        "distinctFrom": [
+          "historical-six-question-diagnostic-dict-pilot",
+          "36-case-development-replay",
+          "60-question-C-campaign"
+        ]
+      },
+      "tags": [
+        "llm-evaluation",
+        "model-evaluation",
+        "reproducibility",
+        "scoped-claims",
+        "synthetic-data",
+        "uncertainty"
+      ],
+      "sha256": "3b141b8760525c312e694cee3da55a0fdc3e2ef7507ad146dac97a8ef0d8815b"
+    },
+    {
+      "path": "pilot/native-pass-fail/orbit-native-pass-fail.ipynb",
+      "type": "notebook-source",
+      "status": "prospective-native-task-preparation-not-an-execution",
+      "scope": {
+        "dataset": "prospective-six-question-native-pass-fail-task",
+        "questions": 6,
+        "executionEvidence": false,
+        "distinctFrom": [
+          "historical-six-question-diagnostic-dict-pilot",
+          "36-case-development-replay",
+          "60-question-C-campaign"
+        ]
+      },
+      "tags": [
+        "llm-evaluation",
+        "model-evaluation",
+        "reproducibility",
+        "scoped-claims",
+        "synthetic-data",
+        "uncertainty"
+      ],
+      "sha256": "947c1f3b5b574dac88b0e47e06527927cb67edea597cc7150fd7ff7241bd30ad"
+    },
+    {
+      "path": "pilot/native-pass-fail/README.md",
+      "type": "documentation",
+      "status": "prospective-native-task-preparation-not-an-execution",
+      "scope": {
+        "dataset": "prospective-six-question-native-pass-fail-task",
+        "questions": 6,
+        "executionEvidence": false,
+        "distinctFrom": [
+          "historical-six-question-diagnostic-dict-pilot",
+          "36-case-development-replay",
+          "60-question-C-campaign"
+        ]
+      },
+      "tags": [
+        "llm-evaluation",
+        "model-evaluation",
+        "reproducibility",
+        "scoped-claims",
+        "synthetic-data",
+        "uncertainty"
+      ],
+      "sha256": "e1f9b3c9041cc4b81aafab227e70d79e37b679b570a7e587d2bbab1db571f0c8"
+    },
+    {
+      "path": "pilot/native-pass-fail/task.py",
+      "type": "python-source",
+      "status": "prospective-native-task-preparation-not-an-execution",
+      "scope": {
+        "dataset": "prospective-six-question-native-pass-fail-task",
+        "questions": 6,
+        "executionEvidence": false,
+        "distinctFrom": [
+          "historical-six-question-diagnostic-dict-pilot",
+          "36-case-development-replay",
+          "60-question-C-campaign"
+        ]
+      },
+      "tags": [
+        "llm-evaluation",
+        "model-evaluation",
+        "reproducibility",
+        "scoped-claims",
+        "synthetic-data",
+        "uncertainty"
+      ],
+      "sha256": "a726a159e4b382ea18bce30294dbd8f599aa93fde6938317e7dfbd65892e4eb4"
+    },
+    {
+      "path": "pilot/orbit-kaggle-pilot.ipynb",
+      "type": "notebook-source",
+      "status": "prepared-source-live-binary-parity-unverified",
+      "scope": {
+        "dataset": "six-question-synthetic-development-pilot",
+        "questions": 6,
+        "documents": 12,
+        "executionEvidence": false,
+        "distinctFrom": [
+          "36-case-development-replay",
+          "60-question-C-campaign"
+        ]
+      },
+      "tags": [
+        "llm-evaluation",
+        "model-evaluation",
+        "reproducibility",
+        "scoped-claims",
+        "synthetic-data",
+        "uncertainty"
+      ],
+      "sha256": "4dde63ef8c2fb570c70c6bba5058148c856d163b792ae8a2da14c0a8d9af8772"
+    },
+    {
+      "path": "pilot/provenance.json",
+      "type": "json-metadata",
+      "status": "prepared-source-live-binary-parity-unverified",
+      "scope": {
+        "dataset": "six-question-synthetic-development-pilot",
+        "questions": 6,
+        "documents": 12,
+        "executionEvidence": false,
+        "distinctFrom": [
+          "36-case-development-replay",
+          "60-question-C-campaign"
+        ]
+      },
+      "tags": [
+        "llm-evaluation",
+        "model-evaluation",
+        "reproducibility",
+        "scoped-claims",
+        "synthetic-data",
+        "uncertainty"
+      ],
+      "sha256": "c28d409511c6d47b23bdda6591569e4089f52397e016952fb8ccf353c18d0aab"
+    },
+    {
+      "path": "pilot/README.md",
+      "type": "documentation",
+      "status": "prepared-source-live-binary-parity-unverified",
+      "scope": {
+        "dataset": "six-question-synthetic-development-pilot",
+        "questions": 6,
+        "documents": 12,
+        "executionEvidence": false,
+        "distinctFrom": [
+          "36-case-development-replay",
+          "60-question-C-campaign"
+        ]
+      },
+      "tags": [
+        "llm-evaluation",
+        "model-evaluation",
+        "reproducibility",
+        "scoped-claims",
+        "synthetic-data",
+        "uncertainty"
+      ],
+      "sha256": "87434b9dc3480578d36c09e7ddae5362e91167651bb6f3edf8deb724b4ab1043"
+    },
+    {
+      "path": "pilot/task.py",
+      "type": "python-source",
+      "status": "prepared-source-live-binary-parity-unverified",
+      "scope": {
+        "dataset": "six-question-synthetic-development-pilot",
+        "questions": 6,
+        "documents": 12,
+        "executionEvidence": false,
+        "distinctFrom": [
+          "36-case-development-replay",
+          "60-question-C-campaign"
+        ]
+      },
+      "tags": [
+        "llm-evaluation",
+        "model-evaluation",
+        "reproducibility",
+        "scoped-claims",
+        "synthetic-data",
+        "uncertainty"
+      ],
+      "sha256": "b4bfb15ebf65026970a1cc5ff30b0216260311e7360e1060bbb78a6be233652d"
+    },
+    {
+      "path": "README.md",
+      "type": "documentation",
+      "status": "public-documentation",
+      "scope": {
+        "dataset": "editorial-and-methodology-cross-scope-index",
+        "executionEvidence": false
+      },
+      "tags": [
+        "evidence-provenance",
+        "llm-evaluation",
+        "protocol-compliance",
+        "reproducibility",
+        "scoped-claims",
+        "uncertainty"
+      ],
+      "sha256": "e32f4c4e59b8f8953d31ab6f5946eb04a4633753a7fd2a412c8c677c25ffca7e"
+    },
+    {
+      "path": "tools/verify_package.py",
+      "type": "python-source",
+      "status": "public-source-or-documentation",
+      "scope": {
+        "dataset": "package-metadata",
+        "executionEvidence": false
+      },
+      "tags": [
+        "reproducibility",
+        "scoped-claims"
+      ],
+      "sha256": "dc5ac87a6c99f0fa86fca2352ab9da739bd942fd528696b99fce36f233e243db"
+    }
+  ]
+}

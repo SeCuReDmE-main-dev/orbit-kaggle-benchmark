@@ -1,0 +1,12 @@
+node_modules/
+__pycache__/
+*.py[cod]
+.env
+.env.*
+secrets/
+private/
+outputs/
+*.zip
+*.zip.bin
+*.bin
+harness/source/engine-jsonl.mjs

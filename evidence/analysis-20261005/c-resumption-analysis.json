@@ -1,0 +1,940 @@
+{
+  "format": "orbit-c-actual-checkpoint-analysis-v1",
+  "host": "Kaggle",
+  "modelCallsDuringAnalysis": 0,
+  "campaignId": "orbit-kaggle-20261001-v2-sdkparams2",
+  "configurationSha256": "0d433497a1e6fa7810c68a51709e821d204f3241707e39850e45b2ce6283ad85",
+  "execution": {
+    "plannedExtractions": 60,
+    "observedExtractions": 60,
+    "plannedProductions": 240,
+    "observedProductions": 236,
+    "completedPackets": 59,
+    "currentStates": {
+      "completed": 591,
+      "technical-error": 1
+    },
+    "complete": false
+  },
+  "historicalStatesNotPooled": {},
+  "metrics": [
+    {
+      "model": "google/gemini-3.8-flash",
+      "condition": "none",
+      "counts": {
+        "observedProductions": 29,
+        "syntheticDecisionsObserved": 102,
+        "syntheticCorrect": 90,
+        "invalidSyntheticDecisions": 12,
+        "necessaryHold": 37,
+        "necessaryHoldUsed": 35,
+        "excessiveHold": 0,
+        "unjustifiedConclusion": 0,
+        "invalidProductions": 11,
+        "missingProductions": 1,
+        "neverRunProductions": 1,
+        "realDecisionsUnscored": 72
+      },
+      "missingProductionStates": {
+        "never-run": 1
+      },
+      "syntheticAccuracyObserved": 0.8823529411764706,
+      "plannedProductions": 30,
+      "plannedSyntheticDecisions": 108,
+      "plannedRealDecisionsUnscored": 72,
+      "complete": false,
+      "confusion": [
+        {
+          "referenceCategory": "ADMIT",
+          "predictedCategory": "ADMIT",
+          "count": 45
+        },
+        {
+          "referenceCategory": "ADMIT",
+          "predictedCategory": "INVALID",
+          "count": 6
+        },
+        {
+          "referenceCategory": "HOLD",
+          "predictedCategory": "HOLD",
+          "count": 35
+        },
+        {
+          "referenceCategory": "HOLD",
+          "predictedCategory": "INVALID",
+          "count": 2
+        },
+        {
+          "referenceCategory": "REJECT",
+          "predictedCategory": "INVALID",
+          "count": 4
+        },
+        {
+          "referenceCategory": "REJECT",
+          "predictedCategory": "REJECT",
+          "count": 10
+        }
+      ],
+      "packets": [
+        {
+          "packet": 1,
+          "correct": 18,
+          "total": 18
+        },
+        {
+          "packet": 2,
+          "correct": 18,
+          "total": 18
+        },
+        {
+          "packet": 3,
+          "correct": 18,
+          "total": 18
+        },
+        {
+          "packet": 4,
+          "correct": 12,
+          "total": 18
+        },
+        {
+          "packet": 5,
+          "correct": 6,
+          "total": 12
+        },
+        {
+          "packet": 6,
+          "correct": 18,
+          "total": 18
+        }
+      ]
+    },
+    {
+      "model": "google/gemini-3.8-flash",
+      "condition": "baseline",
+      "counts": {
+        "observedProductions": 29,
+        "syntheticDecisionsObserved": 102,
+        "syntheticCorrect": 96,
+        "invalidSyntheticDecisions": 6,
+        "necessaryHold": 37,
+        "necessaryHoldUsed": 37,
+        "excessiveHold": 0,
+        "unjustifiedConclusion": 0,
+        "invalidProductions": 13,
+        "missingProductions": 1,
+        "failedProductions": 1,
+        "realDecisionsUnscored": 72
+      },
+      "missingProductionStates": {
+        "technical-error": 1
+      },
+      "syntheticAccuracyObserved": 0.9411764705882353,
+      "plannedProductions": 30,
+      "plannedSyntheticDecisions": 108,
+      "plannedRealDecisionsUnscored": 72,
+      "complete": false,
+      "confusion": [
+        {
+          "referenceCategory": "ADMIT",
+          "predictedCategory": "ADMIT",
+          "count": 45
+        },
+        {
+          "referenceCategory": "ADMIT",
+          "predictedCategory": "INVALID",
+          "count": 6
+        },
+        {
+          "referenceCategory": "HOLD",
+          "predictedCategory": "HOLD",
+          "count": 37
+        },
+        {
+          "referenceCategory": "REJECT",
+          "predictedCategory": "REJECT",
+          "count": 14
+        }
+      ],
+      "packets": [
+        {
+          "packet": 1,
+          "correct": 18,
+          "total": 18
+        },
+        {
+          "packet": 2,
+          "correct": 18,
+          "total": 18
+        },
+        {
+          "packet": 3,
+          "correct": 18,
+          "total": 18
+        },
+        {
+          "packet": 4,
+          "correct": 12,
+          "total": 18
+        },
+        {
+          "packet": 5,
+          "correct": 12,
+          "total": 12
+        },
+        {
+          "packet": 6,
+          "correct": 18,
+          "total": 18
+        }
+      ]
+    },
+    {
+      "model": "google/gemini-3.8-flash",
+      "condition": "n",
+      "counts": {
+        "observedProductions": 29,
+        "syntheticDecisionsObserved": 102,
+        "syntheticCorrect": 96,
+        "invalidSyntheticDecisions": 6,
+        "necessaryHold": 37,
+        "necessaryHoldUsed": 37,
+        "excessiveHold": 0,
+        "unjustifiedConclusion": 0,
+        "invalidProductions": 11,
+        "missingProductions": 1,
+        "neverRunProductions": 1,
+        "realDecisionsUnscored": 72
+      },
+      "missingProductionStates": {
+        "never-run": 1
+      },
+      "syntheticAccuracyObserved": 0.9411764705882353,
+      "plannedProductions": 30,
+      "plannedSyntheticDecisions": 108,
+      "plannedRealDecisionsUnscored": 72,
+      "complete": false,
+      "confusion": [
+        {
+          "referenceCategory": "ADMIT",
+          "predictedCategory": "ADMIT",
+          "count": 45
+        },
+        {
+          "referenceCategory": "ADMIT",
+          "predictedCategory": "INVALID",
+          "count": 6
+        },
+        {
+          "referenceCategory": "HOLD",
+          "predictedCategory": "HOLD",
+          "count": 37
+        },
+        {
+          "referenceCategory": "REJECT",
+          "predictedCategory": "REJECT",
+          "count": 14
+        }
+      ],
+      "packets": [
+        {
+          "packet": 1,
+          "correct": 18,
+          "total": 18
+        },
+        {
+          "packet": 2,
+          "correct": 18,
+          "total": 18
+        },
+        {
+          "packet": 3,
+          "correct": 18,
+          "total": 18
+        },
+        {
+          "packet": 4,
+          "correct": 12,
+          "total": 18
+        },
+        {
+          "packet": 5,
+          "correct": 12,
+          "total": 12
+        },
+        {
+          "packet": 6,
+          "correct": 18,
+          "total": 18
+        }
+      ]
+    },
+    {
+      "model": "google/gemini-3.8-flash",
+      "condition": "p",
+      "counts": {
+        "observedProductions": 29,
+        "syntheticDecisionsObserved": 102,
+        "syntheticCorrect": 96,
+        "invalidSyntheticDecisions": 6,
+        "necessaryHold": 37,
+        "necessaryHoldUsed": 37,
+        "excessiveHold": 0,
+        "unjustifiedConclusion": 0,
+        "invalidProductions": 12,
+        "missingProductions": 1,
+        "neverRunProductions": 1,
+        "realDecisionsUnscored": 72
+      },
+      "missingProductionStates": {
+        "never-run": 1
+      },
+      "syntheticAccuracyObserved": 0.9411764705882353,
+      "plannedProductions": 30,
+      "plannedSyntheticDecisions": 108,
+      "plannedRealDecisionsUnscored": 72,
+      "complete": false,
+      "confusion": [
+        {
+          "referenceCategory": "ADMIT",
+          "predictedCategory": "ADMIT",
+          "count": 45
+        },
+        {
+          "referenceCategory": "ADMIT",
+          "predictedCategory": "INVALID",
+          "count": 6
+        },
+        {
+          "referenceCategory": "HOLD",
+          "predictedCategory": "HOLD",
+          "count": 37
+        },
+        {
+          "referenceCategory": "REJECT",
+          "predictedCategory": "REJECT",
+          "count": 14
+        }
+      ],
+      "packets": [
+        {
+          "packet": 1,
+          "correct": 18,
+          "total": 18
+        },
+        {
+          "packet": 2,
+          "correct": 18,
+          "total": 18
+        },
+        {
+          "packet": 3,
+          "correct": 18,
+          "total": 18
+        },
+        {
+          "packet": 4,
+          "correct": 12,
+          "total": 18
+        },
+        {
+          "packet": 5,
+          "correct": 12,
+          "total": 12
+        },
+        {
+          "packet": 6,
+          "correct": 18,
+          "total": 18
+        }
+      ]
+    },
+    {
+      "model": "google/gemini-3.1-pro-preview",
+      "condition": "none",
+      "counts": {
+        "observedProductions": 30,
+        "syntheticDecisionsObserved": 108,
+        "syntheticCorrect": 108,
+        "invalidSyntheticDecisions": 0,
+        "necessaryHold": 39,
+        "necessaryHoldUsed": 39,
+        "excessiveHold": 0,
+        "unjustifiedConclusion": 0,
+        "realDecisionsUnscored": 72
+      },
+      "missingProductionStates": {},
+      "syntheticAccuracyObserved": 1.0,
+      "plannedProductions": 30,
+      "plannedSyntheticDecisions": 108,
+      "plannedRealDecisionsUnscored": 72,
+      "complete": true,
+      "confusion": [
+        {
+          "referenceCategory": "ADMIT",
+          "predictedCategory": "ADMIT",
+          "count": 51
+        },
+        {
+          "referenceCategory": "HOLD",
+          "predictedCategory": "HOLD",
+          "count": 39
+        },
+        {
+          "referenceCategory": "REJECT",
+          "predictedCategory": "REJECT",
+          "count": 18
+        }
+      ],
+      "packets": [
+        {
+          "packet": 1,
+          "correct": 18,
+          "total": 18
+        },
+        {
+          "packet": 2,
+          "correct": 18,
+          "total": 18
+        },
+        {
+          "packet": 3,
+          "correct": 18,
+          "total": 18
+        },
+        {
+          "packet": 4,
+          "correct": 18,
+          "total": 18
+        },
+        {
+          "packet": 5,
+          "correct": 18,
+          "total": 18
+        },
+        {
+          "packet": 6,
+          "correct": 18,
+          "total": 18
+        }
+      ]
+    },
+    {
+      "model": "google/gemini-3.1-pro-preview",
+      "condition": "baseline",
+      "counts": {
+        "observedProductions": 30,
+        "syntheticDecisionsObserved": 108,
+        "syntheticCorrect": 95,
+        "invalidSyntheticDecisions": 0,
+        "necessaryHold": 39,
+        "necessaryHoldUsed": 39,
+        "excessiveHold": 13,
+        "unjustifiedConclusion": 0,
+        "realDecisionsUnscored": 72
+      },
+      "missingProductionStates": {},
+      "syntheticAccuracyObserved": 0.8796296296296297,
+      "plannedProductions": 30,
+      "plannedSyntheticDecisions": 108,
+      "plannedRealDecisionsUnscored": 72,
+      "complete": true,
+      "confusion": [
+        {
+          "referenceCategory": "ADMIT",
+          "predictedCategory": "ADMIT",
+          "count": 42
+        },
+        {
+          "referenceCategory": "ADMIT",
+          "predictedCategory": "HOLD",
+          "count": 9
+        },
+        {
+          "referenceCategory": "HOLD",
+          "predictedCategory": "HOLD",
+          "count": 39
+        },
+        {
+          "referenceCategory": "REJECT",
+          "predictedCategory": "HOLD",
+          "count": 4
+        },
+        {
+          "referenceCategory": "REJECT",
+          "predictedCategory": "REJECT",
+          "count": 14
+        }
+      ],
+      "packets": [
+        {
+          "packet": 1,
+          "correct": 10,
+          "total": 18
+        },
+        {
+          "packet": 2,
+          "correct": 18,
+          "total": 18
+        },
+        {
+          "packet": 3,
+          "correct": 18,
+          "total": 18
+        },
+        {
+          "packet": 4,
+          "correct": 18,
+          "total": 18
+        },
+        {
+          "packet": 5,
+          "correct": 18,
+          "total": 18
+        },
+        {
+          "packet": 6,
+          "correct": 13,
+          "total": 18
+        }
+      ]
+    },
+    {
+      "model": "google/gemini-3.1-pro-preview",
+      "condition": "n",
+      "counts": {
+        "observedProductions": 30,
+        "syntheticDecisionsObserved": 108,
+        "syntheticCorrect": 98,
+        "invalidSyntheticDecisions": 0,
+        "necessaryHold": 39,
+        "necessaryHoldUsed": 39,
+        "excessiveHold": 10,
+        "unjustifiedConclusion": 0,
+        "realDecisionsUnscored": 72
+      },
+      "missingProductionStates": {},
+      "syntheticAccuracyObserved": 0.9074074074074074,
+      "plannedProductions": 30,
+      "plannedSyntheticDecisions": 108,
+      "plannedRealDecisionsUnscored": 72,
+      "complete": true,
+      "confusion": [
+        {
+          "referenceCategory": "ADMIT",
+          "predictedCategory": "ADMIT",
+          "count": 41
+        },
+        {
+          "referenceCategory": "ADMIT",
+          "predictedCategory": "HOLD",
+          "count": 10
+        },
+        {
+          "referenceCategory": "HOLD",
+          "predictedCategory": "HOLD",
+          "count": 39
+        },
+        {
+          "referenceCategory": "REJECT",
+          "predictedCategory": "REJECT",
+          "count": 18
+        }
+      ],
+      "packets": [
+        {
+          "packet": 1,
+          "correct": 18,
+          "total": 18
+        },
+        {
+          "packet": 2,
+          "correct": 18,
+          "total": 18
+        },
+        {
+          "packet": 3,
+          "correct": 18,
+          "total": 18
+        },
+        {
+          "packet": 4,
+          "correct": 18,
+          "total": 18
+        },
+        {
+          "packet": 5,
+          "correct": 18,
+          "total": 18
+        },
+        {
+          "packet": 6,
+          "correct": 8,
+          "total": 18
+        }
+      ]
+    },
+    {
+      "model": "google/gemini-3.1-pro-preview",
+      "condition": "p",
+      "counts": {
+        "observedProductions": 30,
+        "syntheticDecisionsObserved": 108,
+        "syntheticCorrect": 89,
+        "invalidSyntheticDecisions": 0,
+        "necessaryHold": 39,
+        "necessaryHoldUsed": 39,
+        "excessiveHold": 19,
+        "unjustifiedConclusion": 0,
+        "realDecisionsUnscored": 72
+      },
+      "missingProductionStates": {},
+      "syntheticAccuracyObserved": 0.8240740740740741,
+      "plannedProductions": 30,
+      "plannedSyntheticDecisions": 108,
+      "plannedRealDecisionsUnscored": 72,
+      "complete": true,
+      "confusion": [
+        {
+          "referenceCategory": "ADMIT",
+          "predictedCategory": "ADMIT",
+          "count": 36
+        },
+        {
+          "referenceCategory": "ADMIT",
+          "predictedCategory": "HOLD",
+          "count": 15
+        },
+        {
+          "referenceCategory": "HOLD",
+          "predictedCategory": "HOLD",
+          "count": 39
+        },
+        {
+          "referenceCategory": "REJECT",
+          "predictedCategory": "HOLD",
+          "count": 4
+        },
+        {
+          "referenceCategory": "REJECT",
+          "predictedCategory": "REJECT",
+          "count": 14
+        }
+      ],
+      "packets": [
+        {
+          "packet": 1,
+          "correct": 10,
+          "total": 18
+        },
+        {
+          "packet": 2,
+          "correct": 18,
+          "total": 18
+        },
+        {
+          "packet": 3,
+          "correct": 18,
+          "total": 18
+        },
+        {
+          "packet": 4,
+          "correct": 18,
+          "total": 18
+        },
+        {
+          "packet": 5,
+          "correct": 18,
+          "total": 18
+        },
+        {
+          "packet": 6,
+          "correct": 7,
+          "total": 18
+        }
+      ]
+    }
+  ],
+  "pairedComparisons": [
+    {
+      "model": "google/gemini-3.8-flash",
+      "from": "none",
+      "to": "baseline",
+      "matchedSyntheticDecisions": 102,
+      "plannedMatchedSyntheticDecisions": 108,
+      "complete": false,
+      "clusters": 6,
+      "meanDifference": 0.08333333333333333,
+      "interval": [
+        0,
+        0.25
+      ],
+      "method": "paired-packet-cluster-bootstrap-descriptive",
+      "resamples": 2000,
+      "seed": 20261001,
+      "limitations": [
+        "Only six synthetic packets carry reference labels.",
+        "No causal or population-wide superiority is certified."
+      ]
+    },
+    {
+      "model": "google/gemini-3.8-flash",
+      "from": "none",
+      "to": "n",
+      "matchedSyntheticDecisions": 102,
+      "plannedMatchedSyntheticDecisions": 108,
+      "complete": false,
+      "clusters": 6,
+      "meanDifference": 0.08333333333333333,
+      "interval": [
+        0,
+        0.25
+      ],
+      "method": "paired-packet-cluster-bootstrap-descriptive",
+      "resamples": 2000,
+      "seed": 20261001,
+      "limitations": [
+        "Only six synthetic packets carry reference labels.",
+        "No causal or population-wide superiority is certified."
+      ]
+    },
+    {
+      "model": "google/gemini-3.8-flash",
+      "from": "none",
+      "to": "p",
+      "matchedSyntheticDecisions": 102,
+      "plannedMatchedSyntheticDecisions": 108,
+      "complete": false,
+      "clusters": 6,
+      "meanDifference": 0.08333333333333333,
+      "interval": [
+        0,
+        0.25
+      ],
+      "method": "paired-packet-cluster-bootstrap-descriptive",
+      "resamples": 2000,
+      "seed": 20261001,
+      "limitations": [
+        "Only six synthetic packets carry reference labels.",
+        "No causal or population-wide superiority is certified."
+      ]
+    },
+    {
+      "model": "google/gemini-3.8-flash",
+      "from": "baseline",
+      "to": "n",
+      "matchedSyntheticDecisions": 102,
+      "plannedMatchedSyntheticDecisions": 108,
+      "complete": false,
+      "clusters": 6,
+      "meanDifference": 0,
+      "interval": [
+        0,
+        0
+      ],
+      "method": "paired-packet-cluster-bootstrap-descriptive",
+      "resamples": 2000,
+      "seed": 20261001,
+      "limitations": [
+        "Only six synthetic packets carry reference labels.",
+        "No causal or population-wide superiority is certified."
+      ]
+    },
+    {
+      "model": "google/gemini-3.8-flash",
+      "from": "baseline",
+      "to": "p",
+      "matchedSyntheticDecisions": 102,
+      "plannedMatchedSyntheticDecisions": 108,
+      "complete": false,
+      "clusters": 6,
+      "meanDifference": 0,
+      "interval": [
+        0,
+        0
+      ],
+      "method": "paired-packet-cluster-bootstrap-descriptive",
+      "resamples": 2000,
+      "seed": 20261001,
+      "limitations": [
+        "Only six synthetic packets carry reference labels.",
+        "No causal or population-wide superiority is certified."
+      ]
+    },
+    {
+      "model": "google/gemini-3.8-flash",
+      "from": "n",
+      "to": "p",
+      "matchedSyntheticDecisions": 102,
+      "plannedMatchedSyntheticDecisions": 108,
+      "complete": false,
+      "clusters": 6,
+      "meanDifference": 0,
+      "interval": [
+        0,
+        0
+      ],
+      "method": "paired-packet-cluster-bootstrap-descriptive",
+      "resamples": 2000,
+      "seed": 20261001,
+      "limitations": [
+        "Only six synthetic packets carry reference labels.",
+        "No causal or population-wide superiority is certified."
+      ]
+    },
+    {
+      "model": "google/gemini-3.1-pro-preview",
+      "from": "none",
+      "to": "baseline",
+      "matchedSyntheticDecisions": 108,
+      "plannedMatchedSyntheticDecisions": 108,
+      "complete": true,
+      "clusters": 6,
+      "meanDifference": -0.12037037037037036,
+      "interval": [
+        -0.2685185185185185,
+        0
+      ],
+      "method": "paired-packet-cluster-bootstrap-descriptive",
+      "resamples": 2000,
+      "seed": 20261001,
+      "limitations": [
+        "Only six synthetic packets carry reference labels.",
+        "No causal or population-wide superiority is certified."
+      ]
+    },
+    {
+      "model": "google/gemini-3.1-pro-preview",
+      "from": "none",
+      "to": "n",
+      "matchedSyntheticDecisions": 108,
+      "plannedMatchedSyntheticDecisions": 108,
+      "complete": true,
+      "clusters": 6,
+      "meanDifference": -0.0925925925925926,
+      "interval": [
+        -0.2777777777777778,
+        0
+      ],
+      "method": "paired-packet-cluster-bootstrap-descriptive",
+      "resamples": 2000,
+      "seed": 20261001,
+      "limitations": [
+        "Only six synthetic packets carry reference labels.",
+        "No causal or population-wide superiority is certified."
+      ]
+    },
+    {
+      "model": "google/gemini-3.1-pro-preview",
+      "from": "none",
+      "to": "p",
+      "matchedSyntheticDecisions": 108,
+      "plannedMatchedSyntheticDecisions": 108,
+      "complete": true,
+      "clusters": 6,
+      "meanDifference": -0.17592592592592593,
+      "interval": [
+        -0.39814814814814814,
+        0
+      ],
+      "method": "paired-packet-cluster-bootstrap-descriptive",
+      "resamples": 2000,
+      "seed": 20261001,
+      "limitations": [
+        "Only six synthetic packets carry reference labels.",
+        "No causal or population-wide superiority is certified."
+      ]
+    },
+    {
+      "model": "google/gemini-3.1-pro-preview",
+      "from": "baseline",
+      "to": "n",
+      "matchedSyntheticDecisions": 108,
+      "plannedMatchedSyntheticDecisions": 108,
+      "complete": true,
+      "clusters": 6,
+      "meanDifference": 0.027777777777777773,
+      "interval": [
+        -0.1388888888888889,
+        0.2222222222222222
+      ],
+      "method": "paired-packet-cluster-bootstrap-descriptive",
+      "resamples": 2000,
+      "seed": 20261001,
+      "limitations": [
+        "Only six synthetic packets carry reference labels.",
+        "No causal or population-wide superiority is certified."
+      ]
+    },
+    {
+      "model": "google/gemini-3.1-pro-preview",
+      "from": "baseline",
+      "to": "p",
+      "matchedSyntheticDecisions": 108,
+      "plannedMatchedSyntheticDecisions": 108,
+      "complete": true,
+      "clusters": 6,
+      "meanDifference": -0.05555555555555555,
+      "interval": [
+        -0.16666666666666666,
+        0
+      ],
+      "method": "paired-packet-cluster-bootstrap-descriptive",
+      "resamples": 2000,
+      "seed": 20261001,
+      "limitations": [
+        "Only six synthetic packets carry reference labels.",
+        "No causal or population-wide superiority is certified."
+      ]
+    },
+    {
+      "model": "google/gemini-3.1-pro-preview",
+      "from": "n",
+      "to": "p",
+      "matchedSyntheticDecisions": 108,
+      "plannedMatchedSyntheticDecisions": 108,
+      "complete": true,
+      "clusters": 6,
+      "meanDifference": -0.08333333333333333,
+      "interval": [
+        -0.23148148148148145,
+        0
+      ],
+      "method": "paired-packet-cluster-bootstrap-descriptive",
+      "resamples": 2000,
+      "seed": 20261001,
+      "limitations": [
+        "Only six synthetic packets carry reference labels.",
+        "No causal or population-wide superiority is certified."
+      ]
+    }
+  ],
+  "observedCosts": {
+    "generationAttemptRecords": 297,
+    "generations": 297,
+    "generationsWithCost": 296,
+    "generationsWithMissingCost": 1,
+    "attemptsWithoutUsage": 0,
+    "missingCostUnits": 2,
+    "knownSubtotalNanodollars": 9276188325,
+    "totalNanodollars": null,
+    "knownNanodollars": 9276188325,
+    "missingCostIsNotZero": true,
+    "costScope": "observed attempts of the selected C identity; not a projection of unrun tasks",
+    "attemptStates": {
+      "completed": 296,
+      "technical-error": 1
+    },
+    "deduplication": "latest identity/key/attempt, then identical usage identity/key/timestamp/content"
+  },
+  "referenceStatus": {
+    "syntheticQuestions": 36,
+    "realQuestionsPendingHuman": 24
+  },
+  "limitations": [
+    "Synthetic specification accuracy does not establish real-source semantic truth.",
+    "Exact quotes and citations require a separate relevance audit.",
+    "Partial runs remain partial; completed-condition selection is not a final ranking.",
+    "No engine is selected or activated automatically."
+  ],
+  "sourceArchiveSha256": "55276f8c2d772d1c87caec867e0678a7d16d9eec2b97e09beea1ba471c0f3116"
+}

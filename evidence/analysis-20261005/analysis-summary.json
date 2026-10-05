@@ -1,0 +1,289 @@
+{
+  "host": "Kaggle",
+  "modelCallsDuringAnalysis": 0,
+  "pooledAsOneExecution": false,
+  "C": {
+    "plannedExtractions": 60,
+    "observedExtractions": 60,
+    "plannedProductions": 240,
+    "observedProductions": 236,
+    "completedPackets": 59,
+    "currentStates": {
+      "completed": 591,
+      "technical-error": 1
+    },
+    "complete": false
+  },
+  "C4": {
+    "newExtractions": 0,
+    "productions": 4,
+    "completedPackets": 1
+  },
+  "realQuestionsPendingHuman": 24,
+  "accuracyByIdentity": {
+    "C": [
+      {
+        "model": "google/gemini-3.8-flash",
+        "condition": "none",
+        "syntheticAccuracyObserved": 0.8823529411764706,
+        "counts": {
+          "observedProductions": 29,
+          "syntheticDecisionsObserved": 102,
+          "syntheticCorrect": 90,
+          "invalidSyntheticDecisions": 12,
+          "necessaryHold": 37,
+          "necessaryHoldUsed": 35,
+          "excessiveHold": 0,
+          "unjustifiedConclusion": 0,
+          "invalidProductions": 11,
+          "missingProductions": 1,
+          "neverRunProductions": 1,
+          "realDecisionsUnscored": 72
+        }
+      },
+      {
+        "model": "google/gemini-3.8-flash",
+        "condition": "baseline",
+        "syntheticAccuracyObserved": 0.9411764705882353,
+        "counts": {
+          "observedProductions": 29,
+          "syntheticDecisionsObserved": 102,
+          "syntheticCorrect": 96,
+          "invalidSyntheticDecisions": 6,
+          "necessaryHold": 37,
+          "necessaryHoldUsed": 37,
+          "excessiveHold": 0,
+          "unjustifiedConclusion": 0,
+          "invalidProductions": 13,
+          "missingProductions": 1,
+          "failedProductions": 1,
+          "realDecisionsUnscored": 72
+        }
+      },
+      {
+        "model": "google/gemini-3.8-flash",
+        "condition": "n",
+        "syntheticAccuracyObserved": 0.9411764705882353,
+        "counts": {
+          "observedProductions": 29,
+          "syntheticDecisionsObserved": 102,
+          "syntheticCorrect": 96,
+          "invalidSyntheticDecisions": 6,
+          "necessaryHold": 37,
+          "necessaryHoldUsed": 37,
+          "excessiveHold": 0,
+          "unjustifiedConclusion": 0,
+          "invalidProductions": 11,
+          "missingProductions": 1,
+          "neverRunProductions": 1,
+          "realDecisionsUnscored": 72
+        }
+      },
+      {
+        "model": "google/gemini-3.8-flash",
+        "condition": "p",
+        "syntheticAccuracyObserved": 0.9411764705882353,
+        "counts": {
+          "observedProductions": 29,
+          "syntheticDecisionsObserved": 102,
+          "syntheticCorrect": 96,
+          "invalidSyntheticDecisions": 6,
+          "necessaryHold": 37,
+          "necessaryHoldUsed": 37,
+          "excessiveHold": 0,
+          "unjustifiedConclusion": 0,
+          "invalidProductions": 12,
+          "missingProductions": 1,
+          "neverRunProductions": 1,
+          "realDecisionsUnscored": 72
+        }
+      },
+      {
+        "model": "google/gemini-3.1-pro-preview",
+        "condition": "none",
+        "syntheticAccuracyObserved": 1.0,
+        "counts": {
+          "observedProductions": 30,
+          "syntheticDecisionsObserved": 108,
+          "syntheticCorrect": 108,
+          "invalidSyntheticDecisions": 0,
+          "necessaryHold": 39,
+          "necessaryHoldUsed": 39,
+          "excessiveHold": 0,
+          "unjustifiedConclusion": 0,
+          "realDecisionsUnscored": 72
+        }
+      },
+      {
+        "model": "google/gemini-3.1-pro-preview",
+        "condition": "baseline",
+        "syntheticAccuracyObserved": 0.8796296296296297,
+        "counts": {
+          "observedProductions": 30,
+          "syntheticDecisionsObserved": 108,
+          "syntheticCorrect": 95,
+          "invalidSyntheticDecisions": 0,
+          "necessaryHold": 39,
+          "necessaryHoldUsed": 39,
+          "excessiveHold": 13,
+          "unjustifiedConclusion": 0,
+          "realDecisionsUnscored": 72
+        }
+      },
+      {
+        "model": "google/gemini-3.1-pro-preview",
+        "condition": "n",
+        "syntheticAccuracyObserved": 0.9074074074074074,
+        "counts": {
+          "observedProductions": 30,
+          "syntheticDecisionsObserved": 108,
+          "syntheticCorrect": 98,
+          "invalidSyntheticDecisions": 0,
+          "necessaryHold": 39,
+          "necessaryHoldUsed": 39,
+          "excessiveHold": 10,
+          "unjustifiedConclusion": 0,
+          "realDecisionsUnscored": 72
+        }
+      },
+      {
+        "model": "google/gemini-3.1-pro-preview",
+        "condition": "p",
+        "syntheticAccuracyObserved": 0.8240740740740741,
+        "counts": {
+          "observedProductions": 30,
+          "syntheticDecisionsObserved": 108,
+          "syntheticCorrect": 89,
+          "invalidSyntheticDecisions": 0,
+          "necessaryHold": 39,
+          "necessaryHoldUsed": 39,
+          "excessiveHold": 19,
+          "unjustifiedConclusion": 0,
+          "realDecisionsUnscored": 72
+        }
+      }
+    ],
+    "C4": [
+      {
+        "model": "google/gemini-3.8-flash",
+        "condition": "none",
+        "counts": {
+          "observedProductions": 1,
+          "syntheticDecisionsObserved": 6,
+          "syntheticCorrect": 6,
+          "invalidSyntheticDecisions": 0,
+          "necessaryHold": 2,
+          "necessaryHoldUsed": 2,
+          "excessiveHold": 0,
+          "unjustifiedConclusion": 0
+        },
+        "confusion": [
+          {
+            "referenceCategory": "HOLD",
+            "predictedCategory": "HOLD",
+            "count": 2
+          },
+          {
+            "referenceCategory": "REJECT",
+            "predictedCategory": "REJECT",
+            "count": 4
+          }
+        ],
+        "syntheticAccuracyObserved": 1.0,
+        "plannedProductionsWithinComplement": 1,
+        "plannedSyntheticDecisionsWithinComplement": 6,
+        "completeWithinComplement": true
+      },
+      {
+        "model": "google/gemini-3.8-flash",
+        "condition": "baseline",
+        "counts": {
+          "observedProductions": 1,
+          "syntheticDecisionsObserved": 6,
+          "syntheticCorrect": 6,
+          "invalidSyntheticDecisions": 0,
+          "necessaryHold": 2,
+          "necessaryHoldUsed": 2,
+          "excessiveHold": 0,
+          "unjustifiedConclusion": 0
+        },
+        "confusion": [
+          {
+            "referenceCategory": "HOLD",
+            "predictedCategory": "HOLD",
+            "count": 2
+          },
+          {
+            "referenceCategory": "REJECT",
+            "predictedCategory": "REJECT",
+            "count": 4
+          }
+        ],
+        "syntheticAccuracyObserved": 1.0,
+        "plannedProductionsWithinComplement": 1,
+        "plannedSyntheticDecisionsWithinComplement": 6,
+        "completeWithinComplement": true
+      },
+      {
+        "model": "google/gemini-3.8-flash",
+        "condition": "n",
+        "counts": {
+          "observedProductions": 1,
+          "syntheticDecisionsObserved": 6,
+          "syntheticCorrect": 6,
+          "invalidSyntheticDecisions": 0,
+          "necessaryHold": 2,
+          "necessaryHoldUsed": 2,
+          "excessiveHold": 0,
+          "unjustifiedConclusion": 0
+        },
+        "confusion": [
+          {
+            "referenceCategory": "HOLD",
+            "predictedCategory": "HOLD",
+            "count": 2
+          },
+          {
+            "referenceCategory": "REJECT",
+            "predictedCategory": "REJECT",
+            "count": 4
+          }
+        ],
+        "syntheticAccuracyObserved": 1.0,
+        "plannedProductionsWithinComplement": 1,
+        "plannedSyntheticDecisionsWithinComplement": 6,
+        "completeWithinComplement": true
+      },
+      {
+        "model": "google/gemini-3.8-flash",
+        "condition": "p",
+        "counts": {
+          "observedProductions": 1,
+          "syntheticDecisionsObserved": 6,
+          "syntheticCorrect": 6,
+          "invalidSyntheticDecisions": 0,
+          "necessaryHold": 2,
+          "necessaryHoldUsed": 2,
+          "excessiveHold": 0,
+          "unjustifiedConclusion": 0
+        },
+        "confusion": [
+          {
+            "referenceCategory": "HOLD",
+            "predictedCategory": "HOLD",
+            "count": 2
+          },
+          {
+            "referenceCategory": "REJECT",
+            "predictedCategory": "REJECT",
+            "count": 4
+          }
+        ],
+        "syntheticAccuracyObserved": 1.0,
+        "plannedProductionsWithinComplement": 1,
+        "plannedSyntheticDecisionsWithinComplement": 6,
+        "completeWithinComplement": true
+      }
+    ]
+  }
+}

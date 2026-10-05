@@ -1,0 +1,115 @@
+{
+  "format": "orbit-final-e-qualification-receipt-v1",
+  "state": "FAIL",
+  "host": "Kaggle",
+  "modelCalls": 0,
+  "releaseId": "orbit-v3-final-20261003T142300Z",
+  "campaignId": "orbit-kaggle-20261003-final-e1",
+  "configurationSha256": "de888e9bdf56617a17e4805fceb96cfbf4831e86cc4eac75cbcfa4be270f0d0e",
+  "releaseManifestSha256": "2cf43064c166c8b7744f359faa43af95ea5b39451eecd7c177d0ac71007b958a",
+  "harnessSha256": "aba135b17b73c3ff2976ab1d875f355652bca109a9e40666948bd522f75985d2",
+  "fullMissionComplete": false,
+  "nativePool": [
+    {
+      "worker": 0,
+      "passed": true,
+      "native": true,
+      "registeredToolCount": 15,
+      "chromeMajor": 154,
+      "releaseSha256": "2cf43064c166c8b7744f359faa43af95ea5b39451eecd7c177d0ac71007b958a",
+      "capabilitiesState": "READY",
+      "profileStop": "closed"
+    },
+    {
+      "worker": 1,
+      "passed": true,
+      "native": true,
+      "registeredToolCount": 15,
+      "chromeMajor": 154,
+      "releaseSha256": "2cf43064c166c8b7744f359faa43af95ea5b39451eecd7c177d0ac71007b958a",
+      "capabilitiesState": "READY",
+      "profileStop": "closed"
+    },
+    {
+      "worker": 2,
+      "passed": true,
+      "native": true,
+      "registeredToolCount": 15,
+      "chromeMajor": 154,
+      "releaseSha256": "2cf43064c166c8b7744f359faa43af95ea5b39451eecd7c177d0ac71007b958a",
+      "capabilitiesState": "READY",
+      "profileStop": "closed"
+    },
+    {
+      "worker": 3,
+      "passed": true,
+      "native": true,
+      "registeredToolCount": 15,
+      "chromeMajor": 154,
+      "releaseSha256": "2cf43064c166c8b7744f359faa43af95ea5b39451eecd7c177d0ac71007b958a",
+      "capabilitiesState": "READY",
+      "profileStop": "closed"
+    },
+    {
+      "worker": 4,
+      "passed": true,
+      "native": true,
+      "registeredToolCount": 15,
+      "chromeMajor": 154,
+      "releaseSha256": "2cf43064c166c8b7744f359faa43af95ea5b39451eecd7c177d0ac71007b958a",
+      "capabilitiesState": "READY",
+      "profileStop": "closed"
+    },
+    {
+      "worker": 5,
+      "passed": true,
+      "native": true,
+      "registeredToolCount": 15,
+      "chromeMajor": 154,
+      "releaseSha256": "2cf43064c166c8b7744f359faa43af95ea5b39451eecd7c177d0ac71007b958a",
+      "capabilitiesState": "READY",
+      "profileStop": "closed"
+    },
+    {
+      "worker": 6,
+      "passed": true,
+      "native": true,
+      "registeredToolCount": 15,
+      "chromeMajor": 154,
+      "releaseSha256": "2cf43064c166c8b7744f359faa43af95ea5b39451eecd7c177d0ac71007b958a",
+      "capabilitiesState": "READY",
+      "profileStop": "closed"
+    },
+    {
+      "worker": 7,
+      "passed": false,
+      "native": null,
+      "registeredToolCount": null,
+      "chromeMajor": null,
+      "releaseSha256": null,
+      "capabilitiesState": null,
+      "profileStop": "closed"
+    }
+  ],
+  "qualificationSummary": {
+    "preparationChecks": 6,
+    "sdkThreadChecks": 4,
+    "callbackChecks": 6,
+    "nativeWorkersPassed": 7,
+    "nativeWorkersTotal": 8,
+    "modelTrajectories": 0,
+    "plannedModelTrajectories": 144
+  },
+  "diagnosis": {
+    "failedWorker": 7,
+    "error": "PUBLIC_RELEASE_FINGERPRINT_MISMATCH",
+    "modelsNotDispatched": true,
+    "actualMismatchedNativeBodyCaptured": false,
+    "separateReadOnlyProbeHttpStatus": 403,
+    "causeLimit": "The later Imunify360 response does not establish the earlier mismatched native response body."
+  },
+  "releaseProjection": {
+    "sourceSha256": "875256d840607f9af1b31fa49230ff0262f4ebd6c87d611d2a2402c673ee8429",
+    "omitted": "Private paths, original/model text, operational endpoint details and unneeded internals. Original receipt preserved in source project."
+  }
+}

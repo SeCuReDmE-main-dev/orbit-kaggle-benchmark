@@ -1,0 +1,90 @@
+{
+  "format": "orbit-public-native-pilot-run-metadata-v1",
+  "taskUrl": "https://www.kaggle.com/benchmarks/tasks/celebrum/orbit-scoped-evidence-pilot-v2/1",
+  "referenceStatus": "six authored synthetic development questions; one historical repetition per model",
+  "observedRuns": [
+    {
+      "model": "google/gemini-3.8-flash",
+      "host": "Kaggle Benchmarks 0.6.1",
+      "promptVersion": 2,
+      "repetitions": 1,
+      "questions": 6,
+      "modelDecisionsCorrect": 6,
+      "quotesExact": 8,
+      "quoteChecks": 8,
+      "assertionsPassed": 53,
+      "assertionsTotal": 53,
+      "engines": {
+        "baseline": {
+          "evaluated": 6,
+          "correctEvaluated": 6,
+          "schemaErrors": 0
+        },
+        "n": {
+          "evaluated": 6,
+          "correctEvaluated": 6,
+          "schemaErrors": 0
+        },
+        "p": {
+          "evaluated": 6,
+          "correctEvaluated": 6,
+          "schemaErrors": 0
+        }
+      },
+      "usage": {
+        "n_input_tokens": 1147,
+        "n_output_tokens": 2173,
+        "cost_usd": 0.009009
+      },
+      "startedAt": "2026-09-30T00:59:50.765996Z",
+      "completedAt": "2026-09-30T00:59:58.110640Z",
+      "promptSha256": "785070d61245c64226ad070dff0196b3473edde8644fc333c501342d807e9c5f",
+      "engineSha256": "886f7cf3fbfcb445f4c1af7ebf1d3f8cb581964fe20d3bce706e8b4f4b880bd9"
+    },
+    {
+      "model": "google/gemini-3.1-pro-preview",
+      "host": "Kaggle Benchmarks 0.6.1",
+      "promptVersion": 2,
+      "repetitions": 1,
+      "questions": 6,
+      "modelDecisionsCorrect": 6,
+      "quotesExact": 8,
+      "quoteChecks": 8,
+      "assertionsPassed": 53,
+      "assertionsTotal": 53,
+      "engines": {
+        "baseline": {
+          "evaluated": 6,
+          "correctEvaluated": 6,
+          "schemaErrors": 0
+        },
+        "n": {
+          "evaluated": 6,
+          "correctEvaluated": 6,
+          "schemaErrors": 0
+        },
+        "p": {
+          "evaluated": 6,
+          "correctEvaluated": 6,
+          "schemaErrors": 0
+        }
+      },
+      "usage": {
+        "n_input_tokens": 1147,
+        "n_output_tokens": 5261,
+        "cost_usd": 0.065426
+      },
+      "startedAt": "2026-09-30T00:59:58.129989Z",
+      "completedAt": "2026-09-30T01:00:31.080826Z",
+      "promptSha256": "785070d61245c64226ad070dff0196b3473edde8644fc333c501342d807e9c5f",
+      "engineSha256": "886f7cf3fbfcb445f4c1af7ebf1d3f8cb581964fe20d3bce706e8b4f4b880bd9"
+    }
+  ],
+  "sourceAggregateSha256": "18f7648699e4c03c95c85fa26f0b903ff79d1ed966431199ede6b5f8879558ef",
+  "limits": [
+    "Historical notebook exports contain both model observations; the built task initially showed Flash only. Current collection runs are a separate activity.",
+    "53 assertions check six questions and their shared-engine outputs, not 53 independent benchmark problems.",
+    "Neither full model answers nor hidden reasoning are included.",
+    "Static prepared notebook identity is not a captured hash of the currently hosted Kaggle task binary. Current Code-tab parity requires live verification."
+  ]
+}

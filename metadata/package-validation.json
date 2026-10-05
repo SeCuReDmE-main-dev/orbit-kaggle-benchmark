@@ -1,0 +1,30 @@
+{
+  "format": "orbit-static-package-validation-v1",
+  "observedAtUtc": "2026-10-05T05:59:52.874259+00:00",
+  "state": "PASS",
+  "counts": {
+    "publicArtifacts": 53,
+    "jsonParsed": 20,
+    "pythonAstParsed": 12,
+    "notebooksChecked": 4,
+    "notebookCodeCellsParsed": 11,
+    "exportHashesVerified": 15,
+    "pilotHashesVerified": 3,
+    "catalogHashesVerified": 53,
+    "embeddedSourceHashesVerified": 3,
+    "ipythonLinesReplacedForStaticParsing": 0,
+    "relativeMarkdownLinksChecked": 46,
+    "newPreparationHashesVerified": 17,
+    "embeddedReplayBytesVerified": 9,
+    "nativeContractFunctionsVerified": 4,
+    "executedAnalysisScopeChecks": 5
+  },
+  "errors": [],
+  "warnings": [],
+  "trackedFileCheck": "verified",
+  "pythonVersion": "3.10.11",
+  "benchmarkModulesImported": false,
+  "benchmarkRunsExecuted": 0,
+  "modelCalls": 0,
+  "scope": "Static file, syntax, notebook-output, byte-provenance and public-boundary checks only."
+}

@@ -1,0 +1,55 @@
+{
+  "format": "orbit-kaggle-synthetic-replay-v1",
+  "status": "passed",
+  "modelCalls": 0,
+  "nodeVersion": "v20.19.0",
+  "esbuildVersion": "0.25.12",
+  "decisions": 108,
+  "metamorphicChecks": 324,
+  "relationChecks": 54,
+  "summary": {
+    "baseline": {
+      "questions": 36,
+      "correct": 36,
+      "invariantsPassed": 108,
+      "invariantsTotal": 108,
+      "relationPassed": 18,
+      "relationTotal": 18
+    },
+    "n": {
+      "questions": 36,
+      "correct": 36,
+      "invariantsPassed": 108,
+      "invariantsTotal": 108,
+      "relationPassed": 18,
+      "relationTotal": 18
+    },
+    "p": {
+      "questions": 36,
+      "correct": 36,
+      "invariantsPassed": 108,
+      "invariantsTotal": 108,
+      "relationPassed": 18,
+      "relationTotal": 18
+    }
+  },
+  "failures": [],
+  "inputs": {
+    "harness/replay_synthetic.py": "32b3ab8413fcb51d1133cb2e34f1ee0d864a0f8164849df49f69c1363c55272e",
+    "harness/synthetic/manifest.json": "0e1047810af095864e94b3aa17b4f8c0812a4a4b32a7b13f506e65aeb4b3b763",
+    "harness/synthetic/reference-cases.json": "aabe0f8b121f32a5eda7795dfe730f70993829a30b18c1857974b5cdf4e6fcd0",
+    "harness/source/package.json": "0f183be3df9c6226fb662731461fc921d001ebc2372bf07e57528fbfaa453de2",
+    "harness/source/tools/engine-jsonl.ts": "a07c83552b9c1b6450814819ecf0f9392f698f386e3c10bc06917edb4f7a9b39",
+    "harness/source/packages/evidence-review/src/index.ts": "1ef6ca28cf3da9001708d45a64b39c65192523584fd383d3a701010926cfa937",
+    "harness/source/packages/evidence-review/src/classification.ts": "230a5f494e64f86428aa3f26b6cfe6ab0d42c78d47f758419bfe76f7f22019ae",
+    "harness/source/packages/evidence-review/src/relations.ts": "d5da24352b213c55cede9559e2faa48b3b8451c57a3257b882c77ff82ee495a4"
+  },
+  "resultSha256": "425fa20c8703627aa663569022fa84885524afe9fa74cebbe8c715746de00180",
+  "compiledEngineSha256": "8c0a16a08fec3ea7b23213e4951cfb8cffdfdde1c37e1d8ddb69a3e849f1688d",
+  "limitations": [
+    "Development synthetic corpus; not the frozen final 60-question campaign.",
+    "Specification-derived annotations are authored, not an independent human accuracy study.",
+    "No semantic entailment model or live browser execution in suite A.",
+    "Ties between baseline and N are reported, not concealed."
+  ]
+}

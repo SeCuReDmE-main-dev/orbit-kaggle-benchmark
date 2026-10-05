@@ -1,0 +1,133 @@
+{
+  "format": "orbit-public-export-manifest-v1",
+  "preparedOn": "2026-10-05",
+  "originalProject": "https://github.com/SeCuReDmE-main-dev/Orbit",
+  "sourceBranch": "master",
+  "sourceHead": "13b315696bfaf72ac371e5b3498e2ab0d3a9a00e",
+  "sourceWorkingTree": "Existing changes preserved; frozen engine snapshot exported instead of current edited files",
+  "originalProjectModified": false,
+  "providerCalls": 0,
+  "benchmarkTestsExecuted": false,
+  "exports": [
+    {
+      "exportPath": "harness/source/packages/evidence-review/src/index.ts",
+      "sourcePath": ".benchmark/benchmarks/dev-to-challenge-orbit-classification-engines-and-public-measure-scoped-evidence-decisions-and-provenance-c-discrete-pli/current/campaign-v2/frozen-c-sdkparams2/packages/evidence-review/src/index.ts",
+      "sourceSha256": "1ef6ca28cf3da9001708d45a64b39c65192523584fd383d3a701010926cfa937",
+      "exportSha256": "1ef6ca28cf3da9001708d45a64b39c65192523584fd383d3a701010926cfa937",
+      "transformation": "none; exact bytes",
+      "scope": "Frozen historical C engine; not modified Orbit working tree"
+    },
+    {
+      "exportPath": "harness/source/packages/evidence-review/src/classification.ts",
+      "sourcePath": ".benchmark/benchmarks/dev-to-challenge-orbit-classification-engines-and-public-measure-scoped-evidence-decisions-and-provenance-c-discrete-pli/current/campaign-v2/frozen-c-sdkparams2/packages/evidence-review/src/classification.ts",
+      "sourceSha256": "230a5f494e64f86428aa3f26b6cfe6ab0d42c78d47f758419bfe76f7f22019ae",
+      "exportSha256": "230a5f494e64f86428aa3f26b6cfe6ab0d42c78d47f758419bfe76f7f22019ae",
+      "transformation": "none; exact bytes",
+      "scope": "Frozen historical C engine; not modified Orbit working tree"
+    },
+    {
+      "exportPath": "harness/source/packages/evidence-review/src/relations.ts",
+      "sourcePath": ".benchmark/benchmarks/dev-to-challenge-orbit-classification-engines-and-public-measure-scoped-evidence-decisions-and-provenance-c-discrete-pli/current/campaign-v2/frozen-c-sdkparams2/packages/evidence-review/src/relations.ts",
+      "sourceSha256": "d5da24352b213c55cede9559e2faa48b3b8451c57a3257b882c77ff82ee495a4",
+      "exportSha256": "d5da24352b213c55cede9559e2faa48b3b8451c57a3257b882c77ff82ee495a4",
+      "transformation": "none; exact bytes",
+      "scope": "Frozen historical C engine; not modified Orbit working tree"
+    },
+    {
+      "exportPath": "harness/source/tools/engine-jsonl.ts",
+      "sourcePath": ".benchmark/benchmarks/dev-to-challenge-orbit-classification-engines-and-public-measure-scoped-evidence-decisions-and-provenance-c-discrete-pli/current/campaign-v2/frozen-c-sdkparams2/tools/engine-jsonl.ts",
+      "sourceSha256": "a07c83552b9c1b6450814819ecf0f9392f698f386e3c10bc06917edb4f7a9b39",
+      "exportSha256": "a07c83552b9c1b6450814819ecf0f9392f698f386e3c10bc06917edb4f7a9b39",
+      "transformation": "none; exact bytes",
+      "scope": "Frozen historical C JSONL interface"
+    },
+    {
+      "exportPath": "harness/source/package.json",
+      "sourcePath": ".benchmark/benchmarks/dev-to-challenge-orbit-classification-engines-and-public-measure-scoped-evidence-decisions-and-provenance-c-discrete-pli/current/campaign-v2/frozen-c-sdkparams2/package.json",
+      "sourceSha256": "0f183be3df9c6226fb662731461fc921d001ebc2372bf07e57528fbfaa453de2",
+      "exportSha256": "0f183be3df9c6226fb662731461fc921d001ebc2372bf07e57528fbfaa453de2",
+      "transformation": "none; exact bytes",
+      "scope": "Exact esbuild dependency 0.25.12, no runtime credentials"
+    },
+    {
+      "exportPath": "harness/synthetic/reference-cases.json",
+      "sourceSha256": "aabe0f8b121f32a5eda7795dfe730f70993829a30b18c1857974b5cdf4e6fcd0",
+      "exportSha256": "aabe0f8b121f32a5eda7795dfe730f70993829a30b18c1857974b5cdf4e6fcd0",
+      "transformation": "none; exact bytes",
+      "scope": "36 authored synthetic specification cases; example.org documents only; not real gold",
+      "sourceMaterial": "Author-generated synthetic development corpus; original source byte fingerprint retained without a private storage path."
+    },
+    {
+      "exportPath": "harness/synthetic/manifest.json",
+      "sourceSha256": "0e1047810af095864e94b3aa17b4f8c0812a4a4b32a7b13f506e65aeb4b3b763",
+      "exportSha256": "0e1047810af095864e94b3aa17b4f8c0812a4a4b32a7b13f506e65aeb4b3b763",
+      "transformation": "none; exact bytes",
+      "scope": "Historical development corpus identity; not independent final test",
+      "sourceMaterial": "Author-generated synthetic development corpus; original source byte fingerprint retained without a private storage path."
+    },
+    {
+      "exportPath": "harness/scoring/analyze_kaggle_campaign_results.py",
+      "sourcePath": "tools/analyze_kaggle_campaign_results.py",
+      "sourceSha256": "1ae7a80aaf7fcfbec2e1121af6a73f30777b26976400308bedb7d5e30ecc21d3",
+      "exportSha256": "1ae7a80aaf7fcfbec2e1121af6a73f30777b26976400308bedb7d5e30ecc21d3",
+      "transformation": "none; exact bytes",
+      "scope": "Source-only aggregate analyzer; requires separately authorized private inputs inside Kaggle"
+    },
+    {
+      "exportPath": "harness/scoring/orbit_campaign_checkpoint.py",
+      "sourcePath": "tools/orbit_campaign_checkpoint.py",
+      "sourceSha256": "5ba28748059beb4154a5256d39627c4610b1baab977f04124f34eadffe87bb2e",
+      "exportSha256": "ec92f00b0d090a42e0c1cb10a836f3501fb1ad7c63a6021ba9e74fde9358be98",
+      "transformation": "Exact digest and campaign_identity definitions only; imports retained; other helpers excluded",
+      "scope": "Minimal analyzer dependencies"
+    },
+    {
+      "exportPath": "harness/replay_synthetic.py",
+      "sourcePath": "tools/benchmark_suite_a.py",
+      "sourceSha256": "f4622fd9b75f8eb30e0daf4de884f0eccb41c76531600b1f0d3b6b0b14c27e20",
+      "exportSha256": "32b3ab8413fcb51d1133cb2e34f1ee0d864a0f8164849df49f69c1363c55272e",
+      "transformation": "ROOT points to exported source; reference file renamed; invoke esbuild bundle instead of tsx. Scoring logic unchanged.",
+      "scope": "Synthetic development replay only; newly exported adapter not execution verified"
+    },
+    {
+      "exportPath": "evidence/c-resumption-20261003.json",
+      "sourcePath": "docs/receipts/formation/c-resumption-20261003.json",
+      "sourceSha256": "8c7bd0f8ded6d0ad0c3afc6979c97730866606aef0699d523f4d9a82e1c5800a",
+      "exportSha256": "fcc1eb2986f4eb979b1abcf6f4c1f57b268e9c194c1726be0a2d32b88f20d75c",
+      "transformation": "Sanitized allowlist of public receipt metadata; excluded private paths and operational details",
+      "scope": "Historical run receipt, not a newly performed test"
+    },
+    {
+      "exportPath": "evidence/c4-complement-20261003.json",
+      "sourcePath": "docs/receipts/formation/c4-complement-20261003.json",
+      "sourceSha256": "396ae919f3f642f3abf9704efa9e72a590859b0a905ac2f1c2f83c914d683c2e",
+      "exportSha256": "59bc081734ac6348c5d1f94ae663a3e48d4abc1782fccf95916fbd7fcb4c922b",
+      "transformation": "Sanitized allowlist of public receipt metadata; excluded private paths and operational details",
+      "scope": "Historical run receipt, not a newly performed test"
+    },
+    {
+      "exportPath": "evidence/d-provider-20261003.json",
+      "sourcePath": "docs/receipts/formation/d-provider-20261003.json",
+      "sourceSha256": "bcc31d580baeb6978f5b132c4a80eed8f73aeb269fbe25c930b7fb01b398344b",
+      "exportSha256": "4c48e0d34bc6146e9790d85ffcddf6def3bb3bf5443253b02ae09540f34ab009",
+      "transformation": "Sanitized allowlist of public receipt metadata; excluded private paths and operational details",
+      "scope": "Historical run receipt, not a newly performed test"
+    },
+    {
+      "exportPath": "evidence/e-qualification-20261003.json",
+      "sourcePath": "docs/receipts/formation/e-qualification-attempt-1-20261003.json",
+      "sourceSha256": "875256d840607f9af1b31fa49230ff0262f4ebd6c87d611d2a2402c673ee8429",
+      "exportSha256": "92a7127e92a08b2be4794f5bc5d20e4aa83a8add177fd64d8809cdcf0e02590c",
+      "transformation": "Sanitized allowlist of public receipt metadata; excluded private paths and operational details",
+      "scope": "Historical run receipt, not a newly performed test"
+    },
+    {
+      "exportPath": "evidence/c-analysis-historical-221-productions.json",
+      "sourcePath": ".benchmark/benchmarks/dev-to-challenge-orbit-classification-engines-and-public-measure-scoped-evidence-decisions-and-provenance-c-discrete-pli/current/campaign-v2/c-sdkparams2-independent-analysis.json",
+      "sourceSha256": "f9dc51d3f32e71b7378281376ca64dfbfc21803ca75364944a7f4bff0d3ad6d3",
+      "exportSha256": "f9dc51d3f32e71b7378281376ca64dfbfc21803ca75364944a7f4bff0d3ad6d3",
+      "transformation": "none; exact bytes",
+      "scope": "Earlier Oct 1 checkpoint: 57 extractions/221 productions. NOT latest C/C4 accuracy."
+    }
+  ]
+}
