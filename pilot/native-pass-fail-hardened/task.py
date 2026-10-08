@@ -191,8 +191,10 @@ def validate_answer(answer, public, gold):
     return {"valid": True, "outcome": "pass" if correct else "contract-fail", "checks": checks}
 
 import re, uuid
+from contextvars import ContextVar
 CAMPAIGN_ID = 'orbit-native-pass-fail-hardening-20261008-v1'
 DIAGNOSTIC_DIR = Path('/kaggle/working/orbit-native-pass-fail-hardened')
+_ATTEMPT_CAPTURE = ContextVar('orbit_hardened_attempt_capture', default=None)
 
 
 class DiagnosticPersistenceError(RuntimeError):
@@ -341,6 +343,15 @@ def orbit_native_pass_fail_hardened(llm) -> bool:
         except Exception as diagnostic_error:
             _report_diagnostic_failure(report, diagnostic_error)
             if primary_error is None:
+                # SDK 0.6.1 can swallow root-run exceptions and return FAILED.
+                # Capture only this attempt's categorical result before it does.
+                capture = _ATTEMPT_CAPTURE.get()
+                if capture is not None:
+                    capture.update({'state': 'technical-error', 'result': None,
+                        'errorType': 'DiagnosticPersistenceError', 'technicalPhase': 'diagnostics',
+                        'observationId': report['observationId'],
+                        'computedResult': report.get('result'), 'computedOutcome': report['outcome'],
+                        'diagnosticErrorType': type(diagnostic_error).__name__, 'retryEligible': False})
                 raise DiagnosticPersistenceError(report, diagnostic_error) from diagnostic_error
             # Keep the original provider/process exception and its traceback.
 
@@ -349,13 +360,15 @@ def orbit_native_pass_fail_hardened(llm) -> bool:
 def run_planned_models():
     observations = []
     for model_id in SELECTED_MODELS:
+        capture = {}
+        token = _ATTEMPT_CAPTURE.set(capture)
         try:
             run = orbit_native_pass_fail_hardened.run(kbench.llms[model_id])
             value = getattr(run, 'result', None)
-            observations.append({'model': model_id,
+            observation = {'model': model_id,
                 'state': 'completed' if type(value) is bool else 'native-result-needs-inspection',
                 'result': value if type(value) is bool else None,
-                'nativeResultType': type(value).__name__})
+                'nativeResultType': type(value).__name__}
         except Exception as error:
             observation = {'model': model_id, 'state': 'technical-error', 'result': None,
                            'errorType': type(error).__name__}
@@ -363,8 +376,11 @@ def run_planned_models():
                 observation.update({'technicalPhase': error.phase,
                     'computedResult': error.computedResult, 'computedOutcome': error.computedOutcome,
                     'retryEligible': False})
-            observations.append(observation)
             # Keep the observation; try the other planned model once, never retry this one.
+        finally:
+            _ATTEMPT_CAPTURE.reset(token)
+        observation.update(capture)
+        observations.append(observation)
     return observations
 
 MODEL_OBSERVATIONS = []

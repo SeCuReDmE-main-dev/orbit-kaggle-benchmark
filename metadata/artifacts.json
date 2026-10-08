@@ -1224,7 +1224,7 @@
         "synthetic-data",
         "uncertainty"
       ],
-      "sha256": "728c77673b5e305ad4ff39b85bf59e7d007cd7d6904f6af344b5a8e2840c0681"
+      "sha256": "c722a93dbcf1c5e0308d9113e89174855d7393b28ab3e285e4177dc5ab7caa76"
     },
     {
       "path": "pilot/native-pass-fail-hardened/manifest.json",
@@ -1249,7 +1249,7 @@
         "synthetic-data",
         "uncertainty"
       ],
-      "sha256": "0eb54fb468d78519c7006779699b544fbe2ef73cd5ff3674480b1d78cef5396b"
+      "sha256": "2adb82bb1af54af5c761bfb6fb34b474c9932e054714087d2561286e471856a7"
     },
     {
       "path": "pilot/native-pass-fail-hardened/orbit-native-pass-fail-hardened.ipynb",
@@ -1274,7 +1274,7 @@
         "synthetic-data",
         "uncertainty"
       ],
-      "sha256": "566cf93d8d497cd754b91a2026599bcbb6e76660152819b6e0f8107f9466469e"
+      "sha256": "b210eef3c872e04152098a5c82d4741c055206ea9e06c5649c0f8b0ae25dcca8"
     },
     {
       "path": "pilot/native-pass-fail-hardened/README.md",
@@ -1299,7 +1299,7 @@
         "synthetic-data",
         "uncertainty"
       ],
-      "sha256": "2ba2fbde3fd4aaa44527705dad6bef7b1368ac6900845013ba025bd188be5de3"
+      "sha256": "4402384b8225b76a50ae11eafcb970095e52127e648b292383581034799c9b85"
     },
     {
       "path": "pilot/native-pass-fail-hardened/task-template.py.in",
@@ -1324,7 +1324,7 @@
         "synthetic-data",
         "uncertainty"
       ],
-      "sha256": "278360f20359737d321cfcc7d349e7eef117b85c83c61bc07d6e1ae4783c1ec5"
+      "sha256": "e8c8161e27871b04dd5451394bd728b75fc9e0a9cccf5234f200996b3b1b4b26"
     },
     {
       "path": "pilot/native-pass-fail-hardened/task.py",
@@ -1349,7 +1349,7 @@
         "synthetic-data",
         "uncertainty"
       ],
-      "sha256": "9e52f5cfa229f6511a9be6092dc03f7706886409b9aae9bba0e42396e9835c82"
+      "sha256": "6c725eaef77760c3cf1d240633793f7b2c1e3b8bd777adf83c8c327222606bd0"
     },
     {
       "path": "pilot/orbit-kaggle-pilot.ipynb",
@@ -1480,7 +1480,7 @@
         "scoped-claims",
         "synthetic-data"
       ],
-      "sha256": "acc795eb51f0ffeab82e26326d6e0a5b1420f77292dfb151a36613c5659e5fb5"
+      "sha256": "7dbd1afd7637c801e593af68926377a129b653841c013b303b480de7eab0cda3"
     },
     {
       "path": "tests/test_package_validation.py",

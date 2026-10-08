@@ -1,6 +1,7 @@
 """Pure regression tests. Providers, SDK assertions and engine processes are doubles."""
 import ast
 import copy
+from contextvars import ContextVar
 import hashlib
 import json
 import math
@@ -39,6 +40,7 @@ def runtime():
     env = dict(CONTRACT)
     env.update({"json": json, "math": math, "Path": Path, "re": re, "uuid": uuid,
                 "hashlib": hashlib, "sys": sys, "CAMPAIGN_ID": BUILDER["CAMPAIGN_ID"],
+                "_ATTEMPT_CAPTURE": ContextVar("test_attempt_capture", default=None),
                 "PUBLIC": PUBLIC, "GOLD": GOLD,
                 "PROMPT": ast.literal_eval(ASSIGNMENTS["PROMPT"].value),
                 "ENGINE_SHA256": ast.literal_eval(ASSIGNMENTS["ENGINE_SHA256"].value),
@@ -206,6 +208,43 @@ class RuntimeTests(unittest.TestCase):
         self.assertEqual(run.call_count, 2)
         self.assertEqual([r["state"] for r in result], ["technical-error", "completed"])
         self.assertIs(result[1]["result"], False)
+        self.assertIsNone(env["_ATTEMPT_CAPTURE"].get())
+
+    def test_sdk_swallowed_diagnostic_error_retains_verdict_without_cache_leak(self):
+        # SDK 0.6.1 Task.run executes self.func synchronously. At root with
+        # continue_with_exceptions it can return a FAILED sentinel after swallowing
+        # the exception. Its cache path returns without calling the task at all.
+        for answer, expected in ((fixture(), True), ({"results": []}, False)):
+            env = runtime()
+            function = env["orbit_native_pass_fail_hardened"]
+            llm = SimpleNamespace(name="same-model", prompt=Mock(return_value=json.dumps(answer)))
+            env["SELECTED_MODELS"] = ["first", "cached-second"]
+            env["kbench"].llms = {"first": llm, "cached-second": llm}
+            env["_save_diagnostics"].side_effect = OSError("synthetic receipt failure")
+            failed_sentinel = object()
+            calls = []
+
+            def sdk_run_double(model):
+                calls.append(model)
+                if len(calls) == 2:
+                    return SimpleNamespace(result=False, status="SUCCESS", cached=True)
+                try:
+                    return SimpleNamespace(result=function(model), status="SUCCESS", cached=False)
+                except Exception:
+                    return SimpleNamespace(result=failed_sentinel, status="FAILED", cached=False)
+
+            env["orbit_native_pass_fail_hardened"] = SimpleNamespace(run=sdk_run_double)
+            observations = env["run_planned_models"]()
+            self.assertEqual(observations[0]["state"], "technical-error")
+            self.assertIs(observations[0]["computedResult"], expected)
+            self.assertEqual(observations[0]["computedOutcome"], "pass" if expected else "invalid-model-output")
+            self.assertEqual(observations[0]["technicalPhase"], "diagnostics")
+            self.assertFalse(observations[0]["retryEligible"])
+            self.assertEqual(observations[1]["state"], "completed")
+            self.assertNotIn("computedResult", observations[1])
+            self.assertIsNone(env["_ATTEMPT_CAPTURE"].get())
+            self.assertEqual(len(calls), 2)
+            llm.prompt.assert_called_once()
 
     def test_engine_internal_rejection_is_technical_not_a_model_failure(self):
         env = runtime()

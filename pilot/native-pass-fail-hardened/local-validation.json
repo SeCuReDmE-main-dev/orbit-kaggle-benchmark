@@ -1,13 +1,13 @@
 {
   "format": "orbit-native-hardened-local-validation-v1",
   "state": "PASS",
-  "startedAtUtc": "2026-10-08T16:09:43.065845+00:00",
-  "completedAtUtc": "2026-10-08T16:09:44.715825+00:00",
+  "startedAtUtc": "2026-10-08T16:26:46.928575+00:00",
+  "completedAtUtc": "2026-10-08T16:26:48.951284+00:00",
   "commands": [
     {
       "command": "python -B -m unittest discover -s tests -p test_native_pilot_hardened.py",
       "exitCode": 0,
-      "testsRun": 24
+      "testsRun": 25
     },
     {
       "command": "python -B tools/build_native_pilot_hardened.py --check",
@@ -16,11 +16,11 @@
   ],
   "sourceHashes": {
     "pilot/native-pass-fail-hardened/contract.py": "1676132695573e3fd007916f9a1f86272d65929a55adc65b95c6a6d1a037303b",
-    "pilot/native-pass-fail-hardened/task-template.py.in": "278360f20359737d321cfcc7d349e7eef117b85c83c61bc07d6e1ae4783c1ec5",
-    "pilot/native-pass-fail-hardened/task.py": "9e52f5cfa229f6511a9be6092dc03f7706886409b9aae9bba0e42396e9835c82",
-    "pilot/native-pass-fail-hardened/orbit-native-pass-fail-hardened.ipynb": "566cf93d8d497cd754b91a2026599bcbb6e76660152819b6e0f8107f9466469e",
+    "pilot/native-pass-fail-hardened/task-template.py.in": "e8c8161e27871b04dd5451394bd728b75fc9e0a9cccf5234f200996b3b1b4b26",
+    "pilot/native-pass-fail-hardened/task.py": "6c725eaef77760c3cf1d240633793f7b2c1e3b8bd777adf83c8c327222606bd0",
+    "pilot/native-pass-fail-hardened/orbit-native-pass-fail-hardened.ipynb": "b210eef3c872e04152098a5c82d4741c055206ea9e06c5649c0f8b0ae25dcca8",
     "tools/build_native_pilot_hardened.py": "b1284a33187b60523fad4b8fefd3f5ad249d06763fbf0ffd00127ba6027cfac9",
-    "tests/test_native_pilot_hardened.py": "acc795eb51f0ffeab82e26326d6e0a5b1420f77292dfb151a36613c5659e5fb5"
+    "tests/test_native_pilot_hardened.py": "7dbd1afd7637c801e593af68926377a129b653841c013b303b480de7eab0cda3"
   },
   "modelCalls": 0,
   "engineRuns": 0,
