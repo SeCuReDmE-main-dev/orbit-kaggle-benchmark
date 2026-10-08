@@ -112,7 +112,7 @@ def payload_summary(payload, case, engine):
     return summary, errors
 
 
-def relation_pass(payload, expected, engine):
+def relation_pass(payload, expected, engine, case):
     if not isinstance(payload, list) or any(
             not isinstance(item, dict) or not isinstance(item.get("kind"), str)
             or not isinstance(item.get("kinds", []), list)
@@ -120,6 +120,11 @@ def relation_pass(payload, expected, engine):
         raise InvalidResult("Invalid relation result array")
     if any(item.get("engine") != engine for item in payload):
         raise InvalidResult("Relation engine differs from row engine")
+    claims = [claim['id'] for claim in case['dossier']['claims']]
+    allowed = {(left, right) for index, left in enumerate(claims) for right in claims[index + 1:]}
+    pairs = [(item.get('leftClaimId'), item.get('rightClaimId')) for item in payload]
+    if any(pair not in allowed for pair in pairs) or len(set(pairs)) != len(pairs):
+        raise InvalidResult("Relation claim pair differs from case dossier or is duplicated")
     return any(item["kind"] == expected or expected in item.get("kinds", []) for item in payload)
 
 
@@ -171,7 +176,7 @@ def check_result(result):
         if not row["ok"]:
             computed_pass = False
         elif row["operation"] == "relation":
-            computed_pass = relation_pass(row.get("result"), gold["relation"], row["engine"])
+            computed_pass = relation_pass(row.get("result"), gold["relation"], row["engine"], cases[key[0]])
         elif row["operation"] == "original":
             actual = normalized[index]
             computed_pass = (actual["decision"] == gold["decision"] and

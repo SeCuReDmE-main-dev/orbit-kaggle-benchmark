@@ -154,6 +154,16 @@ class ReplayResultTests(unittest.TestCase):
         self.assertEqual(report["status"], "failed")
         self.assertEqual(report["summary"]["baseline"]["relationPassed"], 17)
 
+    def test_relation_payload_from_another_case_is_rejected(self):
+        result = valid_result()
+        donor = next(row for row in result['rows'] if row['caseId'] == 'case-2-0'
+                     and row['engine'] == 'baseline' and row['operation'] == 'relation')
+        recipient = next(row for row in result['rows'] if row['caseId'] == 'case-2-1'
+                         and row['engine'] == 'baseline' and row['operation'] == 'relation')
+        recipient['result'] = copy.deepcopy(donor['result'])
+        with self.assertRaises(checker.InvalidResult):
+            checker.check_result(result)
+
     def test_malformed_result_payloads_rejected(self):
         for payload in (None, "invaliddata", {}, ["invaliddata"], []):
             with self.subTest(payload=payload):
