@@ -510,3 +510,7 @@ No previous tracked plan at this path.
 
 - CodeRabbit CLI dependency-lock suggestion: not adopted in the frozen harness. The manifest pins esbuild 0.25.12 exactly, including its platform packages. A new lock would change the preserved export boundary; runtime and bundle fingerprints remain explicit in each execution receipt. A future dependency update requires a separately identified preparation.
 - Qodo unavailable because its subscription is inactive; no claim of a completed Qodo review.
+
+- CodeRabbit round 2: resolved-parent aliases and unsafe predecessor filenames are rejected before file hashing; two regressions reproduce the old behavior.
+- Fixed historical count retained intentionally: 46 is the reviewed frozen boundary, not a dynamic inventory target. A reissued inventory needs explicit review.
+- Spelling suggestion not adopted: French action titles use French `finalisation`; the English steering note uses American English `finalization`. These are language-specific spellings, not inconsistent English.

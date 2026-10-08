@@ -207,7 +207,7 @@ def validate_frozen_history(root):
         for relative, expected in manifest["files"].items():
             source = root / relative
             target = source.resolve()
-            if (not target.is_relative_to(root.resolve()) or excluded(relative)
+            if (not target.is_relative_to(root.resolve()) or target != root.resolve() / relative or excluded(relative)
                     or not target.is_file() or source.is_symlink()):
                 errors.append("Missing or unsafe frozen file: " + relative)
                 continue
@@ -266,7 +266,10 @@ def validate_successor(root):
         check(sha(parent_directory / "manifest.json") == parent["manifestSha256"], "predecessor manifest differs")
         check(parent["sourceFiles"] == parent_manifest["files"], "predecessor source inventory differs")
         for name, expected in parent_manifest["files"].items():
-            check(sha(parent_directory / name) == expected, "predecessor source differs: " + name)
+            safe = Path(name).name == name and "/" not in name and "\\" not in name
+            check(safe, "unsafe predecessor source path")
+            if safe:
+                check(sha(parent_directory / name) == expected, "predecessor source differs: " + name)
         builder = manifest["builder"]
         check(builder["path"] == "tools/build_native_pilot_hardened.py", "builder path differs")
         check(sha(root / "tools/build_native_pilot_hardened.py") == builder["sha256"], "builder fingerprint differs")

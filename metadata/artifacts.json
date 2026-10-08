@@ -321,7 +321,7 @@
         "scoped-claims",
         "uncertainty"
       ],
-      "sha256": "f9897e8112131619744b2b525ea8e2d27cd075aef066d0d026b8f1781eb8c7a0"
+      "sha256": "ac93e1bbc242b9b51c1f7b8d445c62dd49f017f2caed037cdcff730b64caf3b1"
     },
     {
       "path": "docs/technical-closeout-20261008.md",
@@ -1497,7 +1497,7 @@
         "scoped-claims",
         "synthetic-data"
       ],
-      "sha256": "90991a87389ced5fc619b176b5a5734c27847afeb60f94619a91d8029f76da7c"
+      "sha256": "8b330f08c0e8496cc5760d664f764f44eca76db8ca0cf939f044f95873f7a475"
     },
     {
       "path": "tests/test_replay_result.py",
@@ -1556,7 +1556,7 @@
         "reproducibility",
         "scoped-claims"
       ],
-      "sha256": "9739c3e4db1cdcce492883ad2ebc797123a83bd5b78fe79d4853a6d90a582c04"
+      "sha256": "c3828fa58dda11ba8e344e3588e4c78520a17d1fc50ca9345fd75864686073e2"
     }
   ]
 }

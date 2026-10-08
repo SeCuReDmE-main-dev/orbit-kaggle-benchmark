@@ -86,6 +86,34 @@ class PackageValidationTests(unittest.TestCase):
             self.assertEqual(verified, 0)
             self.assertEqual(len(errors), 46)
 
+    def test_resolved_parent_alias_is_rejected(self):
+        original_resolve = Path.resolve
+        selected = ROOT / "pilot/native-pass-fail/task.py"
+        def aliased(path, *args, **kwargs):
+            if path == selected:
+                return original_resolve(ROOT / "pilot/task.py")
+            return original_resolve(path, *args, **kwargs)
+        with patch.object(Path, "resolve", aliased):
+            errors, verified = validator.validate_frozen_history(ROOT)
+        self.assertIn("Missing or unsafe frozen file: pilot/native-pass-fail/task.py", errors)
+        self.assertEqual(verified, 45)
+
+    def test_predecessor_traversal_is_rejected_before_hashing(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            self.copy_successor_inputs(root)
+            path = root / "pilot/native-pass-fail/manifest.json"
+            data = json.loads(path.read_text(encoding="utf-8"))
+            data["files"]["../../outside.json"] = "0" * 64
+            path.write_text(json.dumps(data), encoding="utf-8")
+            real_sha = validator.sha
+            def guarded_hash(target):
+                self.assertNotIn("..", target.parts)
+                return real_sha(target)
+            with patch.object(validator, "sha", guarded_hash):
+                errors, _ = validator.validate_successor(root)
+            self.assertIn("Successor: unsafe predecessor source path", errors)
+
     def test_successor_catalog_never_claims_execution(self):
         for filename in ("task.py", "manifest.json", "receipt-example.json"):
             entry = validator.describe(validator.SUCCESSOR + "/" + filename)
