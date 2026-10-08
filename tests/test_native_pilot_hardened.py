@@ -146,8 +146,37 @@ class ContractTests(unittest.TestCase):
         self.assertTrue(result["valid"])
         self.assertEqual(result["outcome"], "contract-fail")
 
+    def test_required_text_uses_ecmascript_trim_not_python_whitespace(self):
+        # ECMA-262 WhiteSpace + LineTerminator, then characters it does not trim.
+        trimmed = [0x09, 0x0A, 0x0B, 0x0C, 0x0D, 0x20, 0xA0, 0x1680,
+                   *range(0x2000, 0x200B), 0x2028, 0x2029, 0x202F, 0x205F, 0x3000, 0xFEFF]
+        retained = [0x1C, 0x1D, 0x1E, 0x1F, 0x85, 0x180E, 0x200B, 0x2060]
+        for codepoint, valid in [(cp, False) for cp in trimmed] + [(cp, True) for cp in retained]:
+            with self.subTest(codepoint=hex(codepoint)):
+                value = chr(codepoint)
+                self.assertEqual(CONTRACT["_text"](value, 300), valid)
+                self.assertTrue(CONTRACT["_text"](value + "x" + value, 300))
+                for field in ("subject", "property", "value"):
+                    answer = fixture()
+                    answer["results"][0]["evidence"][0]["scope"] = {
+                        "subject": "Aster", "property": "supported", "value": "yes", field: value}
+                    result = CONTRACT["validate_answer"](answer, PUBLIC, GOLD)
+                    self.assertEqual(result["valid"], valid)
+                    self.assertEqual(result["outcome"], "pass" if valid else "invalid-model-output")
+        self.assertFalse(CONTRACT["_text"](" x ", 2))  # Original length is still bounded.
+
 
 class RuntimeTests(unittest.TestCase):
+    def test_feff_only_scope_is_invalid_before_engine_dispatch(self):
+        env = runtime(); answer = fixture()
+        answer["results"][0]["evidence"][0]["scope"] = {
+            "subject": "\ufeff", "property": "supported", "value": "yes"}
+        llm = SimpleNamespace(name="fake", prompt=Mock(return_value=json.dumps(answer)))
+        self.assertIs(env["orbit_native_pass_fail_hardened"](llm), False)
+        self.assertEqual(env["_save_diagnostics"].call_args.args[0]["outcome"], "invalid-model-output")
+        env["subprocess"].run.assert_not_called()
+        llm.prompt.assert_called_once()
+
     def test_true_and_false_results_each_use_one_provider_attempt(self):
         for answer, outcome, expected in ((fixture(), "pass", True),
                     ({"results": []}, "invalid-model-output", False)):

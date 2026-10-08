@@ -5,6 +5,11 @@ import math
 MAX_RESPONSE_BYTES = 1_048_576
 SCOPE_LIMITS = {"subject": 300, "property": 300, "value": 1000,
                 "provider": 500, "product": 500, "mode": 500, "version": 500}
+# ECMA-262 WhiteSpace + LineTerminator used by the frozen TypeScript str().
+# Unlike Python's default strip(), this includes FEFF and excludes 0085/001C-001F.
+JS_TRIM_CHARACTERS = ("\u0009\u000a\u000b\u000c\u000d\u0020\u00a0\u1680"
+                      "\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a"
+                      "\u2028\u2029\u202f\u205f\u3000\ufeff")
 
 
 class InvalidModelOutput(ValueError):
@@ -64,7 +69,7 @@ def parse_answer(raw):
 
 def _text(value, maximum):
     # JavaScript String.length counts UTF-16 units, including surrogate pairs.
-    return (isinstance(value, str) and bool(value.strip())
+    return (isinstance(value, str) and bool(value.strip(JS_TRIM_CHARACTERS))
             and len(value.encode("utf-16-le", errors="surrogatepass")) // 2 <= maximum)
 
 

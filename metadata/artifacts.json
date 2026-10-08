@@ -1194,7 +1194,7 @@
         "synthetic-data",
         "uncertainty"
       ],
-      "sha256": "1676132695573e3fd007916f9a1f86272d65929a55adc65b95c6a6d1a037303b"
+      "sha256": "e6ae32769418ecf9034d1427ceb47fdd0bac65a85dd1f5cf3650332e44c7d33d"
     },
     {
       "path": "pilot/native-pass-fail-hardened/local-validation.json",
@@ -1224,7 +1224,7 @@
         "synthetic-data",
         "uncertainty"
       ],
-      "sha256": "bed9f35d0cf48838dfb9664ebbd486e76e50cb937e7730265294720f3783ea40"
+      "sha256": "fc97f8257cb80453cff13409350df7a03b1f415f54f4967f7861eb992b7d7303"
     },
     {
       "path": "pilot/native-pass-fail-hardened/manifest.json",
@@ -1249,7 +1249,7 @@
         "synthetic-data",
         "uncertainty"
       ],
-      "sha256": "6f57e6f126b5cc1878fd0587aa135236705db7012f1e55ff55251d301e2ba446"
+      "sha256": "c7abff7e4ced4fe87385c77be0bcca994073a39d2483e3da1de447ef1c43af8f"
     },
     {
       "path": "pilot/native-pass-fail-hardened/orbit-native-pass-fail-hardened.ipynb",
@@ -1274,7 +1274,7 @@
         "synthetic-data",
         "uncertainty"
       ],
-      "sha256": "76413b551a6a82216f812a0f4f82df3d448e39174ec35ee205a64aa61e07f884"
+      "sha256": "e86e2c176541ceac476b1d23aa51b1ecc66b99eaa2c4151ebe7921c95c227590"
     },
     {
       "path": "pilot/native-pass-fail-hardened/README.md",
@@ -1299,7 +1299,7 @@
         "synthetic-data",
         "uncertainty"
       ],
-      "sha256": "828139e7aa71d59e174be2d787a39970035853ca205f7b644f532b3dca413edd"
+      "sha256": "0a5aeb0fb86c35f49c02b1d9f576cf04ce18d2b21f1876ebb445be8cb0c1c634"
     },
     {
       "path": "pilot/native-pass-fail-hardened/task-template.py.in",
@@ -1349,7 +1349,7 @@
         "synthetic-data",
         "uncertainty"
       ],
-      "sha256": "017302b151291da53fa4cc294012ba6ac120e576a717d52f573e5579990ced58"
+      "sha256": "43658a6314144a169bbacc1680396f047eab80a1bf1c60bb96709e7b2da3207f"
     },
     {
       "path": "pilot/orbit-kaggle-pilot.ipynb",
@@ -1480,7 +1480,7 @@
         "scoped-claims",
         "synthetic-data"
       ],
-      "sha256": "ab64e6c9a4a3de1ca93fe45e2c06b5a60766d9655087c3cf3d63fc19271ba5cc"
+      "sha256": "570583664f5bcd3c50fb80575f7f89e917faa3b20d5a12b6593cf6f0b346d972"
     },
     {
       "path": "tests/test_package_validation.py",

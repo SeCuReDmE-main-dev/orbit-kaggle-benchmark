@@ -33,10 +33,10 @@
     "jsonHashPolicy": "PUBLIC/GOLD hashes cover the exact UTF-8 JSON literal payload extracted from the parent AST."
   },
   "files": {
-    "contract.py": "1676132695573e3fd007916f9a1f86272d65929a55adc65b95c6a6d1a037303b",
+    "contract.py": "e6ae32769418ecf9034d1427ceb47fdd0bac65a85dd1f5cf3650332e44c7d33d",
     "task-template.py.in": "0df2d516f62cfe727a7752dea3aa70db568c39cb75f988d08fbb179b532ca5c8",
-    "task.py": "017302b151291da53fa4cc294012ba6ac120e576a717d52f573e5579990ced58",
-    "orbit-native-pass-fail-hardened.ipynb": "76413b551a6a82216f812a0f4f82df3d448e39174ec35ee205a64aa61e07f884"
+    "task.py": "43658a6314144a169bbacc1680396f047eab80a1bf1c60bb96709e7b2da3207f",
+    "orbit-native-pass-fail-hardened.ipynb": "e86e2c176541ceac476b1d23aa51b1ecc66b99eaa2c4151ebe7921c95c227590"
   },
   "builder": {
     "path": "tools/build_native_pilot_hardened.py",
