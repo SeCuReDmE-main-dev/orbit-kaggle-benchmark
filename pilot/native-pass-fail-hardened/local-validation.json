@@ -1,0 +1,30 @@
+{
+  "format": "orbit-native-hardened-local-validation-v1",
+  "state": "PASS",
+  "startedAtUtc": "2026-10-08T17:04:51.026429+00:00",
+  "completedAtUtc": "2026-10-08T17:04:58.606982+00:00",
+  "commands": [
+    {
+      "command": "python -B -m unittest discover -s tests -p test_native_pilot_hardened.py",
+      "exitCode": 0,
+      "testsRun": 30
+    },
+    {
+      "command": "python -B tools/build_native_pilot_hardened.py --check",
+      "exitCode": 0
+    }
+  ],
+  "sourceHashes": {
+    "pilot/native-pass-fail-hardened/contract.py": "e6ae32769418ecf9034d1427ceb47fdd0bac65a85dd1f5cf3650332e44c7d33d",
+    "pilot/native-pass-fail-hardened/task-template.py.in": "92ae1b18082b65d0a5b0d8de19f2194fd113667300356276962470cd1d73908d",
+    "pilot/native-pass-fail-hardened/task.py": "ee6db4d4ff45d98e8b9cbb4989d2721602250a637522e5610b441ee201cd5999",
+    "pilot/native-pass-fail-hardened/orbit-native-pass-fail-hardened.ipynb": "d9a5439f79b2557f45d153dc4d15680d0db8886f9833dfd8658b5b67f0e94c9d",
+    "tools/build_native_pilot_hardened.py": "ee0eb5c4737abb7348911b63a4123e9435f38e5841c6ea0db1482692ee2660b4",
+    "tests/test_native_pilot_hardened.py": "e41091cc0a6c221e74082b9ae2240ac730584b057e0c346f074bf077f9f96a73"
+  },
+  "modelCalls": 0,
+  "engineRuns": 0,
+  "kaggleRuns": 0,
+  "sdkImported": false,
+  "scope": "Pure local contract, test-double orchestration, temporary diagnostic I/O and deterministic generation checks. No hosted observation or semantic accuracy claim."
+}

@@ -1,0 +1,52 @@
+{
+  "format": "orbit-native-hardened-preparation-v1",
+  "state": "prepared-not-executed",
+  "campaignId": "orbit-native-pass-fail-hardening-20261008-v1",
+  "mainTask": "orbit_native_pass_fail_hardened",
+  "sourceDecoratorVersion": 1,
+  "nativeResultType": "bool",
+  "sdkVersion": "0.6.1",
+  "models": [
+    "google/gemini-3.8-flash",
+    "google/gemini-3.1-pro-preview"
+  ],
+  "runModelsByDefault": false,
+  "maxProviderAttemptsPerModel": 1,
+  "maxAutomaticRetries": 0,
+  "modelCallsDuringPreparation": 0,
+  "nativeRunsExecuted": 0,
+  "publishedOnKaggle": false,
+  "parent": {
+    "path": "pilot/native-pass-fail",
+    "manifestSha256": "3b141b8760525c312e694cee3da55a0fdc3e2ef7507ad146dac97a8ef0d8815b",
+    "sourceFiles": {
+      "task.py": "a726a159e4b382ea18bce30294dbd8f599aa93fde6938317e7dfbd65892e4eb4",
+      "contract.py": "fb07a5ca3c5048028d6d700ccc15b2e6203fc165e0b302acfc5c69c91350f6eb",
+      "orbit-native-pass-fail.ipynb": "947c1f3b5b574dac88b0e47e06527927cb67edea597cc7150fd7ff7241bd30ad"
+    }
+  },
+  "frozenInputs": {
+    "promptSha256": "785070d61245c64226ad070dff0196b3473edde8644fc333c501342d807e9c5f",
+    "engineSha256": "886f7cf3fbfcb445f4c1af7ebf1d3f8cb581964fe20d3bce706e8b4f4b880bd9",
+    "publicSha256": "c55edfffb64cf2c9850c7ea364a5139c9bebe9ae1a47fbc0be1c0f4d1cfc2894",
+    "goldSha256": "2411b44959ee6dbdef498c44fc299b5f65194bcbb6090384223c32d0d728d6e2",
+    "jsonHashPolicy": "PUBLIC/GOLD hashes cover the exact UTF-8 JSON literal payload extracted from the parent AST."
+  },
+  "files": {
+    "contract.py": "e6ae32769418ecf9034d1427ceb47fdd0bac65a85dd1f5cf3650332e44c7d33d",
+    "task-template.py.in": "92ae1b18082b65d0a5b0d8de19f2194fd113667300356276962470cd1d73908d",
+    "task.py": "ee6db4d4ff45d98e8b9cbb4989d2721602250a637522e5610b441ee201cd5999",
+    "orbit-native-pass-fail-hardened.ipynb": "d9a5439f79b2557f45d153dc4d15680d0db8886f9833dfd8658b5b67f0e94c9d"
+  },
+  "builder": {
+    "path": "tools/build_native_pilot_hardened.py",
+    "sha256": "ee0eb5c4737abb7348911b63a4123e9435f38e5841c6ea0db1482692ee2660b4"
+  },
+  "localValidation": {
+    "testCommand": "python -B -m unittest discover -s tests -p test_native_pilot_hardened.py",
+    "checkCommand": "python -B tools/build_native_pilot_hardened.py --check",
+    "resultReceipt": "local-validation.json",
+    "scope": "Pure local tests and byte/AST checks; not a model or engine benchmark."
+  },
+  "selfHashPolicy": "Manifest and local test receipt are excluded from files; the package catalog may hash them."
+}
