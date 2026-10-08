@@ -194,6 +194,12 @@ def orbit_native_pass_fail_hardened(llm) -> bool:
     except Exception as error:
         primary_error = error
         report['outcome']='technical-error';report['technicalErrorType']=type(error).__name__
+        capture = _ATTEMPT_CAPTURE.get()
+        if capture is not None:
+            capture.update({'state': 'technical-error', 'result': None,
+                'errorType': type(error).__name__, 'technicalPhase': report['technicalPhase'],
+                'observationId': report['observationId'],
+                'providerAttempts': report['providerAttempts'], 'retryEligible': False})
         raise
     finally:
         try:

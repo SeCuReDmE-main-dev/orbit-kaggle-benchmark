@@ -246,6 +246,47 @@ class RuntimeTests(unittest.TestCase):
             self.assertEqual(len(calls), 2)
             llm.prompt.assert_called_once()
 
+    def test_sdk_swallowed_primary_errors_keep_phase_even_when_storage_fails(self):
+        for phase, error_type in (("provider", "TimeoutError"), ("engine", "RuntimeError")):
+            for storage_failure in (False, True):
+                with self.subTest(phase=phase, storage_failure=storage_failure):
+                    env = runtime()
+                    function = env["orbit_native_pass_fail_hardened"]
+                    llm = SimpleNamespace(name="fake", prompt=Mock(return_value=json.dumps(fixture())))
+                    if phase == "provider":
+                        llm.prompt.side_effect = TimeoutError("synthetic provider failure")
+                    else:
+                        env["subprocess"].run.return_value = SimpleNamespace(returncode=1, stdout="")
+                        env["subprocess"].run.side_effect = None
+                    if storage_failure:
+                        env["_save_diagnostics"].side_effect = OSError("synthetic storage failure")
+                    env["SELECTED_MODELS"] = ["only"]
+                    env["kbench"].llms = {"only": llm}
+                    failed_sentinel = object()
+
+                    def sdk_run_double(model):
+                        try:
+                            return SimpleNamespace(result=function(model), status="SUCCESS", cached=False)
+                        except Exception:
+                            return SimpleNamespace(result=failed_sentinel, status="FAILED", cached=False)
+
+                    run = Mock(side_effect=sdk_run_double)
+                    env["orbit_native_pass_fail_hardened"] = SimpleNamespace(run=run)
+                    observation, = env["run_planned_models"]()
+                    self.assertEqual(observation["state"], "technical-error")
+                    self.assertEqual(observation["technicalPhase"], phase)
+                    self.assertEqual(observation["errorType"], error_type)
+                    self.assertIsNone(observation["result"])
+                    self.assertEqual(observation["providerAttempts"], 1)
+                    self.assertRegex(observation["observationId"], r"^[0-9a-f]{32}$")
+                    self.assertFalse(observation["retryEligible"])
+                    self.assertNotIn("computedResult", observation)
+                    self.assertIsNone(env["_ATTEMPT_CAPTURE"].get())
+                    run.assert_called_once_with(llm)
+                    llm.prompt.assert_called_once()
+                    self.assertEqual(env["subprocess"].run.call_count, int(phase == "engine"))
+                    self.assertEqual(env["_report_diagnostic_failure"].call_count, int(storage_failure))
+
     def test_engine_internal_rejection_is_technical_not_a_model_failure(self):
         env = runtime()
         response = {"ok": False, "error": "ReferenceError: synthetic engine defect"}
