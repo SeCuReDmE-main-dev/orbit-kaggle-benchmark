@@ -1514,7 +1514,7 @@
         "scoped-claims",
         "synthetic-data"
       ],
-      "sha256": "6175f630e44d002d0ecfee6bed672f9cea6f13126bffc12519abfe3403dde83b"
+      "sha256": "595f715d57fefa12ea612babd71876408968b7a6b4ecbc38c362f362d62b12eb"
     },
     {
       "path": "tools/build_native_pilot_hardened.py",
@@ -1542,7 +1542,7 @@
         "reproducibility",
         "scoped-claims"
       ],
-      "sha256": "1718c12d83f7d08a3ce8b7787af96ab23a889b737d934d5663dcc957a2fabd4e"
+      "sha256": "25ee62c82eca7052a3e6ad5fd810b4912316056d9237bd10f1838d5cb359e192"
     },
     {
       "path": "tools/verify_package.py",
