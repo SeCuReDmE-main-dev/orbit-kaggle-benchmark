@@ -490,7 +490,7 @@ Final push/review/merge/readback times occur after the last source commit: their
 
 ## Closeout receipt
 
-External final events are recorded in the [PR #1 closeout record](https://github.com/SeCuReDmE-main-dev/orbit-kaggle-benchmark/pull/1), including final review, merge and published readback.
+External final events will be recorded in the [PR #1 closeout record](https://github.com/SeCuReDmE-main-dev/orbit-kaggle-benchmark/pull/1), including final review, merge and published readback.
 
 ## Previous plans
 

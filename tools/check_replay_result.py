@@ -68,31 +68,58 @@ def expected_rows(cases=None):
             if operation != "relation" or case["expected"].get("relation")}
 
 
-def payload_summary(payload, case):
+def classification_summary(target, engine):
+    """Frozen classification.ts decision tables and truth/falsity origin union."""
+    if target.get("engine") != engine:
+        raise InvalidResult("Classification engine differs from row engine")
+    if (target.get("decision") not in ("ADMIT", "REJECT", "HOLD")
+            or type(target.get("independentSources")) is not int or target["independentSources"] < 0
+            or any(not isinstance(target.get(field), list) or any(not isinstance(item, dict)
+                   for item in target[field]) for field in ("truth", "indeterminacy", "falsity"))
+            or any(not isinstance(item.get("code"), str) for item in target["indeterminacy"])
+            or any(not isinstance(item.get("independentSource"), str)
+                   for item in target["truth"] + target["falsity"])):
+        raise InvalidResult("Invalid scored classification payload")
+    truth, falsity, uncertain = target["truth"], target["falsity"], target["indeterminacy"]
+    # Baseline maps these arrays to support/opposition/insufficient states;
+    # standardDecision and independentDecision have the same decision table.
+    decision = ("HOLD" if uncertain or (truth and falsity) or not (truth or falsity)
+                else "REJECT" if falsity else "ADMIT")
+    origins = len({item["independentSource"] for item in truth + falsity})
+    errors = []
+    if target["decision"] != decision:
+        errors.append("Classification decision differs from evidence")
+    if target["independentSources"] != origins:
+        errors.append("Classification independentSources differs from evidence")
+    return ({"decision": decision, "T": len(truth),
+             "I": sorted(item["code"] for item in uncertain),
+             "F": len(falsity), "origins": origins}, errors)
+
+
+def payload_summary(payload, case, engine):
     """Same target and summary fields as frozen harness/replay_synthetic.py."""
     if not isinstance(payload, list) or any(not isinstance(item, dict) for item in payload):
         raise InvalidResult("Expected a classification result array")
     targets = [item for item in payload if item.get("claimId") == case["dossier"]["claims"][0]["id"]]
     if len(targets) != 1:
         raise InvalidResult("Expected one result for the scored claim")
-    target = targets[0]
-    if (target.get("decision") not in ("ADMIT", "REJECT", "HOLD")
-            or type(target.get("independentSources")) is not int or target["independentSources"] < 0
-            or any(not isinstance(target.get(field), list) or any(not isinstance(item, dict)
-                   for item in target[field]) for field in ("truth", "indeterminacy", "falsity"))
-            or any(not isinstance(item.get("code"), str) for item in target["indeterminacy"])):
-        raise InvalidResult("Invalid scored classification payload")
-    return {"decision": target["decision"], "T": len(target["truth"]),
-            "I": sorted(item["code"] for item in target["indeterminacy"]),
-            "F": len(target["falsity"]), "origins": target["independentSources"]}
+    errors = []
+    for item in payload:
+        derived, issues = classification_summary(item, engine)
+        errors.extend(issues)
+        if item is targets[0]:
+            summary = derived
+    return summary, errors
 
 
-def relation_pass(payload, expected):
+def relation_pass(payload, expected, engine):
     if not isinstance(payload, list) or any(
             not isinstance(item, dict) or not isinstance(item.get("kind"), str)
             or not isinstance(item.get("kinds", []), list)
             or any(not isinstance(kind, str) for kind in item.get("kinds", [])) for item in payload):
         raise InvalidResult("Invalid relation result array")
+    if any(item.get("engine") != engine for item in payload):
+        raise InvalidResult("Relation engine differs from row engine")
     return any(item["kind"] == expected or expected in item.get("kinds", []) for item in payload)
 
 
@@ -132,7 +159,8 @@ def check_result(result):
             errors.append(f"Incorrect packet at index {index}")
         known_rows.append((index, row, key))
         if row["ok"] and row["operation"] != "relation":
-            normalized[index] = payload_summary(row.get("result"), cases[key[0]])
+            normalized[index], issues = payload_summary(row.get("result"), cases[key[0]], row["engine"])
+            errors.extend(issue + f" at index {index}" for issue in issues)
             if row["operation"] == "original":
                 originals.setdefault(key[:2], normalized[index])
             # JSON encoding keeps Boolean and integer summary values distinct.
@@ -143,7 +171,7 @@ def check_result(result):
         if not row["ok"]:
             computed_pass = False
         elif row["operation"] == "relation":
-            computed_pass = relation_pass(row.get("result"), gold["relation"])
+            computed_pass = relation_pass(row.get("result"), gold["relation"], row["engine"])
         elif row["operation"] == "original":
             actual = normalized[index]
             computed_pass = (actual["decision"] == gold["decision"] and

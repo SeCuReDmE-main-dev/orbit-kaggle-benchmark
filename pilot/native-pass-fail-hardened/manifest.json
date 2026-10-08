@@ -40,7 +40,7 @@
   },
   "builder": {
     "path": "tools/build_native_pilot_hardened.py",
-    "sha256": "accd981d9aa16ad8453f845f141a9568dfaa45be5eb6040070e66d0e7e848409"
+    "sha256": "ee0eb5c4737abb7348911b63a4123e9435f38e5841c6ea0db1482692ee2660b4"
   },
   "localValidation": {
     "testCommand": "python -B -m unittest discover -s tests -p test_native_pilot_hardened.py",

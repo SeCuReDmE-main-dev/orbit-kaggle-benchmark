@@ -98,7 +98,41 @@ class ReplayResultTests(unittest.TestCase):
                 result["rows"][0]["summary"][summary_field] = value
                 report = checker.check_result(result)
                 self.assertEqual(report["status"], "failed")
-                self.assertEqual(report["summary"]["baseline"]["correct"], 35)
+                self.assertEqual(report["summary"]["baseline"]["correct"], 36)
+                self.assertTrue(any("differs from evidence" in error for error in report["errors"]))
+
+    def test_consistently_forged_evidence_cannot_preserve_a_passing_decision(self):
+        for engine in checker.ENGINES:
+            with self.subTest(engine=engine):
+                result = valid_result()
+                for row in result["rows"]:
+                    if row["caseId"] == "case-1-0" and row["engine"] == engine:
+                        target = row["result"][0]
+                        target["falsity"] = copy.deepcopy(target["truth"])
+                        row["summary"]["F"] = len(target["falsity"])
+                report = checker.check_result(result)
+                self.assertEqual(report["status"], "failed")
+                self.assertEqual(report["summary"][engine]["correct"], 35)
+
+    def test_independent_origins_are_derived_from_evidence_union(self):
+        result = valid_result()
+        for row in result["rows"]:
+            if row["caseId"] == "case-1-0" and row["engine"] == "baseline":
+                target = row["result"][0]
+                target["truth"].append({**target["truth"][0], "independentSource": "https://example.org/other"})
+                row["summary"]["T"] = 2
+        report = checker.check_result(result)
+        self.assertEqual(report["status"], "failed")
+        self.assertEqual(report["summary"]["baseline"]["correct"], 35)
+
+    def test_payload_engine_must_match_row_for_all_operations(self):
+        for operation in checker.OPERATIONS:
+            with self.subTest(operation=operation):
+                result = valid_result()
+                row = next(item for item in result["rows"] if item["operation"] == operation)
+                row["result"][-1]["engine"] = "p" if row["engine"] != "p" else "n"
+                with self.assertRaises(checker.InvalidResult):
+                    checker.check_result(result)
 
     def test_metamorphic_payload_is_compared_to_recorded_original(self):
         for operation in ("order", "duplicate", "unrelated"):

@@ -1,8 +1,8 @@
 {
   "format": "orbit-native-hardened-local-validation-v1",
   "state": "PASS",
-  "startedAtUtc": "2026-10-08T16:58:11.262201+00:00",
-  "completedAtUtc": "2026-10-08T16:58:19.376361+00:00",
+  "startedAtUtc": "2026-10-08T17:04:51.026429+00:00",
+  "completedAtUtc": "2026-10-08T17:04:58.606982+00:00",
   "commands": [
     {
       "command": "python -B -m unittest discover -s tests -p test_native_pilot_hardened.py",
@@ -19,8 +19,8 @@
     "pilot/native-pass-fail-hardened/task-template.py.in": "92ae1b18082b65d0a5b0d8de19f2194fd113667300356276962470cd1d73908d",
     "pilot/native-pass-fail-hardened/task.py": "ee6db4d4ff45d98e8b9cbb4989d2721602250a637522e5610b441ee201cd5999",
     "pilot/native-pass-fail-hardened/orbit-native-pass-fail-hardened.ipynb": "d9a5439f79b2557f45d153dc4d15680d0db8886f9833dfd8658b5b67f0e94c9d",
-    "tools/build_native_pilot_hardened.py": "accd981d9aa16ad8453f845f141a9568dfaa45be5eb6040070e66d0e7e848409",
-    "tests/test_native_pilot_hardened.py": "55a38cc986e4eed27a04dfb1d8e432deafacd6c7db901d11747ffc75c26f67cd"
+    "tools/build_native_pilot_hardened.py": "ee0eb5c4737abb7348911b63a4123e9435f38e5841c6ea0db1482692ee2660b4",
+    "tests/test_native_pilot_hardened.py": "e41091cc0a6c221e74082b9ae2240ac730584b057e0c346f074bf077f9f96a73"
   },
   "modelCalls": 0,
   "engineRuns": 0,

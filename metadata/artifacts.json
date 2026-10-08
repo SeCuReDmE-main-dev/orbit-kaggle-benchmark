@@ -321,7 +321,7 @@
         "scoped-claims",
         "uncertainty"
       ],
-      "sha256": "4298565753de4930c84c5c05a0f9cf58c85ea01aa0f162eb4272cc14b53eb718"
+      "sha256": "8e4151b4fede6e40c93cc450e9b5bd24263e17b20641effbe48d43aa0209c4da"
     },
     {
       "path": "docs/technical-closeout-20261008.md",
@@ -1224,7 +1224,7 @@
         "synthetic-data",
         "uncertainty"
       ],
-      "sha256": "f6fab27b9132af56759dd3830906d775c6d7157ea2eb935b4a02e640cd07c8e7"
+      "sha256": "cdd67df5be0b5f205ed8234eb203e3979c46259ceddb57b7e9bd429a41f8b442"
     },
     {
       "path": "pilot/native-pass-fail-hardened/manifest.json",
@@ -1249,7 +1249,7 @@
         "synthetic-data",
         "uncertainty"
       ],
-      "sha256": "56f6d8e7c51176f5a79ec0537b550f4eed2ac913e52fded90fac2d86c9385687"
+      "sha256": "171d1a4e4a974c0d5b062547e3c46488d9b136d76f37d63bd9ca5247bf937ced"
     },
     {
       "path": "pilot/native-pass-fail-hardened/orbit-native-pass-fail-hardened.ipynb",
@@ -1480,7 +1480,7 @@
         "scoped-claims",
         "synthetic-data"
       ],
-      "sha256": "55a38cc986e4eed27a04dfb1d8e432deafacd6c7db901d11747ffc75c26f67cd"
+      "sha256": "e41091cc0a6c221e74082b9ae2240ac730584b057e0c346f074bf077f9f96a73"
     },
     {
       "path": "tests/test_package_validation.py",
@@ -1514,7 +1514,7 @@
         "scoped-claims",
         "synthetic-data"
       ],
-      "sha256": "38a3cd1dc25fbce56441a07dd080177443cd01a80c96a922244eee94949cee6c"
+      "sha256": "6175f630e44d002d0ecfee6bed672f9cea6f13126bffc12519abfe3403dde83b"
     },
     {
       "path": "tools/build_native_pilot_hardened.py",
@@ -1528,7 +1528,7 @@
         "reproducibility",
         "scoped-claims"
       ],
-      "sha256": "accd981d9aa16ad8453f845f141a9568dfaa45be5eb6040070e66d0e7e848409"
+      "sha256": "ee0eb5c4737abb7348911b63a4123e9435f38e5841c6ea0db1482692ee2660b4"
     },
     {
       "path": "tools/check_replay_result.py",
@@ -1542,7 +1542,7 @@
         "reproducibility",
         "scoped-claims"
       ],
-      "sha256": "2d8c13e278cfe9115ac97bcffb07aef5055b9e6660f5ce3daf6951aba1d7d000"
+      "sha256": "1718c12d83f7d08a3ce8b7787af96ab23a889b737d934d5663dcc957a2fabd4e"
     },
     {
       "path": "tools/verify_package.py",

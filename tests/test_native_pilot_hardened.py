@@ -398,6 +398,8 @@ class GenerationTests(unittest.TestCase):
         mutations = (b"SELECTED_MODELS=['unapproved/model']",
                      b"SELECTED_MODELS=['google/gemini-3.1-pro-preview','google/gemini-3.8-flash']",
                      selection + b"\n" + selection,
+                     selection + b"\nSELECTED_MODELS += ['unapproved/model']",
+                     selection + b"\nSELECTED_MODELS.append('unapproved/model')",
                      b"# SELECTED_MODELS assignment removed")
         for replacement in mutations:
             with self.subTest(replacement=replacement):

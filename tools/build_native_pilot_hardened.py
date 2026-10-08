@@ -60,8 +60,35 @@ def expected_artifacts(root=ROOT):
     generated_tree = ast.parse(source)
     selected = [node for node in generated_tree.body if isinstance(node, ast.Assign)
                 and any(isinstance(target, ast.Name) and target.id == "SELECTED_MODELS" for target in node.targets)]
-    if len(selected) != 1 or ast.literal_eval(selected[0].value) != parent["models"]:
+    if len(selected) != 1 or len(selected[0].targets) != 1 or ast.literal_eval(selected[0].value) != parent["models"]:
         raise ValueError("Selected models must exactly match the historical parent manifest")
+    # This fixed template has four legitimate references. Reject direct aliasing,
+    # mutation or additional uses; this is a consistency check, not a sandbox.
+    allowed_selection = {id(selected[0].targets[0])}
+    read_only_statements = (
+        "if any(model not in kbench.llms for model in SELECTED_MODELS):\n"
+        "    raise RuntimeError('PINNED_MODEL_UNAVAILABLE: native Benchmark Task mode and catalog required')",
+        "print(json.dumps({'python':sys.version,'sdk':SDK_VERSION,'models':SELECTED_MODELS,'modelCalls':0}))",
+    )
+    for expected_statement in read_only_statements:
+        expected_ast = ast.dump(ast.parse(expected_statement).body[0])
+        matches = [node for node in generated_tree.body if ast.dump(node) == expected_ast]
+        if len(matches) != 1:
+            raise ValueError("Selected models read-only template context changed")
+        allowed_selection.update(id(node) for node in ast.walk(matches[0])
+                                 if isinstance(node, ast.Name) and node.id == "SELECTED_MODELS")
+    dispatchers = [node for node in generated_tree.body
+                   if isinstance(node, ast.FunctionDef) and node.name == "run_planned_models"]
+    loops = [node for function in dispatchers for node in function.body
+             if isinstance(node, ast.For) and isinstance(node.target, ast.Name) and node.target.id == "model_id"
+             and isinstance(node.iter, ast.Name) and node.iter.id == "SELECTED_MODELS"]
+    if len(dispatchers) != 1 or len(loops) != 1:
+        raise ValueError("Selected models dispatcher context changed")
+    allowed_selection.add(id(loops[0].iter))
+    actual_selection = {id(node) for node in ast.walk(generated_tree)
+                        if isinstance(node, ast.Name) and node.id == "SELECTED_MODELS"}
+    if actual_selection != allowed_selection:
+        raise ValueError("Selected models have an unexpected write, mutation or use")
     task = next(node for node in generated_tree.body if isinstance(node, ast.FunctionDef) and node.name == MAIN_TASK)
     if not isinstance(task.returns, ast.Name) or task.returns.id != "bool":
         raise ValueError("Native result must remain an explicit bool")
