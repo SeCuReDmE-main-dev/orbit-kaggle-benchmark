@@ -34,13 +34,13 @@
   },
   "files": {
     "contract.py": "e6ae32769418ecf9034d1427ceb47fdd0bac65a85dd1f5cf3650332e44c7d33d",
-    "task-template.py.in": "0df2d516f62cfe727a7752dea3aa70db568c39cb75f988d08fbb179b532ca5c8",
-    "task.py": "43658a6314144a169bbacc1680396f047eab80a1bf1c60bb96709e7b2da3207f",
-    "orbit-native-pass-fail-hardened.ipynb": "e86e2c176541ceac476b1d23aa51b1ecc66b99eaa2c4151ebe7921c95c227590"
+    "task-template.py.in": "92ae1b18082b65d0a5b0d8de19f2194fd113667300356276962470cd1d73908d",
+    "task.py": "ee6db4d4ff45d98e8b9cbb4989d2721602250a637522e5610b441ee201cd5999",
+    "orbit-native-pass-fail-hardened.ipynb": "d9a5439f79b2557f45d153dc4d15680d0db8886f9833dfd8658b5b67f0e94c9d"
   },
   "builder": {
     "path": "tools/build_native_pilot_hardened.py",
-    "sha256": "b1284a33187b60523fad4b8fefd3f5ad249d06763fbf0ffd00127ba6027cfac9"
+    "sha256": "accd981d9aa16ad8453f845f141a9568dfaa45be5eb6040070e66d0e7e848409"
   },
   "localValidation": {
     "testCommand": "python -B -m unittest discover -s tests -p test_native_pilot_hardened.py",

@@ -490,7 +490,7 @@ Final push/review/merge/readback times occur after the last source commit: their
 
 ## Closeout receipt
 
-Pending PR creation. External final events will be recorded in its linked receipt.
+External final events are recorded in the [PR #1 closeout record](https://github.com/SeCuReDmE-main-dev/orbit-kaggle-benchmark/pull/1), including final review, merge and published readback.
 
 ## Previous plans
 
@@ -514,3 +514,5 @@ No previous tracked plan at this path.
 - CodeRabbit round 2: resolved-parent aliases and unsafe predecessor filenames are rejected before file hashing; two regressions reproduce the old behavior.
 - Fixed historical count retained intentionally: 46 is the reviewed frozen boundary, not a dynamic inventory target. A reissued inventory needs explicit review.
 - Spelling suggestion not adopted: French action titles use French `finalisation`; the English steering note uses American English `finalization`. These are language-specific spellings, not inconsistent English.
+
+- Codex payload-integrity finding: recompute original decisions and origins against the frozen oracle, metamorphic summaries against the recorded original, and relations from their payloads. Forged flags and summaries no longer suffice. Thirteen regression subcases failed before correction; the 19 checker tests now pass, including the retained 486-row fixture. This checks recorded semantics, not payload provenance.

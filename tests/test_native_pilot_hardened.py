@@ -45,6 +45,7 @@ def runtime():
                 "PROMPT": ast.literal_eval(ASSIGNMENTS["PROMPT"].value),
                 "ENGINE_SHA256": ast.literal_eval(ASSIGNMENTS["ENGINE_SHA256"].value),
                 "ENGINE_PATH": Path("fake-engine-not-executed"), "NODE": "fake-node-not-executed",
+                "node_version": "v22.20.0", "NODE_SOURCE": "system-path",
                 "kbench": SimpleNamespace(assertions=SimpleNamespace(assert_true=Mock(), assert_equal=Mock()))})
     definitions = []
     for node in copy.deepcopy(TREE.body):
@@ -167,6 +168,21 @@ class ContractTests(unittest.TestCase):
 
 
 class RuntimeTests(unittest.TestCase):
+    def test_report_records_runtime_version_and_explicit_source_without_local_path(self):
+        for source, version in (("system-path", "v20.0.0"), ("verified-official-archive", "v22.20.0")):
+            with self.subTest(source=source):
+                env = runtime()
+                env["NODE_SOURCE"] = source
+                env["node_version"] = version
+                env["NODE"] = "C:/private-fixture/node.exe"
+                llm = SimpleNamespace(name="fake", prompt=Mock(return_value='{"results":[]}'))
+                self.assertIs(env["orbit_native_pass_fail_hardened"](llm), False)
+                report = env["_save_diagnostics"].call_args.args[0]
+                self.assertEqual(report.get("nodeSource"), source)
+                self.assertEqual(report.get("nodeVersion"), version)
+                self.assertNotIn(env["NODE"], json.dumps(report))
+                env["subprocess"].run.assert_not_called()
+
     def test_feff_only_scope_is_invalid_before_engine_dispatch(self):
         env = runtime(); answer = fixture()
         answer["results"][0]["evidence"][0]["scope"] = {
@@ -374,6 +390,23 @@ class RuntimeTests(unittest.TestCase):
 
 
 class GenerationTests(unittest.TestCase):
+    def test_builder_rejects_model_selection_drift(self):
+        template_path = DIRECTORY / "task-template.py.in"
+        original_read = Path.read_bytes
+        template = original_read(template_path)
+        selection = next(line for line in template.splitlines() if line.startswith(b"SELECTED_MODELS="))
+        mutations = (b"SELECTED_MODELS=['unapproved/model']",
+                     b"SELECTED_MODELS=['google/gemini-3.1-pro-preview','google/gemini-3.8-flash']",
+                     selection + b"\n" + selection,
+                     b"# SELECTED_MODELS assignment removed")
+        for replacement in mutations:
+            with self.subTest(replacement=replacement):
+                def read_mutated(path):
+                    return template.replace(selection, replacement) if path == template_path else original_read(path)
+                with patch.object(Path, "read_bytes", new=read_mutated):
+                    with self.assertRaisesRegex(ValueError, "Selected models"):
+                        BUILDER["expected_artifacts"]()
+
     def test_deterministic_builder_matches_delivered_bytes(self):
         expected = BUILDER["expected_artifacts"]()
         self.assertEqual(expected, BUILDER["expected_artifacts"]())

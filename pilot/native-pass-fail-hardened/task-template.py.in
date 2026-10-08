@@ -17,7 +17,9 @@ RUN_MODELS = False  # Change only after a separately authorized free-quota check
 import base64, hashlib, io, json, subprocess, tarfile, urllib.request
 from pathlib import Path
 NODE = shutil.which('node')
-if not NODE:
+if NODE:
+    NODE_SOURCE = 'system-path'
+else:
     # Official free runtime, fixed version and verified against vendor SHASUMS256.
     node_url = 'https://nodejs.org/dist/v22.20.0/node-v22.20.0-linux-x64.tar.xz'
     with urllib.request.urlopen(node_url, timeout=45) as response:
@@ -35,10 +37,11 @@ if not NODE:
         executable.write_bytes(package.extractfile(member).read())
         executable.chmod(0o700)
         NODE=str(executable)
+    NODE_SOURCE = 'verified-official-archive'
 node_version=subprocess.run([NODE,'--version'], capture_output=True,text=True,check=True,timeout=10).stdout.strip()
 if int(node_version.lstrip('v').split('.')[0])<20:
     raise RuntimeError('Node >=20 is required by the shared engine.')
-print('Verified shared-engine runtime:',node_version)
+print('Shared-engine runtime:', json.dumps({'nodeVersion': node_version, 'nodeSource': NODE_SOURCE}))
 # @FROZEN_INPUTS@
 if hashlib.sha256(ENGINE_BYTES).hexdigest() != ENGINE_SHA256:
     raise RuntimeError('ENGINE_FINGERPRINT_MISMATCH')
@@ -135,7 +138,7 @@ def _report_diagnostic_failure(report, error):
 
 @kbench.task(name='Orbit hardened native pass/fail',description='Strict six-question synthetic scope pilot. Boolean pass requires complete valid output, exact passages and all three engine checks.',version=1)
 def orbit_native_pass_fail_hardened(llm) -> bool:
-    report={'campaignId':CAMPAIGN_ID,'observationId':uuid.uuid4().hex,'model':str(getattr(llm,'name','unknown')),'promptSha256':hashlib.sha256(PROMPT.encode()).hexdigest(),'engineSha256':ENGINE_SHA256,'providerAttempts':0,'technicalAttempts':[],'checks':[],'outcome':'technical-error','result':None}
+    report={'campaignId':CAMPAIGN_ID,'observationId':uuid.uuid4().hex,'model':str(getattr(llm,'name','unknown')),'promptSha256':hashlib.sha256(PROMPT.encode()).hexdigest(),'engineSha256':ENGINE_SHA256,'nodeVersion':node_version,'nodeSource':NODE_SOURCE,'providerAttempts':0,'technicalAttempts':[],'checks':[],'outcome':'technical-error','result':None}
     primary_error = None
     def check(ok,name):
         passed=bool(ok)

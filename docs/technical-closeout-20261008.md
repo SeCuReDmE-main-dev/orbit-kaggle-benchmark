@@ -6,7 +6,7 @@ This closeout strengthens the isolated benchmark package while preserving its hi
 
 The prepared native successor centralizes its contract, generates the task and notebook from the same sources, normalizes decoder failures, enforces UTF-8 response size and matches the engine's UTF-16 string bounds. Atomic diagnostics preserve computed outcomes and original technical exceptions without another model attempt. Its new identity carries no hosted result.
 
-The replay checker validates all 486 recorded identities and Boolean outcomes, recomputes summaries and rejects missing, duplicated or failed checks. The package validator supports a read-only mode and verifies 46 frozen historical files against an anchored inventory. CI runs these software checks and the existing synthetic replay with read-only repository permissions and no model credentials.
+The replay checker validates all 486 recorded identities, recomputes outcomes from detailed result payloads against the frozen oracle and original observations, verifies Boolean flags and summaries and rejects missing, duplicated or failed checks. The package validator supports a read-only mode and verifies 46 frozen historical files against an anchored inventory. CI runs these software checks and the existing synthetic replay with read-only repository permissions and no model credentials.
 
 ## Executed evidence
 

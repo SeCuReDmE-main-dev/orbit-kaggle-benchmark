@@ -16,13 +16,7 @@ spec.loader.exec_module(checker)
 
 
 def valid_result():
-    rows = [{"caseId": case, "engine": engine, "operation": operation, "packet": packet,
-             "ok": True, "pass": True}
-            for (case, engine, operation), packet in checker.expected_rows().items()]
-    return {"format": "orbit-benchmark-results-v1", "suite": "A", **checker.INPUT_HASHES,
-            "rows": rows, "summary": {engine: {"questions": 36, "correct": 36,
-            "invariantsPassed": 108, "invariantsTotal": 108,
-            "relationPassed": 18, "relationTotal": 18} for engine in checker.ENGINES}}
+    return checker.read_json(ROOT / "evidence/replay-20261005/synthetic-replay.json")
 
 
 class ReplayResultTests(unittest.TestCase):
@@ -41,7 +35,7 @@ class ReplayResultTests(unittest.TestCase):
         result["rows"][0]["pass"] = False
         report = checker.check_result(result)
         self.assertEqual(report["status"], "failed")
-        self.assertEqual(len(report["failures"]), 1)
+        self.assertEqual(len(report["failures"]), 0)  # Payload passes; its recorded flag was falsified.
         self.assertTrue(any("recomputed" in error for error in report["errors"]))
 
     def test_consistent_failed_summary_still_fails(self):
@@ -94,6 +88,55 @@ class ReplayResultTests(unittest.TestCase):
         result = valid_result()
         result["oracleSha256"] = "0" * 64
         self.assertEqual(checker.check_result(result)["status"], "failed")
+
+    def test_forged_original_decision_or_origins_cannot_pass(self):
+        for field, value, summary_field in (("decision", "HOLD", "decision"),
+                                           ("independentSources", 99, "origins")):
+            with self.subTest(field=field):
+                result = valid_result()
+                result["rows"][0]["result"][0][field] = value
+                result["rows"][0]["summary"][summary_field] = value
+                report = checker.check_result(result)
+                self.assertEqual(report["status"], "failed")
+                self.assertEqual(report["summary"]["baseline"]["correct"], 35)
+
+    def test_metamorphic_payload_is_compared_to_recorded_original(self):
+        for operation in ("order", "duplicate", "unrelated"):
+            with self.subTest(operation=operation):
+                result = valid_result()
+                row = next(x for x in result["rows"] if x["operation"] == operation)
+                row["result"][0]["truth"] = []
+                row["summary"]["T"] = 0
+                report = checker.check_result(result)
+                self.assertEqual(report["status"], "failed")
+                self.assertEqual(report["summary"]["baseline"]["invariantsPassed"], 107)
+
+    def test_relation_payload_cannot_hide_behind_true_flag(self):
+        result = valid_result()
+        row = next(x for x in result["rows"] if x["operation"] == "relation")
+        for item in row["result"]:
+            item.update(kind="none", kinds=[])
+        report = checker.check_result(result)
+        self.assertEqual(report["status"], "failed")
+        self.assertEqual(report["summary"]["baseline"]["relationPassed"], 17)
+
+    def test_malformed_result_payloads_rejected(self):
+        for payload in (None, "invaliddata", {}, ["invaliddata"], []):
+            with self.subTest(payload=payload):
+                result = valid_result()
+                result["rows"][0]["result"] = payload
+                with self.assertRaises(checker.InvalidResult):
+                    checker.check_result(result)
+
+    def test_forged_row_summary_rejected(self):
+        result = valid_result()
+        result["rows"][0]["summary"]["T"] = 99
+        self.assertEqual(checker.check_result(result)["status"], "failed")
+
+    def test_row_order_does_not_change_recorded_semantics(self):
+        result = valid_result()
+        result["rows"].reverse()
+        self.assertEqual(checker.check_result(result)["status"], "passed")
 
     def test_result_size_limit_bounds_the_read_itself(self):
         source = MagicMock()

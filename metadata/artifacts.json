@@ -321,7 +321,7 @@
         "scoped-claims",
         "uncertainty"
       ],
-      "sha256": "ac93e1bbc242b9b51c1f7b8d445c62dd49f017f2caed037cdcff730b64caf3b1"
+      "sha256": "4298565753de4930c84c5c05a0f9cf58c85ea01aa0f162eb4272cc14b53eb718"
     },
     {
       "path": "docs/technical-closeout-20261008.md",
@@ -339,7 +339,7 @@
         "scoped-claims",
         "uncertainty"
       ],
-      "sha256": "2bb899ef7c8670290020f1a95ca136beb3ccfa1c7644f38a3d9c85f267599bbf"
+      "sha256": "63fce288b7419d9932293023f6aa2d9874c9323f857a9d39d808f79668c8df32"
     },
     {
       "path": "evidence/analysis-20261005/analysis-summary.json",
@@ -1224,7 +1224,7 @@
         "synthetic-data",
         "uncertainty"
       ],
-      "sha256": "fc97f8257cb80453cff13409350df7a03b1f415f54f4967f7861eb992b7d7303"
+      "sha256": "f6fab27b9132af56759dd3830906d775c6d7157ea2eb935b4a02e640cd07c8e7"
     },
     {
       "path": "pilot/native-pass-fail-hardened/manifest.json",
@@ -1249,7 +1249,7 @@
         "synthetic-data",
         "uncertainty"
       ],
-      "sha256": "c7abff7e4ced4fe87385c77be0bcca994073a39d2483e3da1de447ef1c43af8f"
+      "sha256": "56f6d8e7c51176f5a79ec0537b550f4eed2ac913e52fded90fac2d86c9385687"
     },
     {
       "path": "pilot/native-pass-fail-hardened/orbit-native-pass-fail-hardened.ipynb",
@@ -1274,7 +1274,7 @@
         "synthetic-data",
         "uncertainty"
       ],
-      "sha256": "e86e2c176541ceac476b1d23aa51b1ecc66b99eaa2c4151ebe7921c95c227590"
+      "sha256": "d9a5439f79b2557f45d153dc4d15680d0db8886f9833dfd8658b5b67f0e94c9d"
     },
     {
       "path": "pilot/native-pass-fail-hardened/README.md",
@@ -1324,7 +1324,7 @@
         "synthetic-data",
         "uncertainty"
       ],
-      "sha256": "0df2d516f62cfe727a7752dea3aa70db568c39cb75f988d08fbb179b532ca5c8"
+      "sha256": "92ae1b18082b65d0a5b0d8de19f2194fd113667300356276962470cd1d73908d"
     },
     {
       "path": "pilot/native-pass-fail-hardened/task.py",
@@ -1349,7 +1349,7 @@
         "synthetic-data",
         "uncertainty"
       ],
-      "sha256": "43658a6314144a169bbacc1680396f047eab80a1bf1c60bb96709e7b2da3207f"
+      "sha256": "ee6db4d4ff45d98e8b9cbb4989d2721602250a637522e5610b441ee201cd5999"
     },
     {
       "path": "pilot/orbit-kaggle-pilot.ipynb",
@@ -1480,7 +1480,7 @@
         "scoped-claims",
         "synthetic-data"
       ],
-      "sha256": "570583664f5bcd3c50fb80575f7f89e917faa3b20d5a12b6593cf6f0b346d972"
+      "sha256": "55a38cc986e4eed27a04dfb1d8e432deafacd6c7db901d11747ffc75c26f67cd"
     },
     {
       "path": "tests/test_package_validation.py",
@@ -1514,7 +1514,7 @@
         "scoped-claims",
         "synthetic-data"
       ],
-      "sha256": "4bfed548b585be4143b09d8845077f49dae0a3cf4fbaee9717f1ebf4028dab71"
+      "sha256": "38a3cd1dc25fbce56441a07dd080177443cd01a80c96a922244eee94949cee6c"
     },
     {
       "path": "tools/build_native_pilot_hardened.py",
@@ -1528,7 +1528,7 @@
         "reproducibility",
         "scoped-claims"
       ],
-      "sha256": "b1284a33187b60523fad4b8fefd3f5ad249d06763fbf0ffd00127ba6027cfac9"
+      "sha256": "accd981d9aa16ad8453f845f141a9568dfaa45be5eb6040070e66d0e7e848409"
     },
     {
       "path": "tools/check_replay_result.py",
@@ -1542,7 +1542,7 @@
         "reproducibility",
         "scoped-claims"
       ],
-      "sha256": "c3d5124a88f3e494956a40dceb1adc001eaf53d34d5aa333dcf24cdffd8f90d8"
+      "sha256": "2d8c13e278cfe9115ac97bcffb07aef5055b9e6660f5ce3daf6951aba1d7d000"
     },
     {
       "path": "tools/verify_package.py",

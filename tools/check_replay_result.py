@@ -2,7 +2,8 @@
 
 Exit 0 means the recorded rows and counters pass the frozen replay contract;
 exit 1 means failed/incomplete checks; exit 2 means unreadable or invalid input.
-This checks the reported observations, not the semantic validity of the engine.
+Scores are recomputed from recorded payloads using the frozen replay semantics.
+This does not authenticate payload origin or independently rerun the engine.
 """
 from __future__ import annotations
 
@@ -51,15 +52,48 @@ def read_json(path):
     return json.loads(data, object_pairs_hook=_object, parse_constant=_constant)
 
 
-def expected_rows():
+def reference_cases():
     data = (ROOT / "harness/synthetic/reference-cases.json").read_bytes()
     if hashlib.sha256(data).hexdigest() != INPUT_HASHES["oracleSha256"]:
         raise InvalidResult("Frozen reference corpus fingerprint mismatch")
-    cases = json.loads(data)
+    return {case["id"]: case for case in json.loads(data)
+            if case["annotationStatus"] in ("specification", "human-reviewed")}
+
+
+def expected_rows(cases=None):
+    cases = reference_cases() if cases is None else cases
     return {(case["id"], engine, operation): case["packet"]
-            for case in cases for engine in ENGINES
+            for case in cases.values() for engine in ENGINES
             for operation in OPERATIONS
             if operation != "relation" or case["expected"].get("relation")}
+
+
+def payload_summary(payload, case):
+    """Same target and summary fields as frozen harness/replay_synthetic.py."""
+    if not isinstance(payload, list) or any(not isinstance(item, dict) for item in payload):
+        raise InvalidResult("Expected a classification result array")
+    targets = [item for item in payload if item.get("claimId") == case["dossier"]["claims"][0]["id"]]
+    if len(targets) != 1:
+        raise InvalidResult("Expected one result for the scored claim")
+    target = targets[0]
+    if (target.get("decision") not in ("ADMIT", "REJECT", "HOLD")
+            or type(target.get("independentSources")) is not int or target["independentSources"] < 0
+            or any(not isinstance(target.get(field), list) or any(not isinstance(item, dict)
+                   for item in target[field]) for field in ("truth", "indeterminacy", "falsity"))
+            or any(not isinstance(item.get("code"), str) for item in target["indeterminacy"])):
+        raise InvalidResult("Invalid scored classification payload")
+    return {"decision": target["decision"], "T": len(target["truth"]),
+            "I": sorted(item["code"] for item in target["indeterminacy"]),
+            "F": len(target["falsity"]), "origins": target["independentSources"]}
+
+
+def relation_pass(payload, expected):
+    if not isinstance(payload, list) or any(
+            not isinstance(item, dict) or not isinstance(item.get("kind"), str)
+            or not isinstance(item.get("kinds", []), list)
+            or any(not isinstance(kind, str) for kind in item.get("kinds", [])) for item in payload):
+        raise InvalidResult("Invalid relation result array")
+    return any(item["kind"] == expected or expected in item.get("kinds", []) for item in payload)
 
 
 def check_result(result):
@@ -74,8 +108,10 @@ def check_result(result):
     for field, expected in INPUT_HASHES.items():
         if result.get(field) != expected:
             errors.append("Input fingerprint differs: " + field)
-    expected = expected_rows()
+    cases = reference_cases()
+    expected = expected_rows(cases)
     seen = set()
+    normalized, originals, known_rows = {}, {}, []
     counters = {engine: Counter({metric: 0 for metric in METRICS}) for engine in ENGINES}
     failed = []
     for index, row in enumerate(result["rows"]):
@@ -94,16 +130,36 @@ def check_result(result):
             continue
         if row["packet"] != expected[key]:
             errors.append(f"Incorrect packet at index {index}")
-        if row["pass"] and not row["ok"]:
-            errors.append(f"Passing row reports an engine error at index {index}")
-        if not row["pass"]:
+        known_rows.append((index, row, key))
+        if row["ok"] and row["operation"] != "relation":
+            normalized[index] = payload_summary(row.get("result"), cases[key[0]])
+            if row["operation"] == "original":
+                originals.setdefault(key[:2], normalized[index])
+            # JSON encoding keeps Boolean and integer summary values distinct.
+            if json.dumps(row.get("summary"), sort_keys=True) != json.dumps(normalized[index], sort_keys=True):
+                errors.append(f"Row summary differs from recomputed payload at index {index}")
+    for index, row, key in known_rows:
+        gold = cases[key[0]]["expected"]
+        if not row["ok"]:
+            computed_pass = False
+        elif row["operation"] == "relation":
+            computed_pass = relation_pass(row.get("result"), gold["relation"])
+        elif row["operation"] == "original":
+            actual = normalized[index]
+            computed_pass = (actual["decision"] == gold["decision"] and
+                             actual["origins"] == gold.get("independentSources", actual["origins"]))
+        else:
+            computed_pass = key[:2] in originals and normalized[index] == originals[key[:2]]
+        if row["pass"] != computed_pass:
+            errors.append(f"Recorded pass differs from recomputed payload at index {index}")
+        if not computed_pass:
             failed.append({"caseId": key[0], "engine": key[1], "operation": key[2]})
         counts = counters[row["engine"]]
         total, passed = (("questions", "correct") if row["operation"] == "original"
                          else ("relationTotal", "relationPassed") if row["operation"] == "relation"
                          else ("invariantsTotal", "invariantsPassed"))
         counts[total] += 1
-        counts[passed] += int(row["pass"])
+        counts[passed] += int(computed_pass)
     if set(expected) != seen or len(result["rows"]) != 486:
         errors.append("Incomplete or extra replay rows; expected the 486 frozen identities")
     if set(summary) != set(ENGINES):

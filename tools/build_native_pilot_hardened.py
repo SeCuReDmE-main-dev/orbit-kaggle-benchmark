@@ -58,6 +58,10 @@ def expected_artifacts(root=ROOT):
     source = template.replace("# @FROZEN_INPUTS@", frozen_source).replace("# @CONTRACT@", contract)
     source = source.replace("\r\n", "\n").rstrip() + "\n"
     generated_tree = ast.parse(source)
+    selected = [node for node in generated_tree.body if isinstance(node, ast.Assign)
+                and any(isinstance(target, ast.Name) and target.id == "SELECTED_MODELS" for target in node.targets)]
+    if len(selected) != 1 or ast.literal_eval(selected[0].value) != parent["models"]:
+        raise ValueError("Selected models must exactly match the historical parent manifest")
     task = next(node for node in generated_tree.body if isinstance(node, ast.FunctionDef) and node.name == MAIN_TASK)
     if not isinstance(task.returns, ast.Name) or task.returns.id != "bool":
         raise ValueError("Native result must remain an explicit bool")
