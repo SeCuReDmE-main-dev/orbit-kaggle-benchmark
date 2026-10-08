@@ -16,6 +16,9 @@ from urllib.parse import unquote, urlsplit
 ROOT = Path(__file__).resolve().parents[1]
 CATALOG = "metadata/artifacts.json"
 RECEIPT = "metadata/package-validation.json"
+FROZEN_HISTORY = "metadata/frozen-history.json"
+FROZEN_HISTORY_SHA256 = "d6ba3ecb7977c5e95f0bfb6fa09ee69d6ba8629d8dc74766a80ba01ced666ee3"
+SUCCESSOR = "pilot/native-pass-fail-hardened"
 EXCLUDED_PARTS = {"private", ".git", "outputs", "node_modules", "__pycache__", "secrets"}
 EXCLUDED_SUFFIXES = {".zip", ".bin", ".pyc", ".pyo"}
 EXCLUDED_FILES = {"harness/source/engine-jsonl.mjs"}
@@ -47,7 +50,18 @@ def describe(relative):
     if relative == "assets/thumbnail.png":
         scope = {"dataset": "author-provided-editorial-cover", "executionEvidence": False}
         status = "author-approved-public-thumbnail"
-    elif relative.startswith("pilot/native-pass-fail"):
+    elif relative.startswith(SUCCESSOR + "/"):
+        tags += ["synthetic-data", "llm-evaluation", "model-evaluation", "uncertainty"]
+        scope = {"dataset": "six-question-native-contract-hardening-successor",
+                 "questions": 6, "executionEvidence": False, "newModelCalls": 0,
+                 "distinctFrom": ["native-pass-fail-20261005", "36-case-development-replay", "60-question-C-campaign"]}
+        status = "hardened-successor-prepared-not-executed"
+        if relative == SUCCESSOR + "/local-validation.json":
+            scope.update({"testExecutionEvidence": True, "modelPerformanceEvidence": False,
+                          "nativeRunsExecuted": 0, "engineRuns": 0,
+                          "testScope": "pure-local-contract-and-test-double-orchestration"})
+            status = "local-software-test-receipt-not-native-or-model-execution"
+    elif relative.startswith("pilot/native-pass-fail/"):
         tags += ["synthetic-data", "llm-evaluation", "model-evaluation", "uncertainty"]
         scope = {"dataset": "prospective-six-question-native-pass-fail-task", "questions": 6,
                  "executionEvidence": "receipt" in Path(relative).name,
@@ -144,6 +158,24 @@ def describe(relative):
         elif "export-manifest" in relative:
             scope = {"dataset": "public-byte-export-provenance", "executionEvidence": False}
             status = "export-provenance"
+    elif relative.startswith("tests/"):
+        tags += ["synthetic-data", "evidence-provenance"]
+        scope = {"dataset": "public-synthetic-local-software-tests", "executionEvidence": False,
+                 "modelPerformanceEvidence": False}
+        status = "local-software-tests-not-model-measurements"
+    elif relative == FROZEN_HISTORY:
+        tags += ["evidence-provenance"]
+        scope = {"dataset": "immutable-pre-closeout-history", "executionEvidence": False}
+        status = "frozen-historical-byte-inventory"
+    elif relative == "metadata/reproduction-20261008.json":
+        tags += ["synthetic-data", "evidence-provenance"]
+        scope = {"dataset": "local-36-case-synthetic-reproduction-20261008",
+                 "executionEvidence": True, "modelPerformanceEvidence": False,
+                 "executionEnvironment": "local-Windows-isolated-copy", "newModelCalls": 0,
+                 "questions": 36, "engines": 3, "decisions": 108,
+                 "metamorphicChecks": 324, "relationChecks": 54,
+                 "distinctFrom": ["Kaggle-replay-20261005", "six-question-native-pilot", "C-C4-model-reanalysis"]}
+        status = "local-deterministic-reproduction-receipt-not-Kaggle-execution"
     elif relative.startswith("docs/") or relative == "README.md":
         tags += ["evidence-provenance", "llm-evaluation", "uncertainty", "protocol-compliance"]
         scope = {"dataset": "editorial-and-methodology-cross-scope-index", "executionEvidence": False}
@@ -164,6 +196,107 @@ def refresh_catalog(files):
     (ROOT / CATALOG).write_text(json.dumps(catalog, indent=2) + "\n", encoding="utf-8")
 
 
+def validate_frozen_history(root):
+    """Anchor historical bytes independently of the regenerable artifact catalog."""
+    errors, verified = [], 0
+    try:
+        manifest_bytes = (root / FROZEN_HISTORY).read_bytes()
+        if hashlib.sha256(manifest_bytes).hexdigest() != FROZEN_HISTORY_SHA256:
+            return ["Frozen history inventory fingerprint mismatch"], 0
+        manifest = json.loads(manifest_bytes)
+        for relative, expected in manifest["files"].items():
+            source = root / relative
+            target = source.resolve()
+            if (not target.is_relative_to(root.resolve()) or excluded(relative)
+                    or not target.is_file() or source.is_symlink()):
+                errors.append("Missing or unsafe frozen file: " + relative)
+                continue
+            if sha(target) != expected:
+                errors.append("Historical bytes changed: " + relative)
+            verified += 1
+    except (OSError, ValueError, KeyError, TypeError) as error:
+        errors.append("Frozen history validation failed: " + type(error).__name__)
+    return errors, verified
+
+
+def validate_successor(root):
+    """Inspect the successor's sources and manifest; never import its task or SDK."""
+    errors, checks = [], 0
+
+    def check(ok, message):
+        nonlocal checks
+        checks += 1
+        if not ok:
+            errors.append("Successor: " + message)
+
+    def assigned(tree, name):
+        return next(node.value for node in tree.body if isinstance(node, ast.Assign)
+                    and any(isinstance(target, ast.Name) and target.id == name for target in node.targets))
+
+    def inputs(tree):
+        return {"promptSha256": hashlib.sha256(ast.literal_eval(assigned(tree, "PROMPT")).encode()).hexdigest(),
+                "engineSha256": hashlib.sha256(base64.b64decode(
+                    ast.literal_eval(assigned(tree, "ENGINE_BYTES").args[0]), validate=True)).hexdigest(),
+                **{name.lower() + "Sha256": hashlib.sha256(
+                    ast.literal_eval(assigned(tree, name).args[0]).encode()).hexdigest()
+                   for name in ("PUBLIC", "GOLD")}}
+
+    directory = root / SUCCESSOR
+    try:
+        manifest = json.loads((directory / "manifest.json").read_text(encoding="utf-8"))
+        check(manifest.get("format") == "orbit-native-hardened-preparation-v1", "unexpected format")
+        check(manifest.get("state") == "prepared-not-executed", "preparation state changed")
+        for field in ("modelCallsDuringPreparation", "nativeRunsExecuted"):
+            check(type(manifest.get(field)) is int and manifest[field] == 0, field + " must be zero")
+        for field in ("runModelsByDefault", "publishedOnKaggle"):
+            check(manifest.get(field) is False, field + " must be false")
+        check(manifest.get("nativeResultType") == "bool", "result type must be bool")
+        files = manifest["files"]
+        check(set(files) == {"contract.py", "task-template.py.in", "task.py", "orbit-native-pass-fail-hardened.ipynb"},
+              "source file inventory differs")
+        for name, expected in files.items():
+            safe = Path(name).name == name and "/" not in name and "\\" not in name
+            check(safe, "unsafe source path")
+            if safe:
+                check(sha(directory / name) == expected, "source fingerprint differs: " + name)
+        parent = manifest["parent"]
+        check(parent["path"] == "pilot/native-pass-fail", "predecessor path differs")
+        parent_directory = root / "pilot/native-pass-fail"
+        parent_manifest = json.loads((parent_directory / "manifest.json").read_text(encoding="utf-8"))
+        check(sha(parent_directory / "manifest.json") == parent["manifestSha256"], "predecessor manifest differs")
+        check(parent["sourceFiles"] == parent_manifest["files"], "predecessor source inventory differs")
+        for name, expected in parent_manifest["files"].items():
+            check(sha(parent_directory / name) == expected, "predecessor source differs: " + name)
+        builder = manifest["builder"]
+        check(builder["path"] == "tools/build_native_pilot_hardened.py", "builder path differs")
+        check(sha(root / "tools/build_native_pilot_hardened.py") == builder["sha256"], "builder fingerprint differs")
+        task_source = (directory / "task.py").read_text(encoding="utf-8")
+        task_tree = ast.parse(task_source)
+        contract_tree = ast.parse((directory / "contract.py").read_text(encoding="utf-8"))
+        parent_tree = ast.parse((parent_directory / "task.py").read_text(encoding="utf-8"))
+        check(ast.literal_eval(assigned(task_tree, "RUN_MODELS")) is False, "model dispatch enabled by default")
+        check(inputs(task_tree) == inputs(parent_tree), "frozen prompt, engine or reference payload changed")
+        for field, actual in inputs(task_tree).items():
+            check(manifest["frozenInputs"][field] == actual, "frozen input fingerprint differs: " + field)
+        definitions = {node.name: ast.dump(node) for node in task_tree.body
+                       if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef))}
+        for node in contract_tree.body:
+            if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef)):
+                check(definitions.get(node.name) == ast.dump(node), "embedded contract differs: " + node.name)
+        task_functions = {node.name: node for node in task_tree.body if isinstance(node, ast.FunctionDef)}
+        main_task = task_functions.get(manifest["mainTask"])
+        check(main_task is not None and isinstance(main_task.returns, ast.Name)
+              and main_task.returns.id == "bool", "main task has no explicit bool result")
+        notebook = json.loads((directory / "orbit-native-pass-fail-hardened.ipynb").read_text(encoding="utf-8"))
+        code_cells = ["".join(cell["source"]) if isinstance(cell["source"], list) else cell["source"]
+                      for cell in notebook["cells"] if cell["cell_type"] == "code"]
+        check(task_source.startswith("# %%\n") and task_source.split("# %%\n")[1:] == code_cells,
+              "notebook code cells differ from readable task source")
+    except (OSError, ValueError, SyntaxError, KeyError, TypeError, AttributeError, StopIteration) as error:
+        errors.append("Successor validation failed: " + type(error).__name__)
+    return errors, checks
+
+
 def validate(files):
     errors, warnings = [], []
     counts = {"publicArtifacts": len(files), "jsonParsed": 0, "pythonAstParsed": 0,
@@ -172,7 +305,8 @@ def validate(files):
               "ipythonLinesReplacedForStaticParsing": 0, "relativeMarkdownLinksChecked": 0,
               "newPreparationHashesVerified": 0, "embeddedReplayBytesVerified": 0,
               "nativeContractFunctionsVerified": 0, "executedAnalysisScopeChecks": 0,
-              "imageAssetsChecked": 0}
+              "imageAssetsChecked": 0, "frozenHistoryHashesVerified": 0,
+              "successorChecks": 0}
 
     def check(condition, message):
         if not condition:
@@ -181,6 +315,11 @@ def validate(files):
     def assignment(tree, name):
         return next(node.value for node in tree.body if isinstance(node, ast.Assign)
                     and any(isinstance(target, ast.Name) and target.id == name for target in node.targets))
+
+    frozen_errors, counts["frozenHistoryHashesVerified"] = validate_frozen_history(ROOT)
+    errors.extend(frozen_errors)
+    successor_errors, counts["successorChecks"] = validate_successor(ROOT)
+    errors.extend(successor_errors)
 
     def notebook_python(source, location):
         lines = []
@@ -346,6 +485,9 @@ def validate(files):
         check(not excluded(entry["path"]) and entry["path"] not in (CATALOG, RECEIPT), f"Catalog exclusion violation: {entry['path']}")
         check(sha(ROOT / entry["path"]) == entry["sha256"], f"Catalog hash mismatch: {entry['path']}")
         check(set(entry["tags"]).issubset(LABELS), f"Unknown catalog tag: {entry['path']}")
+        description = describe(entry["path"])
+        check(all(entry.get(field) == expected for field, expected in description.items()),
+              f"Catalog status/scope differs from source classification: {entry['path']}")
         counts["catalogHashesVerified"] += 1
     check((ROOT / ".gitattributes").read_text(encoding="utf-8").strip() == "* -text", "Frozen-byte Git attributes missing")
     ignore_lines = (ROOT / ".gitignore").read_text(encoding="utf-8").splitlines()
@@ -372,11 +514,15 @@ def validate(files):
             "scope": "Static file, syntax, notebook-output, byte-provenance and public-boundary checks only."}
 
 
-def main():
+def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--refresh-catalog", action="store_true", help="Regenerate artifact hashes after public edits settle.")
+    mode = parser.add_mutually_exclusive_group()
+    mode.add_argument("--refresh-catalog", action="store_true", help="Regenerate artifact hashes after public edits settle.")
+    mode.add_argument("--read-only", action="store_true", help="Validate and print the report without changing any file.")
     parser.add_argument("--search", help="Print catalog entries whose tag or path contains this text; no checks run.")
-    arguments = parser.parse_args()
+    arguments = parser.parse_args(argv)
+    if arguments.search and arguments.refresh_catalog:
+        parser.error("--search cannot be combined with --refresh-catalog")
     if arguments.search:
         catalog = json.loads((ROOT / CATALOG).read_text(encoding="utf-8"))
         print(json.dumps([entry for entry in catalog["artifacts"] if arguments.search.lower() in
@@ -386,8 +532,9 @@ def main():
     if arguments.refresh_catalog:
         refresh_catalog(files)
     report = validate(files)
-    (ROOT / RECEIPT).parent.mkdir(parents=True, exist_ok=True)
-    (ROOT / RECEIPT).write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+    if not arguments.read_only:
+        (ROOT / RECEIPT).parent.mkdir(parents=True, exist_ok=True)
+        (ROOT / RECEIPT).write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(report, indent=2))
     raise SystemExit(1 if report["errors"] else 0)
 

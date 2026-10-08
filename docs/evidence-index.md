@@ -16,7 +16,13 @@ This is a curated chronology of observable jobs, not an entire private conversat
 | October 5 synthetic replay | Executed in Kaggle: 108 decisions, 324 metamorphic checks, 54 relations; all 486 pass, zero model calls | [Execution receipt](../evidence/replay-20261005/execution-receipt.json), [detailed rows](../evidence/replay-20261005/synthetic-replay.json) |
 | October 5 retained archive analysis | Executed in Kaggle: C 236 productions and C4 four, separate identities; zero new model calls | [Analysis summary](../evidence/analysis-20261005/analysis-summary.json) |
 
-The original project is frozen for the Sanity judging period. This standalone package does not modify its source, working tree, deployments or historical checkpoint identities. Static package checks execute locally; benchmark and retained-archive analysis executions occur in Kaggle. The zero-call claim applies to replay and archive analysis, not to the native model pilot.
+The original project is frozen for the Sanity judging period. This standalone package does not modify its source, working tree, deployments or historical checkpoint identities. Static package checks execute locally; historical model runs and retained-archive analysis occurred in Kaggle. The zero-call claim applies to replay and archive analysis, not to the native model pilot.
+
+## October 8 technical closeout
+
+The [local reproduction receipt](../metadata/reproduction-20261008.json) records an isolated Windows copy running the existing public synthetic replay. All 486 checks passed with zero model calls. Python 3.10.11, Node 24.18.1 and esbuild 0.25.12 identify this local execution separately from the October 5 Kaggle run. No package lock or historical source change was produced.
+
+The [hardened native successor](../pilot/native-pass-fail-hardened/README.md) remains prepared and unexecuted on Kaggle. Its pure regression tests exercise output validation and failure handling with test doubles. The [closeout plan](plan.md) records review, CI and publication actions as they are verified; unavailable reviewers do not count as successful reviews. Final article approval and podcast integration remain an author-led editorial step.
 
 ## Reviewable outcome boundaries
 

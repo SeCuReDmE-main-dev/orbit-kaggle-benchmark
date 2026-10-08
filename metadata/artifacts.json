@@ -28,6 +28,20 @@
   "selfHashPolicy": "Catalog and regenerable validation receipt are excluded to prevent hash cycles.",
   "artifacts": [
     {
+      "path": ".coderabbit.yaml",
+      "type": "configuration",
+      "status": "public-source-or-documentation",
+      "scope": {
+        "dataset": "package-metadata",
+        "executionEvidence": false
+      },
+      "tags": [
+        "reproducibility",
+        "scoped-claims"
+      ],
+      "sha256": "7b11666dc3d4157ece7a90c9fae5139dce1da693165b55c0dad124230d53e45b"
+    },
+    {
       "path": ".gitattributes",
       "type": "configuration",
       "status": "public-source-or-documentation",
@@ -40,6 +54,20 @@
         "scoped-claims"
       ],
       "sha256": "705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da"
+    },
+    {
+      "path": ".github/workflows/validate.yml",
+      "type": "configuration",
+      "status": "public-source-or-documentation",
+      "scope": {
+        "dataset": "package-metadata",
+        "executionEvidence": false
+      },
+      "tags": [
+        "reproducibility",
+        "scoped-claims"
+      ],
+      "sha256": "7253e90751bc822f36dc577ca809105339f198f4faa5192df5edf65c46abe2f1"
     },
     {
       "path": ".gitignore",
@@ -221,7 +249,7 @@
         "scoped-claims",
         "uncertainty"
       ],
-      "sha256": "ab6469f776d1c8296faeccce1824d5b74b45b22a1415512e928fe36506350e25"
+      "sha256": "f6430781479cd14ab37c6e8fbdadb63d954ea8b89e01b48f1e48dbc2fa5131c8"
     },
     {
       "path": "docs/judge-checklist.md",
@@ -239,7 +267,7 @@
         "scoped-claims",
         "uncertainty"
       ],
-      "sha256": "3f1aa03d0adbd7a3bc684e38c9df00e840a48002d46f45816e82b300fd00a2fa"
+      "sha256": "e6e269fb37a237adc5eed1015b551580fb6523d725fb2c41d148f2f7e32facaa"
     },
     {
       "path": "docs/methodology.md",
@@ -275,7 +303,43 @@
         "scoped-claims",
         "uncertainty"
       ],
-      "sha256": "c93e0ab4d3e9ca17a0d4c29156e90e304d9137a3db9946b71b62003ac04ec89b"
+      "sha256": "654e8c6c647b9a5d4027b1b1d23032242fe7fc586fa729115a36e4be97813435"
+    },
+    {
+      "path": "docs/plan.md",
+      "type": "documentation",
+      "status": "public-documentation",
+      "scope": {
+        "dataset": "editorial-and-methodology-cross-scope-index",
+        "executionEvidence": false
+      },
+      "tags": [
+        "evidence-provenance",
+        "llm-evaluation",
+        "protocol-compliance",
+        "reproducibility",
+        "scoped-claims",
+        "uncertainty"
+      ],
+      "sha256": "2076852a8f28746442115e80d9c07fdb0b59974d31978dc0b1c75fd16038ce41"
+    },
+    {
+      "path": "docs/technical-closeout-20261008.md",
+      "type": "documentation",
+      "status": "public-documentation",
+      "scope": {
+        "dataset": "editorial-and-methodology-cross-scope-index",
+        "executionEvidence": false
+      },
+      "tags": [
+        "evidence-provenance",
+        "llm-evaluation",
+        "protocol-compliance",
+        "reproducibility",
+        "scoped-claims",
+        "uncertainty"
+      ],
+      "sha256": "2bb899ef7c8670290020f1a95ca136beb3ccfa1c7644f38a3d9c85f267599bbf"
     },
     {
       "path": "evidence/analysis-20261005/analysis-summary.json",
@@ -896,6 +960,50 @@
       "sha256": "aabe0f8b121f32a5eda7795dfe730f70993829a30b18c1857974b5cdf4e6fcd0"
     },
     {
+      "path": "metadata/frozen-history.json",
+      "type": "json-metadata",
+      "status": "frozen-historical-byte-inventory",
+      "scope": {
+        "dataset": "immutable-pre-closeout-history",
+        "executionEvidence": false
+      },
+      "tags": [
+        "evidence-provenance",
+        "reproducibility",
+        "scoped-claims"
+      ],
+      "sha256": "d6ba3ecb7977c5e95f0bfb6fa09ee69d6ba8629d8dc74766a80ba01ced666ee3"
+    },
+    {
+      "path": "metadata/reproduction-20261008.json",
+      "type": "json-metadata",
+      "status": "local-deterministic-reproduction-receipt-not-Kaggle-execution",
+      "scope": {
+        "dataset": "local-36-case-synthetic-reproduction-20261008",
+        "executionEvidence": true,
+        "modelPerformanceEvidence": false,
+        "executionEnvironment": "local-Windows-isolated-copy",
+        "newModelCalls": 0,
+        "questions": 36,
+        "engines": 3,
+        "decisions": 108,
+        "metamorphicChecks": 324,
+        "relationChecks": 54,
+        "distinctFrom": [
+          "Kaggle-replay-20261005",
+          "six-question-native-pilot",
+          "C-C4-model-reanalysis"
+        ]
+      },
+      "tags": [
+        "evidence-provenance",
+        "reproducibility",
+        "scoped-claims",
+        "synthetic-data"
+      ],
+      "sha256": "359e831b11ac2eea18eb685a8f3aec64b9b9fe419d1c36f8f87bf843bd95e4e0"
+    },
+    {
       "path": "pilot/historical-run-metadata.json",
       "type": "json-metadata",
       "status": "historical-observation-metadata",
@@ -1064,6 +1172,186 @@
       "sha256": "a726a159e4b382ea18bce30294dbd8f599aa93fde6938317e7dfbd65892e4eb4"
     },
     {
+      "path": "pilot/native-pass-fail-hardened/contract.py",
+      "type": "python-source",
+      "status": "hardened-successor-prepared-not-executed",
+      "scope": {
+        "dataset": "six-question-native-contract-hardening-successor",
+        "questions": 6,
+        "executionEvidence": false,
+        "newModelCalls": 0,
+        "distinctFrom": [
+          "native-pass-fail-20261005",
+          "36-case-development-replay",
+          "60-question-C-campaign"
+        ]
+      },
+      "tags": [
+        "llm-evaluation",
+        "model-evaluation",
+        "reproducibility",
+        "scoped-claims",
+        "synthetic-data",
+        "uncertainty"
+      ],
+      "sha256": "1676132695573e3fd007916f9a1f86272d65929a55adc65b95c6a6d1a037303b"
+    },
+    {
+      "path": "pilot/native-pass-fail-hardened/local-validation.json",
+      "type": "json-metadata",
+      "status": "local-software-test-receipt-not-native-or-model-execution",
+      "scope": {
+        "dataset": "six-question-native-contract-hardening-successor",
+        "questions": 6,
+        "executionEvidence": false,
+        "newModelCalls": 0,
+        "distinctFrom": [
+          "native-pass-fail-20261005",
+          "36-case-development-replay",
+          "60-question-C-campaign"
+        ],
+        "testExecutionEvidence": true,
+        "modelPerformanceEvidence": false,
+        "nativeRunsExecuted": 0,
+        "engineRuns": 0,
+        "testScope": "pure-local-contract-and-test-double-orchestration"
+      },
+      "tags": [
+        "llm-evaluation",
+        "model-evaluation",
+        "reproducibility",
+        "scoped-claims",
+        "synthetic-data",
+        "uncertainty"
+      ],
+      "sha256": "728c77673b5e305ad4ff39b85bf59e7d007cd7d6904f6af344b5a8e2840c0681"
+    },
+    {
+      "path": "pilot/native-pass-fail-hardened/manifest.json",
+      "type": "json-metadata",
+      "status": "hardened-successor-prepared-not-executed",
+      "scope": {
+        "dataset": "six-question-native-contract-hardening-successor",
+        "questions": 6,
+        "executionEvidence": false,
+        "newModelCalls": 0,
+        "distinctFrom": [
+          "native-pass-fail-20261005",
+          "36-case-development-replay",
+          "60-question-C-campaign"
+        ]
+      },
+      "tags": [
+        "llm-evaluation",
+        "model-evaluation",
+        "reproducibility",
+        "scoped-claims",
+        "synthetic-data",
+        "uncertainty"
+      ],
+      "sha256": "0eb54fb468d78519c7006779699b544fbe2ef73cd5ff3674480b1d78cef5396b"
+    },
+    {
+      "path": "pilot/native-pass-fail-hardened/orbit-native-pass-fail-hardened.ipynb",
+      "type": "notebook-source",
+      "status": "hardened-successor-prepared-not-executed",
+      "scope": {
+        "dataset": "six-question-native-contract-hardening-successor",
+        "questions": 6,
+        "executionEvidence": false,
+        "newModelCalls": 0,
+        "distinctFrom": [
+          "native-pass-fail-20261005",
+          "36-case-development-replay",
+          "60-question-C-campaign"
+        ]
+      },
+      "tags": [
+        "llm-evaluation",
+        "model-evaluation",
+        "reproducibility",
+        "scoped-claims",
+        "synthetic-data",
+        "uncertainty"
+      ],
+      "sha256": "566cf93d8d497cd754b91a2026599bcbb6e76660152819b6e0f8107f9466469e"
+    },
+    {
+      "path": "pilot/native-pass-fail-hardened/README.md",
+      "type": "documentation",
+      "status": "hardened-successor-prepared-not-executed",
+      "scope": {
+        "dataset": "six-question-native-contract-hardening-successor",
+        "questions": 6,
+        "executionEvidence": false,
+        "newModelCalls": 0,
+        "distinctFrom": [
+          "native-pass-fail-20261005",
+          "36-case-development-replay",
+          "60-question-C-campaign"
+        ]
+      },
+      "tags": [
+        "llm-evaluation",
+        "model-evaluation",
+        "reproducibility",
+        "scoped-claims",
+        "synthetic-data",
+        "uncertainty"
+      ],
+      "sha256": "2ba2fbde3fd4aaa44527705dad6bef7b1368ac6900845013ba025bd188be5de3"
+    },
+    {
+      "path": "pilot/native-pass-fail-hardened/task-template.py.in",
+      "type": "configuration",
+      "status": "hardened-successor-prepared-not-executed",
+      "scope": {
+        "dataset": "six-question-native-contract-hardening-successor",
+        "questions": 6,
+        "executionEvidence": false,
+        "newModelCalls": 0,
+        "distinctFrom": [
+          "native-pass-fail-20261005",
+          "36-case-development-replay",
+          "60-question-C-campaign"
+        ]
+      },
+      "tags": [
+        "llm-evaluation",
+        "model-evaluation",
+        "reproducibility",
+        "scoped-claims",
+        "synthetic-data",
+        "uncertainty"
+      ],
+      "sha256": "278360f20359737d321cfcc7d349e7eef117b85c83c61bc07d6e1ae4783c1ec5"
+    },
+    {
+      "path": "pilot/native-pass-fail-hardened/task.py",
+      "type": "python-source",
+      "status": "hardened-successor-prepared-not-executed",
+      "scope": {
+        "dataset": "six-question-native-contract-hardening-successor",
+        "questions": 6,
+        "executionEvidence": false,
+        "newModelCalls": 0,
+        "distinctFrom": [
+          "native-pass-fail-20261005",
+          "36-case-development-replay",
+          "60-question-C-campaign"
+        ]
+      },
+      "tags": [
+        "llm-evaluation",
+        "model-evaluation",
+        "reproducibility",
+        "scoped-claims",
+        "synthetic-data",
+        "uncertainty"
+      ],
+      "sha256": "9e52f5cfa229f6511a9be6092dc03f7706886409b9aae9bba0e42396e9835c82"
+    },
+    {
       "path": "pilot/orbit-kaggle-pilot.ipynb",
       "type": "notebook-source",
       "status": "prepared-source-live-binary-parity-unverified",
@@ -1175,7 +1463,86 @@
         "scoped-claims",
         "uncertainty"
       ],
-      "sha256": "1b4bb03620481082e53149a73680fc8075e8ff426d16fa7a6ffe8548cf8b608c"
+      "sha256": "98e5f043fdd7c64a77b32e9ea2328efee438bc5f47925be7674b094c4c613316"
+    },
+    {
+      "path": "tests/test_native_pilot_hardened.py",
+      "type": "python-source",
+      "status": "local-software-tests-not-model-measurements",
+      "scope": {
+        "dataset": "public-synthetic-local-software-tests",
+        "executionEvidence": false,
+        "modelPerformanceEvidence": false
+      },
+      "tags": [
+        "evidence-provenance",
+        "reproducibility",
+        "scoped-claims",
+        "synthetic-data"
+      ],
+      "sha256": "acc795eb51f0ffeab82e26326d6e0a5b1420f77292dfb151a36613c5659e5fb5"
+    },
+    {
+      "path": "tests/test_package_validation.py",
+      "type": "python-source",
+      "status": "local-software-tests-not-model-measurements",
+      "scope": {
+        "dataset": "public-synthetic-local-software-tests",
+        "executionEvidence": false,
+        "modelPerformanceEvidence": false
+      },
+      "tags": [
+        "evidence-provenance",
+        "reproducibility",
+        "scoped-claims",
+        "synthetic-data"
+      ],
+      "sha256": "725d212aba9dfd1dbe2832a302897a4a89672549915e116e97f6055e8b05a8e9"
+    },
+    {
+      "path": "tests/test_replay_result.py",
+      "type": "python-source",
+      "status": "local-software-tests-not-model-measurements",
+      "scope": {
+        "dataset": "public-synthetic-local-software-tests",
+        "executionEvidence": false,
+        "modelPerformanceEvidence": false
+      },
+      "tags": [
+        "evidence-provenance",
+        "reproducibility",
+        "scoped-claims",
+        "synthetic-data"
+      ],
+      "sha256": "87dbcbf9fd5314d532b0656dcdd20074cdc9dd8bc7bab0194d155b0e2d1d9fb6"
+    },
+    {
+      "path": "tools/build_native_pilot_hardened.py",
+      "type": "python-source",
+      "status": "public-source-or-documentation",
+      "scope": {
+        "dataset": "package-metadata",
+        "executionEvidence": false
+      },
+      "tags": [
+        "reproducibility",
+        "scoped-claims"
+      ],
+      "sha256": "b1284a33187b60523fad4b8fefd3f5ad249d06763fbf0ffd00127ba6027cfac9"
+    },
+    {
+      "path": "tools/check_replay_result.py",
+      "type": "python-source",
+      "status": "public-source-or-documentation",
+      "scope": {
+        "dataset": "package-metadata",
+        "executionEvidence": false
+      },
+      "tags": [
+        "reproducibility",
+        "scoped-claims"
+      ],
+      "sha256": "c53ee9d7e25ec57527e306eaf6014b59c38525831fe7a67cde7bafd344d76b37"
     },
     {
       "path": "tools/verify_package.py",
@@ -1189,7 +1556,7 @@
         "reproducibility",
         "scoped-claims"
       ],
-      "sha256": "a0a5494754b4311f93b1d5e48b0ba017b603de88123f6ab095f49bfce4c9882d"
+      "sha256": "37eba77e46f850cb362c6ecb8e36d0eaf30c2f1aa7ff394b86dc8d1c87b9775b"
     }
   ]
 }

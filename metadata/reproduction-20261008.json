@@ -1,0 +1,64 @@
+{
+  "format": "orbit-local-synthetic-reproduction-v1",
+  "verifiedAtUtc": "2026-10-08T16:08:20.556959+00:00",
+  "host": "local Windows isolated copy",
+  "runtime": {
+    "python": "3.10.11",
+    "node": "24.18.1",
+    "npm": "11.16.0",
+    "esbuild": "0.25.12"
+  },
+  "scope": "Reproduction of existing 36 synthetic development cases; not a new model campaign or Kaggle execution.",
+  "modelCalls": 0,
+  "decisions": 108,
+  "metamorphicChecks": 324,
+  "relationChecks": 54,
+  "totalChecks": 486,
+  "failures": [],
+  "summary": {
+    "baseline": {
+      "questions": 36,
+      "correct": 36,
+      "invariantsPassed": 108,
+      "invariantsTotal": 108,
+      "relationPassed": 18,
+      "relationTotal": 18
+    },
+    "n": {
+      "questions": 36,
+      "correct": 36,
+      "invariantsPassed": 108,
+      "invariantsTotal": 108,
+      "relationPassed": 18,
+      "relationTotal": 18
+    },
+    "p": {
+      "questions": 36,
+      "correct": 36,
+      "invariantsPassed": 108,
+      "invariantsTotal": 108,
+      "relationPassed": 18,
+      "relationTotal": 18
+    }
+  },
+  "resultSha256": "258f63007f248321c72c4cf9b93d7e905dd80ec564d3aeb4d2f6327afa8efeef",
+  "compiledEngineSha256": "1a0d2c0ec1e176afa73321bd772a3ef93cbab7dfcd44f9b6c41bdeeaaeed6823",
+  "commands": [
+    "npm install --prefix harness/source --ignore-scripts --no-audit --no-fund --package-lock=false",
+    "harness/source/node_modules/.bin/esbuild harness/source/tools/engine-jsonl.ts --bundle --platform=node --format=esm --outfile=harness/source/engine-jsonl.mjs",
+    "python -B harness/replay_synthetic.py --corpus harness/synthetic --output outputs/synthetic-replay.json",
+    "python -B tools/check_replay_result.py outputs/synthetic-replay.json"
+  ],
+  "commandExitCodes": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "packageLockCreated": false,
+  "sourceHashes": {
+    "harness/replay_synthetic.py": "32b3ab8413fcb51d1133cb2e34f1ee0d864a0f8164849df49f69c1363c55272e",
+    "harness/synthetic/reference-cases.json": "aabe0f8b121f32a5eda7795dfe730f70993829a30b18c1857974b5cdf4e6fcd0",
+    "tools/check_replay_result.py": "c53ee9d7e25ec57527e306eaf6014b59c38525831fe7a67cde7bafd344d76b37"
+  }
+}

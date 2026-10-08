@@ -22,6 +22,15 @@ The `none` condition is an experimental control with no engine report. **It is n
 **Original implementation:** [SeCuReDmE-main-dev/Orbit](https://github.com/SeCuReDmE-main-dev/Orbit).  
 **Public application:** [orbit.securedme.ca](https://orbit.securedme.ca/).
 
+## Start here
+
+Orbit helps a reader inspect source-grounded claims through three selectable evidence representations. This repository contains its benchmark package: synthetic fixtures, frozen engine exports, aggregate observations and reproduction tools. It does not contain the full application or change the original Orbit/Sanity submission.
+
+1. Open the [public Kaggle collection](https://www.kaggle.com/benchmarks/celebrum/orbit-scoped-evidence-and-user-choice).
+2. Read the [native result and display limitation](docs/native-pilot-results.md), then the campaign findings below.
+3. Follow the replay commands and validate the resulting detailed rows.
+4. Inspect the [methodology](docs/methodology.md), [artifact catalog](metadata/artifacts.json) and [closeout plan](docs/plan.md) for scope, provenance and completion evidence.
+
 ## Models and experimental conditions
 
 The observed Kaggle catalog models were `google/gemini-3.8-flash` and `google/gemini-3.1-pro-preview`. Their exact provider IDs are retained instead of silently substituting newer versions. Kaggle Benchmarks SDK **0.6.1** hosted model runs; the later bootstrap pinned protobuf **5.29.6**. Historical C used reasoning `medium`, a 4,096-token output limit and three repetitions.
@@ -49,6 +58,8 @@ The new [Boolean task](https://www.kaggle.com/benchmarks/tasks/celebrum/orbit-na
 
 Kaggle's version 1 task page displayed PASS for Pro despite its unchanged native JSON containing `booleanResult: false`. Version 2 imported the Flash observation only. This platform display discrepancy is documented in [the native result note](docs/native-pilot-results.md); use the recorded Boolean and checks, not an execution-completed badge. The separate native pilot, 36-case replay and historical campaign have different denominators. See [native source and contract](pilot/native-pass-fail/README.md).
 
+The October 8 [hardened successor](pilot/native-pass-fail-hardened/README.md) addresses decoder errors, UTF-8 limits and diagnostic persistence. It has a separate identity and remains **prepared, not executed or published on Kaggle**. Local regression tests cannot replace the historical hosted observations or establish model accuracy.
+
 ## Findings worth examining
 
 The controlled deterministic engines tied. In the earlier C aggregate, Flash returned 90/102 correct synthetic decisions without an engine report and 96/102 under each assisted condition. Pro returned 108/108 without a report, versus 95/108 baseline, 98/108 N and 89/108 P. Its assisted conditions accumulated 13, 10 and 19 excessive HOLD decisions respectively. These are bounded, historical observations on six synthetic packet clusters, not evidence that an engine or model wins in general.
@@ -62,12 +73,13 @@ The export contains **only the 36 synthetic development cases**, their authored 
 Upload/clone this package into a Kaggle notebook, enable the ordinary dependency download required by npm, and run the following from the repository root in that notebook. Python 3 and **Node.js 20+ with npm** are required (the frozen source uses global Web Crypto). No provider or Kaggle model API key is needed.
 
 ```bash
-npm install --prefix harness/source --ignore-scripts --no-audit --no-fund
+npm install --prefix harness/source --ignore-scripts --no-audit --no-fund --package-lock=false
 harness/source/node_modules/.bin/esbuild harness/source/tools/engine-jsonl.ts --bundle --platform=node --format=esm --outfile=harness/source/engine-jsonl.mjs
 python harness/replay_synthetic.py --corpus harness/synthetic --output outputs/synthetic-replay.json
+python tools/check_replay_result.py outputs/synthetic-replay.json
 ```
 
-The adapter changes only filesystem locations and invokes the esbuild bundle. Its scoring logic comes from the original Suite A script; every export transformation and both byte hashes are in [the manifest](evidence/export-manifest.json). The self-contained [Kaggle replay notebook](harness/kaggle-replay/README.md) was executed on October 5. It checks every embedded source hash, pins esbuild 0.25.12 and records the runtime and compiled-engine fingerprint. No local benchmark execution is implied.
+The adapter changes only filesystem locations and invokes the esbuild bundle. Its scoring logic comes from the original Suite A script; every export transformation and both byte hashes are in [the manifest](evidence/export-manifest.json). The self-contained [Kaggle replay notebook](harness/kaggle-replay/README.md) was executed on October 5. It checks every embedded source hash, pins esbuild 0.25.12 and records the runtime and compiled-engine fingerprint. These commands also support local reproduction without model calls; local checks retain their own execution identity.
 
 The public replay schedules **108 decision evaluations, 324 metamorphic checks and 54 relation checks** from its 36 synthetic cases. It does not reproduce the broader B receipt's 540 invariants, which include the unpublished real packets. A zero process exit is insufficient: require `correct == questions`, `invariantsPassed == invariantsTotal`, `relationPassed == relationTotal` for every engine, and an empty printed `failures` list. Inspect failed rows rather than treating execution as a passing score.
 
@@ -84,9 +96,10 @@ For authorized owners of the private campaign inputs, `harness/scoring/analyze_k
 - [Hash and export transformation manifest](evidence/export-manifest.json)
 - [Searchable artifact catalog](metadata/artifacts.json)
 - [Challenge requirements checklist](docs/judge-checklist.md)
-- [Technical delivery and remaining limitations](docs/delivery-20261005.md)
+- [Current technical closeout and limitations](docs/technical-closeout-20261008.md)
+- [Historical October 5 delivery](docs/delivery-20261005.md)
 
-Run the static package validation from this repository root with `python tools/verify_package.py`. After an intentional public edit, regenerate its catalog with `python tools/verify_package.py --refresh-catalog`. Search by a tag with `python tools/verify_package.py --search evidence-provenance`. These checks parse JSON/Python/notebooks, verify empty stored outputs, byte hashes, relative links and Git exclusions. They do not run the benchmark or call models.
+Run static validation with `python -B tools/verify_package.py --read-only`, generation parity with `python -B tools/build_native_pilot_hardened.py --check`, and local regression tests with `python -B -m unittest discover -s tests -v`. The read-only validator neither refreshes the catalog nor writes a validation receipt. After an intentional public edit, regenerate the catalog with `python -B tools/verify_package.py --refresh-catalog`; this maintainer command writes metadata. Search by a tag with `python -B tools/verify_package.py --search evidence-provenance`. Package checks parse JSON/Python/notebooks, verify empty stored outputs, byte hashes, relative links and Git exclusions. They do not call models.
 
 Source project at export: branch `master`, HEAD `13b315696bfaf72ac371e5b3498e2ab0d3a9a00e`. The source working tree contained unrelated uncommitted changes. The exported engine is taken from the immutable historical C snapshot, not from those edits. No original Orbit files or deployed application were changed for this package.
 
@@ -94,7 +107,7 @@ Source project at export: branch `master`, HEAD `13b315696bfaf72ac371e5b3498e2ab
 
 The [historical task](https://www.kaggle.com/benchmarks/tasks/celebrum/orbit-scoped-evidence-pilot-v2/1), new Boolean task v2 and [Benchmark collection](https://www.kaggle.com/benchmarks/celebrum/orbit-scoped-evidence-and-user-choice) are public, verified by saved visibility and readback in Kaggle on October 5. The collection includes both task versions. The author explicitly approved Apache 2.0 publication of the new task and collection; this does not assign a blanket license to every historical source export. Parent notebooks and input datasets remain private. Kaggle tags are Evaluation, Factuality, Question Answering, Reasoning and Synthetic.
 
-The [GitHub repository](https://github.com/SeCuReDmE-main-dev/orbit-kaggle-benchmark) was verified without an owner session. Independent Kaggle access remains unverified: the web reader could not open either page, and a cookie-free HTTP request returned 404 for the collection and a generic 200 application shell for the task. This is not evidence that a guest can inspect the rendered collection. See the [publication receipt](evidence/publication-20261005.json); a non-owner browser check remains necessary before submission.
+The [GitHub repository](https://github.com/SeCuReDmE-main-dev/orbit-kaggle-benchmark) is public. On October 8, a browser without a Kaggle owner session rendered the collection and native task v2, with Sign In/Register available. The collection showed two tasks and two models; Flash had a result, while Pro remained incomplete in the interface. This fresh observation supersedes the access uncertainty in the unchanged [October 5 publication receipt](evidence/publication-20261005.json). It does not resolve the Pro display discrepancy.
 
 The [English article](docs/article.en.md) remains the earlier working draft delivered for graphics and podcast preparation. Final editorial writing and DEV publication are outside this technical delivery. Update its execution-status sentences from these receipts before submitting; the draft alone is not a final experimental report.
 

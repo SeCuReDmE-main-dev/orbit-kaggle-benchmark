@@ -1,0 +1,41 @@
+name: Public package validation
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: package-validation-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  public-package:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4, verified 2026-10-08
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5, verified 2026-10-08
+        with:
+          python-version: '3.11'
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4, verified 2026-10-08
+        with:
+          node-version: '20.19.0'
+      - name: Pure local regression tests
+        run: python -B -m unittest discover -s tests -v
+      - name: Read-only source, provenance and catalog validation
+        run: |
+          python -B tools/build_native_pilot_hardened.py --check
+          python -B tools/verify_package.py --read-only
+      - name: Reproduce existing public synthetic cases without model calls
+        run: |
+          npm install --prefix harness/source --ignore-scripts --no-audit --no-fund --package-lock=false --cache "$RUNNER_TEMP/orbit-npm-cache"
+          harness/source/node_modules/.bin/esbuild harness/source/tools/engine-jsonl.ts --bundle --platform=node --format=esm --outfile=harness/source/engine-jsonl.mjs
+          python -B harness/replay_synthetic.py --corpus harness/synthetic --output outputs/synthetic-replay.json
+          python -B tools/check_replay_result.py outputs/synthetic-replay.json
+      - name: Confirm tracked source is unchanged
+        run: git diff --exit-code

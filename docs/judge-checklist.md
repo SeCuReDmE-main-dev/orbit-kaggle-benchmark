@@ -5,7 +5,7 @@ Checked against the [challenge page](https://dev.to/challenges/kaggle-2026-09-23
 | Requirement | Evidence / action | Status |
 |---|---|---|
 | Benchmark built on Kaggle and run against real models | Historical campaigns and new native Boolean pilot; Flash True, Pro invalid-output False | Executed; native task UI discrepancy declared |
-| Public Kaggle Benchmark collection URL | [Orbit: scoped evidence and user choice](https://www.kaggle.com/benchmarks/celebrum/orbit-scoped-evidence-and-user-choice), both task versions public | Saved public visibility verified; independent rendered access pending |
+| Public Kaggle Benchmark collection URL | [Orbit: scoped evidence and user choice](https://www.kaggle.com/benchmarks/celebrum/orbit-scoped-evidence-and-user-choice), both task versions public | Guest browser rendered collection and native task v2 on October 8; Pro display limitation remains |
 | Explain tasks, model choices, findings and what changed | [English working draft](article.en.md), [methodology](methodology.md), README | Draft delivered; author final edit pending |
 | Use the four-section submission template | What I Benchmarked; Models Tested; Findings; My Benchmark | Present in English draft |
 | Required DEV tag | `kagglechallenge`; suggested four-tag set: `devchallenge`, `kagglechallenge`, `ai`, `machinelearning` | Author publication step |

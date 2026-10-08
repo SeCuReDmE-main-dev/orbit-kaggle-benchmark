@@ -20,3 +20,13 @@ The [native task page](https://www.kaggle.com/benchmarks/tasks/celebrum/orbit-na
 The Pro display discrepancy remains unresolved. The unchanged notebook Boolean and native JSON projection are preserved; no receipt was altered to match the page. No backend cause or newer model run is asserted. BuildTaskSnapshot API counts remain pending separate verification. The current page should not be presented as a verified two-model leaderboard.
 
 This is a transparent development pilot with one attempt per model and public synthetic references. It supports the specific pass/contract-failure observations above, not a statistical ranking or proof that one of Orbit's engines is superior. The safe receipt contains selected metadata only, with no original native run hashes, raw chats, source document text, model answers or provider reasoning.
+
+## Guest observation on October 8
+
+A browser without an owner session rendered the public collection and native task version 2, with Sign In/Register controls visible. The collection showed two tasks and two models. The native results table showed Flash as Pass and a Pro row whose output link was labelled `undefined`. Pro did not have a usable displayed score. This is a newer interface observation, separate from the October 5 publication sequence above; it neither changes the archived Boolean nor establishes a backend cause.
+
+## Prepared hardening successor
+
+The [separate hardened pilot](../pilot/native-pass-fail-hardened/README.md) addresses three implementation boundaries found during review: decoder rejection of oversized integers, UTF-8 byte limits and Unicode-safe diagnostic persistence. Schema bounds follow the frozen engine contract. Diagnostic storage failure remains distinct from an invalid model output or failed contract, and must never trigger a new model attempt.
+
+The successor is prepared for inspection and local regression testing. It has not been executed or published on Kaggle. No evidence establishes that these newly covered edge cases caused either historical model observation. The original pilot, engine and receipts remain byte-identical under the [frozen-history inventory](../metadata/frozen-history.json).
