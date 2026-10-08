@@ -7,6 +7,7 @@ import json
 from pathlib import Path
 import tempfile
 import unittest
+from unittest.mock import MagicMock, patch
 
 ROOT = Path(__file__).resolve().parents[1]
 spec = importlib.util.spec_from_file_location("replay_checker", ROOT / "tools/check_replay_result.py")
@@ -93,6 +94,25 @@ class ReplayResultTests(unittest.TestCase):
         result = valid_result()
         result["oracleSha256"] = "0" * 64
         self.assertEqual(checker.check_result(result)["status"], "failed")
+
+    def test_result_size_limit_bounds_the_read_itself(self):
+        source = MagicMock()
+        source.open.return_value.__enter__.return_value.read.return_value = b"x" * 65
+        with patch.object(checker, "MAX_RESULT_BYTES", 64, create=True):
+            with self.assertRaises(checker.InvalidResult):
+                checker.read_json(source)
+        source.open.assert_called_once_with("rb")
+        source.open.return_value.__enter__.return_value.read.assert_called_once_with(65)
+        source.read_bytes.assert_not_called()
+
+    def test_deep_json_is_a_controlled_invalid_input(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "deep.json"
+            path.write_text("[" * 1200 + "0" + "]" * 1200, encoding="utf-8")
+            output = io.StringIO()
+            with redirect_stdout(output):
+                self.assertEqual(checker.main([str(path)]), 2)
+            self.assertEqual(json.loads(output.getvalue())["status"], "invalid-input")
 
     def test_cli_exit_codes_and_no_input_rewrite(self):
         with tempfile.TemporaryDirectory() as directory:

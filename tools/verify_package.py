@@ -283,6 +283,15 @@ def validate_successor(root):
         for node in contract_tree.body:
             if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef)):
                 check(definitions.get(node.name) == ast.dump(node), "embedded contract differs: " + node.name)
+            elif isinstance(node, ast.Assign):
+                for target in node.targets:
+                    if isinstance(target, ast.Name):
+                        values = [ast.dump(item.value) for item in task_tree.body
+                                  if isinstance(item, ast.Assign) and any(
+                                      isinstance(name, ast.Name) and name.id == target.id
+                                      for name in item.targets)]
+                        check(values == [ast.dump(node.value)],
+                              "embedded contract constant differs: " + target.id)
         task_functions = {node.name: node for node in task_tree.body if isinstance(node, ast.FunctionDef)}
         main_task = task_functions.get(manifest["mainTask"])
         check(main_task is not None and isinstance(main_task.returns, ast.Name)

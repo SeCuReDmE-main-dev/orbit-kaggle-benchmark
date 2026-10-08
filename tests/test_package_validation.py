@@ -157,6 +157,31 @@ class PackageValidationTests(unittest.TestCase):
             errors, _ = validator.validate_successor(root)
             self.assertTrue(any("embedded contract differs" in error for error in errors), errors)
 
+    def test_embedded_contract_constants_cannot_drift_by_rehashing(self):
+        for old, new, name in (("MAX_RESPONSE_BYTES = 1_048_576", "MAX_RESPONSE_BYTES = 2_097_152",
+                               "MAX_RESPONSE_BYTES"),
+                              ('"subject": 300', '"subject": 301', "SCOPE_LIMITS")):
+            with self.subTest(name=name), tempfile.TemporaryDirectory() as directory:
+                root = Path(directory)
+                self.copy_successor_inputs(root)
+                path = root / validator.SUCCESSOR / "task.py"
+                source = path.read_text(encoding="utf-8")
+                self.assertIn(old, source)
+                path.write_text(source.replace(old, new, 1), encoding="utf-8")
+                self.refresh_fixture_hash(root, "task.py")
+                notebook_name = "orbit-native-pass-fail-hardened.ipynb"
+                notebook_path = root / validator.SUCCESSOR / notebook_name
+                notebook = json.loads(notebook_path.read_text(encoding="utf-8"))
+                for cell in notebook["cells"]:
+                    if cell["cell_type"] == "code":
+                        cell["source"] = cell["source"].replace(old, new, 1)
+                notebook_path.write_text(json.dumps(notebook), encoding="utf-8")
+                self.refresh_fixture_hash(root, notebook_name)
+                errors, _ = validator.validate_successor(root)
+                self.assertTrue(any("embedded contract constant differs: " + name in error
+                                    for error in errors), errors)
+                self.assertFalse(any("notebook code cells differ" in error for error in errors), errors)
+
 
 if __name__ == "__main__":
     unittest.main()

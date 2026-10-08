@@ -321,7 +321,7 @@
         "scoped-claims",
         "uncertainty"
       ],
-      "sha256": "2076852a8f28746442115e80d9c07fdb0b59974d31978dc0b1c75fd16038ce41"
+      "sha256": "f9897e8112131619744b2b525ea8e2d27cd075aef066d0d026b8f1781eb8c7a0"
     },
     {
       "path": "docs/technical-closeout-20261008.md",
@@ -1497,7 +1497,7 @@
         "scoped-claims",
         "synthetic-data"
       ],
-      "sha256": "725d212aba9dfd1dbe2832a302897a4a89672549915e116e97f6055e8b05a8e9"
+      "sha256": "90991a87389ced5fc619b176b5a5734c27847afeb60f94619a91d8029f76da7c"
     },
     {
       "path": "tests/test_replay_result.py",
@@ -1514,7 +1514,7 @@
         "scoped-claims",
         "synthetic-data"
       ],
-      "sha256": "87dbcbf9fd5314d532b0656dcdd20074cdc9dd8bc7bab0194d155b0e2d1d9fb6"
+      "sha256": "4bfed548b585be4143b09d8845077f49dae0a3cf4fbaee9717f1ebf4028dab71"
     },
     {
       "path": "tools/build_native_pilot_hardened.py",
@@ -1542,7 +1542,7 @@
         "reproducibility",
         "scoped-claims"
       ],
-      "sha256": "c53ee9d7e25ec57527e306eaf6014b59c38525831fe7a67cde7bafd344d76b37"
+      "sha256": "c3d5124a88f3e494956a40dceb1adc001eaf53d34d5aa333dcf24cdffd8f90d8"
     },
     {
       "path": "tools/verify_package.py",
@@ -1556,7 +1556,7 @@
         "reproducibility",
         "scoped-claims"
       ],
-      "sha256": "37eba77e46f850cb362c6ecb8e36d0eaf30c2f1aa7ff394b86dc8d1c87b9775b"
+      "sha256": "9739c3e4db1cdcce492883ad2ebc797123a83bd5b78fe79d4853a6d90a582c04"
     }
   ]
 }

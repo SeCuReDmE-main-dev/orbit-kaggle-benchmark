@@ -14,6 +14,7 @@ from pathlib import Path
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
+MAX_RESULT_BYTES = 64 * 1024 * 1024
 ENGINES = ("baseline", "n", "p")
 OPERATIONS = ("original", "order", "duplicate", "unrelated", "relation")
 INPUT_HASHES = {
@@ -43,8 +44,9 @@ def _constant(_value):
 
 
 def read_json(path):
-    data = path.read_bytes()
-    if len(data) > 64 * 1024 * 1024:
+    with path.open("rb") as stream:
+        data = stream.read(MAX_RESULT_BYTES + 1)
+    if len(data) > MAX_RESULT_BYTES:
         raise InvalidResult("Replay result exceeds 64 MiB")
     return json.loads(data, object_pairs_hook=_object, parse_constant=_constant)
 
@@ -131,7 +133,7 @@ def main(argv=None):
     args = parser.parse_args(argv)
     try:
         report = check_result(read_json(args.result))
-    except (OSError, UnicodeError, ValueError, KeyError, TypeError) as error:
+    except (OSError, UnicodeError, ValueError, KeyError, TypeError, RecursionError) as error:
         print(json.dumps({"status": "invalid-input", "errorType": type(error).__name__,
                           "benchmarkRunsExecuted": 0, "modelCalls": 0}))
         return 2

@@ -7,6 +7,7 @@
 - tags: kaggle, llm-evaluation, reproducibility, provenance, editorial, code-review, plan-tracking
 - base_commit: 6f400245db66c3b70fcfe6bef8ca4995b7b6d96c
 - status: in_progress
+- pull_request: https://github.com/SeCuReDmE-main-dev/orbit-kaggle-benchmark/pull/1
 
 ## Objective and boundaries
 
@@ -250,7 +251,7 @@ Final push/review/merge/readback times occur after the last source commit: their
 - status: done
 - completed_at: 2026-10-08T16:10:19.216240+00:00
 - depends_on:
-- evidence: Isolated reproduction passed all486 existing checks with zero model calls; metadata/reproduction-20261008.json.
+- evidence: Isolated reproduction passed all 486 existing checks with zero model calls; metadata/reproduction-20261008.json.
 
 ### KAG-033 — Ajouter une CI minimale
 
@@ -285,14 +286,14 @@ Final push/review/merge/readback times occur after the last source commit: their
 - status: done
 - completed_at: 2026-10-08T16:06:18.913301+00:00
 - depends_on:
-- evidence: README/native documentation preserve 2 models, 3 engines, none control, C236/C4four, 486 versus540.
+- evidence: README/native documentation preserve 2 models, 3 engines, none control, C 236 / C4 four, 486 versus 540.
 
 ### KAG-038 — Actualiser l’accès public
 
 - status: done
 - completed_at: 2026-10-08T16:06:18.913301+00:00
 - depends_on:
-- evidence: Guest browser rendered public collection and native task v2 on October8; SignIn/Register controls visible.
+- evidence: Guest browser rendered public collection and native task v2 on October 8; Sign In/Register controls visible.
 
 ### KAG-039 — Documenter l’affichage Kaggle
 
@@ -338,45 +339,45 @@ Final push/review/merge/readback times occur after the last source commit: their
 
 ### KAG-045 — Actualiser l’index final
 
-- status: todo
-- completed_at:
+- status: done
+- completed_at: 2026-10-08T16:14:09.995859+00:00
 - depends_on:
-- evidence:
+- evidence: Catalog refreshed and validator PASS: 74 entries, 46 historical hashes, no warnings.
 
 ### KAG-046 — Publier la branche
 
-- status: todo
-- completed_at:
+- status: done
+- completed_at: 2026-10-08T16:14:09.995859+00:00
 - depends_on:
-- evidence:
+- evidence: Commit 36d04eb pushed to origin/finalize-kaggle-package.
 
 ### KAG-047 — Ouvrir la PR
 
-- status: todo
-- completed_at:
+- status: done
+- completed_at: 2026-10-08T16:14:09.995859+00:00
 - depends_on:
-- evidence:
+- evidence: PR #1 opened and attached to the Codex conversation.
 
 ### KAG-048 — Solliciter Codex
 
-- status: todo
+- status: in_progress
 - completed_at:
 - depends_on:
-- evidence:
+- evidence: Codex GitHub review requested; bot acknowledged running on 36d04eb.
 
 ### KAG-049 — Solliciter Qodo
 
-- status: todo
+- status: blocked
 - completed_at:
 - depends_on:
-- evidence:
+- evidence: Qodo bot explicitly reports subscription inactive; no paid reactivation. This is not a successful review.
 
 ### KAG-050 — Préparer CodeRabbit
 
 - status: done
 - completed_at: 2026-10-08T16:06:18.913301+00:00
 - depends_on:
-- evidence: Official CodeRabbit Windows CLI0.9.0 installed per-user; vendor installer validated executable signature. No administrator used.
+- evidence: Official CodeRabbit Windows CLI 0.9.0 installed per-user; vendor installer validated executable signature. No administrator used.
 
 ### KAG-051 — Configurer CodeRabbit
 
@@ -387,52 +388,52 @@ Final push/review/merge/readback times occur after the last source commit: their
 
 ### KAG-052 — Exécuter sa revue
 
-- status: todo
+- status: in_progress
 - completed_at:
 - depends_on:
-- evidence:
+- evidence: CodeRabbit CLI and GitHub review active; findings are being verified and corrected.
 
 ### KAG-053 — Ajouter les autres reviewers admissibles
 
-- status: todo
+- status: not_applicable
 - completed_at:
 - depends_on:
-- evidence:
+- evidence: No additional verified free installed reviewer identified; existing three services plus independent native review cover this scoped change.
 
 ### KAG-054 — Rassembler les remarques
 
-- status: todo
+- status: in_progress
 - completed_at:
 - depends_on:
-- evidence:
+- evidence: CLI findings recorded; three control defects reproduced or inspected and assigned to their code owner.
 
 ### KAG-055 — Corriger les problèmes avérés
 
-- status: todo
+- status: in_progress
 - completed_at:
 - depends_on:
-- evidence:
+- evidence: Fixing constant parity, bounded replay read and excessive nesting; documentation spacing also corrected.
 
 ### KAG-056 — Relancer les revues
 
-- status: todo
+- status: in_progress
 - completed_at:
 - depends_on:
-- evidence:
+- evidence: Full final-commit reviews will follow the correction lot.
 
 ### KAG-057 — Exécuter les contrôles finaux
 
-- status: todo
+- status: in_progress
 - completed_at:
 - depends_on:
-- evidence:
+- evidence: Initial remote CI passed 49 tests and existing 486 checks; final candidate will be rerun.
 
 ### KAG-058 — Faire une revue indépendante de clôture
 
-- status: todo
+- status: in_progress
 - completed_at:
 - depends_on:
-- evidence:
+- evidence: Independent closeout review identified the nested JSON error; correction in progress.
 
 ### KAG-059 — Fusionner la PR
 
@@ -504,3 +505,8 @@ No previous tracked plan at this path.
 - depends_on: KAG-041
 - evidence: Author reported the podcast complete; link retained privately. Playback and access have not been verified. Integrate only after the deferred article review.
 - history: 2026-10-08T16:06:45.322744+00:00 — User note captured; no publication or article edit authorized by this note.
+
+## Review dispositions
+
+- CodeRabbit CLI dependency-lock suggestion: not adopted in the frozen harness. The manifest pins esbuild 0.25.12 exactly, including its platform packages. A new lock would change the preserved export boundary; runtime and bundle fingerprints remain explicit in each execution receipt. A future dependency update requires a separately identified preparation.
+- Qodo unavailable because its subscription is inactive; no claim of a completed Qodo review.
